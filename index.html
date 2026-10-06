@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Majek7x — security log</title>
-<meta name="description" content="Majek7x — penetration tester & offensive security. Field notes, tooling and writeups, published straight from markdown.">
+<meta name="description" content="Majek7x — penetration tester & bug bounty hunter. Field notes, tooling and writeups, published straight from markdown.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23201B15'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='28' fill='%23E89B4B' text-anchor='middle'%3EM_%3C/text%3E%3C/svg%3E">
 <script>
 (function(){try{
@@ -68,11 +68,6 @@ svg{flex-shrink:0}
 .site-head .wrap{display:flex;align-items:center;gap:28px;height:64px}
 .brand{font-family:'JetBrains Mono';font-weight:600;font-size:15.5px;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:baseline}
 .brand-cursor{color:var(--accent);animation:blink 1.15s steps(1) infinite;margin-left:1px}
-.nav{display:flex;gap:26px;margin:0 auto}
-.nav a{font:500 13.5px 'JetBrains Mono';letter-spacing:.03em;text-decoration:none;color:var(--ink-2);position:relative;padding:4px 0;cursor:pointer}
-.nav a::after{content:'';position:absolute;left:0;bottom:0;height:1.5px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .25s ease}
-.nav a:hover{color:var(--ink)}
-.nav a:hover::after{transform:scaleX(1);transform-origin:left}
 .head-right{display:flex;align-items:center;gap:12px;margin-left:auto}
 
 .gh-pill{display:flex;align-items:center;gap:9px;padding:7px 13px;border:1px solid var(--line);border-radius:999px;text-decoration:none;
@@ -143,8 +138,8 @@ svg{flex-shrink:0}
 .t-live .pulse-dot{width:6px;height:6px}
 .t-caret{display:inline-block;width:8px;height:15px;background:var(--term-olive);vertical-align:-2px;animation:blink 1.05s steps(1) infinite}
 
-section{padding:78px 0}
-.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:36px;flex-wrap:wrap}
+section{padding:84px 0}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:40px;flex-wrap:wrap}
 .sec-idx{font:600 13px 'JetBrains Mono';color:var(--accent);letter-spacing:.1em}
 .sec-head h2{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(30px,3.8vw,42px);letter-spacing:-.015em}
 .sec-rule{flex:1;height:1px;background:var(--line);align-self:center;min-width:40px}
@@ -155,7 +150,7 @@ section{padding:78px 0}
 
 .skel{border-radius:14px;border:1px solid var(--line);background:linear-gradient(100deg,var(--surface) 40%,var(--surface2) 50%,var(--surface) 60%);background-size:200% 100%;animation:skel 1.4s linear infinite;margin-bottom:14px}
 .skel-f{height:280px}
-.skel-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.skel-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:24px}
 .skel-g .skel{margin:0;height:190px}
 @keyframes skel{to{background-position:-200% 0}}
 
@@ -178,7 +173,7 @@ section{padding:78px 0}
 .ft-right .cb-pre{flex:1;max-height:360px}
 
 /* ============ post cards (grid) ============ */
-.post-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.post-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:20px;margin-top:26px}
 .post-row{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px 18px;cursor:pointer;box-shadow:var(--shadow-rest);
   transition:transform .24s cubic-bezier(.2,.7,.25,1), box-shadow .24s ease, border-color .24s ease}
 .post-row:hover,.post-row:focus-visible{transform:translateY(-5px);box-shadow:var(--shadow-lift);border-color:var(--line-2)}
@@ -190,12 +185,12 @@ section{padding:78px 0}
 .pr-excerpt{color:var(--ink-2);font-size:14.5px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .pr-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:13px;
   font:500 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3)}
-.pr-arrow{width:30px;height:30px;border:1px solid var(--line-2);border-radius:50%;display:grid;place-items:center;color:var(--ink-3);transition:all .22s}
+.pr-arrow{width:30px;height:30px;border:1px solid var(--line-2);border-radius:50%;display:grid;place-items:center;color:var(--ink-3);transition:all .22s;flex-shrink:0}
 .pr-arrow svg{transition:transform .22s}
 .post-row:hover .pr-arrow{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
 .post-row:hover .pr-arrow svg{transform:translate(2px,-2px)}
 
-#load-more-wrap{display:flex;justify-content:center;margin-top:28px}
+#load-more-wrap{display:flex;justify-content:center;margin-top:32px}
 .empty-card{border:1.5px dashed var(--line-2);border-radius:16px;padding:40px 36px;background:var(--surface);text-align:center}
 .empty-card .ec-title{font:600 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--accent-ink);letter-spacing:.08em;margin-bottom:14px}
 .empty-card p{color:var(--ink-2);font-size:15px;margin:8px 0}
@@ -235,23 +230,8 @@ section{padding:78px 0}
 [data-theme="dark"] .tok-fn{color:#7FBFC9}
 [data-theme="dark"] .tok-rgx,[data-theme="dark"] .tok-type{color:#C6A3D9}
 
-/* ============ lab ============ */
-.band{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.lab-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:56px;align-items:center}
-.lab-kicker{font:600 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.14em;color:var(--accent-ink);margin-bottom:14px}
-.lab-note h3{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(24px,2.4vw,31px);letter-spacing:-.015em;line-height:1.3;margin-bottom:16px}
-.lab-note p{color:var(--ink-2);font-size:15.5px;line-height:1.7;margin-bottom:18px}
-.lab-note ul{list-style:none;margin:.2em 0 0;padding:0}
-.lab-note li{position:relative;padding-left:24px;margin:.5em 0;font:500 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-2)}
-.lab-note ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:600}
-.lab-note ol{list-style:none;counter-reset:labn;margin:.2em 0 0;padding:0}
-.lab-note ol li{counter-increment:labn;padding-left:30px}
-.lab-note ol li::before{content:counter(labn) '.';position:absolute;left:0;color:var(--accent);font-weight:600}
-.lab-note[dir="rtl"] ul li,.lab-note[dir="rtl"] ol li{padding-left:0;padding-right:26px}
-.lab-note[dir="rtl"] ul li::before,.lab-note[dir="rtl"] ol li::before{left:auto;right:0}
-
 /* ============ footer ============ */
-footer{border-top:1px solid var(--line);padding:72px 0 44px;margin-top:20px}
+footer{border-top:1px solid var(--line);padding:76px 0 44px;margin-top:30px}
 .foot-big{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(34px,4.6vw,54px);letter-spacing:-.02em;margin-bottom:20px}
 .foot-big em{font-style:italic;color:var(--accent-ink)}
 .foot-bio{max-width:56ch;color:var(--ink-2);font-size:16px;line-height:1.7;margin-bottom:48px}
@@ -316,12 +296,10 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
   .terminal{justify-self:start;max-width:560px}
   .featured{grid-template-columns:1fr}
   .ft-right{border-left:none;border-top:1px solid var(--line)}
-  .lab-grid{grid-template-columns:1fr;gap:36px}
 }
-@media (max-width:860px){ .nav{display:none} }
 @media (max-width:760px){
   .gh-repo{display:none}
-  section{padding:58px 0}
+  section{padding:60px 0}
 }
 @media (max-width:560px){
   .gh-pill{padding:7px 10px;gap:7px}
@@ -343,11 +321,6 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Majek7x — home">majek7x<span class="brand-cursor">_</span></a>
-    <nav class="nav" aria-label="Main">
-      <a href="#writing">writing</a>
-      <a href="#lab">lab</a>
-      <a href="#about-footer" data-about>about</a>
-    </nav>
     <div class="head-right">
       <a class="gh-pill" id="gh-pill" href="#" target="_blank" rel="noopener" aria-label="Live GitHub stars and forks">
         <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -387,9 +360,9 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
         <h1 class="hero-h1 rise" style="animation-delay:.12s">
           <span>Hi, I'm Majek7x.</span>
           <span class="hh-type" aria-hidden="true">I <span id="tw"></span><span class="tw-caret" id="tw-caret"></span></span>
-          <span class="sr-only">I break systems legally and blog about it.</span>
+          <span class="sr-only">I break systems legally and hunt bugs for bounties.</span>
         </h1>
-        <p class="lede rise" style="animation-delay:.22s">Penetration tester &amp; offensive security. Field notes about recon, exploitation, tooling, and everything that breaks at 2 a.m. — published straight from markdown in a repo. No CMS, no build step, <code>view-source</code> friendly.</p>
+        <p class="lede rise" style="animation-delay:.22s">Penetration tester &amp; bug bounty hunter. Field notes from recon, exploitation, and everything I break along the way — published straight from markdown in a repo. No CMS, no build step.</p>
         <div class="cta-row rise" style="animation-delay:.3s">
           <a class="btn btn-solid" href="#writing">
             Read the latest
@@ -404,7 +377,7 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
           <span class="pulse-dot" aria-hidden="true"></span>
           <span>local time — <span id="clock">--:--:--</span></span>
           <span class="sep">·</span>
-          <span>recon · exploit · report</span>
+          <span>recon · exploit · bounty</span>
         </div>
       </div>
 
@@ -427,7 +400,7 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
     </div>
     <div id="post-list" aria-live="polite">
       <div class="skel skel-f"></div>
-      <div class="skel skel-g">
+      <div class="skel-g">
         <div class="skel"></div><div class="skel"></div><div class="skel"></div>
       </div>
     </div>
@@ -436,40 +409,16 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
     </div>
   </section>
 
-  <div class="band">
-    <section id="lab" class="wrap" aria-label="Snippet of the week">
-      <div class="sec-head">
-        <span class="sec-idx">(02)</span>
-        <h2>From the lab</h2>
-        <span class="sec-rule"></span>
-        <span class="sec-note">one snippet, every week</span>
-      </div>
-      <div class="lab-grid">
-        <div class="lab-note reveal" id="lab-note">
-          <div class="lab-kicker">SNIPPET № 042 — PYTHON</div>
-          <h3>A TCP connect scan in 15 lines</h3>
-          <p>Sometimes you don't need nmap — you need to know if one port is open on one host, fast, from any machine with Python. connect_ex() returns an error code instead of throwing, so closed ports cost you nothing but the timeout.</p>
-          <ul>
-            <li>connect_ex() — error code, not exception, zero try/except noise</li>
-            <li>ThreadPoolExecutor — 64 sockets probed at the same instant</li>
-            <li>0.5s timeout — don't stare at closed ports, move on</li>
-          </ul>
-        </div>
-        <div class="reveal" style="--d:.1s" id="snippet-code"></div>
-      </div>
-    </section>
-  </div>
-
 </main>
 
 <footer id="about-footer">
   <div class="wrap">
     <h2 class="foot-big">Thanks for <em>reading.</em></h2>
-    <p class="foot-bio">I'm Majek7x — a penetration tester who writes field notes between engagements: recon tricks, tooling, post-mortems, and the occasional CTF writeup. This entire site is one HTML file plus a folder of markdown; new posts appear automatically from the repo. View source; steal anything.</p>
+    <p class="foot-bio">I'm Majek7x — a penetration tester &amp; bug bounty hunter. I write field notes between engagements: recon tricks, tooling, writeups, and the occasional CTF. This entire site is one HTML file plus a folder of markdown; new posts appear automatically from the repo. View source; steal anything.</p>
     <div class="foot-bar">
       <span>© 2025 Majek7x — test before attackers do</span>
       <div class="foot-links">
-        <a href="https://github.com/aboelgoodelmajek-prog" target="_blank" rel="noopener">github</a>
+        <a href="https://github.com/HassanAbuAlgood" target="_blank" rel="noopener">github</a>
         <a href="#" id="rss-link">rss</a>
         <button type="button" id="to-top">↑ top</button>
         <span class="kbd-hint"><kbd>T</kbd> switch theme</span>
@@ -512,7 +461,7 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 const CONFIG = {
-  repo: 'aboelgoodelmajek-prog/majek7x.github.io',
+  repo: 'HassanAbuAlgood/Majek7x',
   branch: 'main',
   postsPath: 'posts',
 };
@@ -576,7 +525,7 @@ tick(); setInterval(tick, 1000);
 /* ---------- typewriter ---------- */
 const PHRASES = [
   'break things (with permission).',
-  'hunt bugs for a living.',
+  'hunt bugs for bounties.',
   'read logs at 2 a.m.',
   'test fences before attackers do.',
 ];
@@ -706,23 +655,6 @@ const LANGMAP = { js:'js', javascript:'js', ts:'js', typescript:'js', rust:'rust
 const EXT = { js:'js', javascript:'js', ts:'ts', typescript:'ts', rust:'rs', rs:'rs',
   sh:'sh', bash:'sh', shell:'sh', zsh:'sh', toml:'toml', py:'py', python:'py', diff:'diff', text:'txt' };
 
-/* ---------- lab fallback snippet ---------- */
-const PY_SCAN = String.raw`import socket
-import concurrent.futures as cf
-
-def probe(port, host="10.10.10.7", timeout=0.5):
-    with socket.socket() as s:
-        s.settimeout(timeout)
-        # connect_ex -> error code, not an exception
-        return port if s.connect_ex((host, port)) == 0 else None
-
-targets = [21, 22, 80, 443, 3389, 8080]
-with cf.ThreadPoolExecutor(64) as ex:
-    open_ports = [p for p in ex.map(probe, targets) if p]
-
-print("open:", open_ports or "none")`;
- $('#snippet-code').innerHTML = codeBlock('connect_scan.py', 'py', PY_SCAN, 'PYTHON');
-
 /* ---------- markdown → HTML ---------- */
 function mdToHtml(md){
   const fences = [];
@@ -807,7 +739,7 @@ function firstFence(md){
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function fmtDate(s){
   const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(s || '');
-  if (!m) return s || '—';
+  if (!m) return '';
   return `${MONTHS[+m[2]-1]} ${+m[3]}, ${m[1]}`;
 }
 
@@ -826,7 +758,7 @@ function resolveDir(meta, body){
 }
 
 /* ---------- cache & posts ---------- */
-const CACHE_KEY = 'm7x-posts-v2';
+const CACHE_KEY = 'm7x-posts-v3';
 let cache = {};
 try{ cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'); }catch(e){ cache = {}; }
 cache.files = cache.files || {};
@@ -905,18 +837,16 @@ async function syncPosts(){
       }catch(e){}
     }
 
-    const rootFile = async (name, slot) => {
-      const entry = tree.tree.find(e => e.type === 'blob' && e.path === name);
-      if (!entry){ cache[slot] = null; return; }
-      const cur = cache[slot];
-      if (cur && cur.sha === entry.sha) return;
+    /* about.md في جذر الريبو */
+    const aboutEntry = tree.tree.find(e => e.type === 'blob' && e.path === 'about.md');
+    if (!aboutEntry){
+      cache.about = null;
+    } else if (!cache.about || cache.about.sha !== aboutEntry.sha){
       try{
-        const r = await fetch(rawURL(name));
-        if (r.ok) cache[slot] = { sha: entry.sha, raw: await r.text() };
+        const r = await fetch(rawURL('about.md'));
+        if (r.ok) cache.about = { sha: aboutEntry.sha, raw: await r.text() };
       }catch(e){}
-    };
-    await rootFile('about.md', 'about');
-    await rootFile('lab.md', 'lab');
+    }
 
     cache.at = Date.now();
     try{ localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); }catch(e){}
@@ -927,19 +857,19 @@ async function syncPosts(){
   }
   rebuildPosts();
   renderPosts();
-  renderLab();
 }
 
 /* ---------- rendering ---------- */
 function featuredHTML(p){
   const fc = firstFence(p.raw);
   const tag = p.tags[0] || 'post';
+  const d = fmtDate(p.date);
   return `<article class="featured${fc ? '' : ' solo'}" tabindex="0" role="button" data-post="${escAttr(p.id)}" aria-label="Read latest: ${escAttr(p.title)}">
     <div class="ft-left">
       <div class="ft-kicker">LATEST · ${esc(tag.toUpperCase())} · ${p.minutes} MIN</div>
       <h3 class="ft-title" dir="${p.dir}">${esc(p.title)}</h3>
       <p class="ft-excerpt" dir="${p.dir}">${esc(p.excerpt)}</p>
-      <div class="ft-meta"><span class="chip">${esc(tag)}</span><span>${fmtDate(p.date)}</span><span>${p.minutes} min read</span></div>
+      <div class="ft-meta"><span class="chip">${esc(tag)}</span>${d ? `<span>${d}</span>` : ''}<span>${p.minutes} min read</span></div>
       <span class="ft-cta">Read the post
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
       </span>
@@ -949,6 +879,7 @@ function featuredHTML(p){
 }
 function rowHTML(p, i){
   const tag = p.tags[0] || 'post';
+  const d = fmtDate(p.date);
   return `<article class="post-row" tabindex="0" role="button" data-post="${escAttr(p.id)}" aria-label="Read: ${escAttr(p.title)}">
     <div class="pr-top">
       <span class="pr-idx">${String(i + 1).padStart(2, '0')}</span>
@@ -957,7 +888,7 @@ function rowHTML(p, i){
     <h3 class="pr-title" dir="${p.dir}">${esc(p.title)}</h3>
     <p class="pr-excerpt" dir="${p.dir}">${esc(p.excerpt)}</p>
     <div class="pr-foot">
-      <span>${fmtDate(p.date)} · ${p.minutes} min</span>
+      <span>${d ? d + ' · ' : ''}${p.minutes} min</span>
       <span class="pr-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
     </div>
   </article>`;
@@ -1026,34 +957,6 @@ function renderPosts(){
 }
  $('#load-more').addEventListener('click', () => { shown += 7; renderPosts(); });
 
-/* ---------- From the lab: بيقرا من lab.md لو موجود ---------- */
-function renderLab(){
-  const lab = cache.lab && cache.lab.raw;
-  if (!lab || !lab.trim()) return;
-  const { meta, body } = parseFront(lab);
-  const fence = firstFence(body);
-  const proseMd = body.replace(/```[^\n`]*\n[\s\S]*?```/, '');
-  const dir = resolveDir(meta, body);
-
-  const note = $('#lab-note');
-  note.setAttribute('dir', dir);
-  note.innerHTML =
-    `<div class="lab-kicker">${esc(meta.kicker || 'SNIPPET OF THE WEEK')}</div>` +
-    `<h3 dir="${dir}">${esc(meta.title || 'Snippet of the week')}</h3>` +
-    mdToHtml(proseMd);
-
-  const sn = $('#snippet-code');
-  const grid = document.querySelector('.lab-grid');
-  if (fence){
-    sn.hidden = false;
-    grid.style.gridTemplateColumns = '';
-    sn.innerHTML = codeBlock(meta.file || ('snippet.' + (EXT[fence.lang] || 'txt')), LANGMAP[fence.lang] || 'text', fence.code);
-  } else {
-    sn.hidden = true;
-    grid.style.gridTemplateColumns = '1fr';
-  }
-}
-
 /* ---------- reader overlay ---------- */
 const reader = $('#reader');
 let lastFocus = null;
@@ -1077,8 +980,9 @@ function openPost(id){
   titleEl.dir = p.dir;
   bodyEl.dir = p.dir;
   titleEl.textContent = p.title;
+  const d = fmtDate(p.date);
   $('#reader-meta').innerHTML =
-    `<span class="chip">${esc(p.tags[0] || 'post')}</span><span>${fmtDate(p.date)}</span><span class="dotsep">·</span><span>${p.minutes} min read</span>`;
+    `<span class="chip">${esc(p.tags[0] || 'post')}</span>${d ? `<span>${d}</span><span class="dotsep">·</span>` : ''}<span>${p.minutes} min read</span>`;
   bodyEl.innerHTML = p.html;
   openReaderShell();
 }
@@ -1095,7 +999,7 @@ function aboutHTML(){
     return { title: meta.title || 'Majek7x', dir: resolveDir(meta, body), html: head + mdToHtml(body) };
   }
   const tpl = `## من أنا
-مختص اختبار اختراق (Penetration Testing) وأمن سيبراني…
+مختص اختبار اختراق (Penetration Testing) و Bug Bounty…
 
 ## الخبرة والشهادات
 - …
@@ -1119,7 +1023,7 @@ function openAbout(){
   titleEl.dir = a.dir;
   bodyEl.dir = a.dir;
   titleEl.textContent = a.title;
-  $('#reader-meta').innerHTML = `<span class="chip">offsec</span><span>penetration testing</span>`;
+  $('#reader-meta').innerHTML = `<span class="chip">offsec</span><span>pentesting · bug bounty</span>`;
   bodyEl.innerHTML = a.html;
   openReaderShell();
 }
@@ -1248,7 +1152,7 @@ ghPromise.then(v => {
 /* ---------- hero terminal ---------- */
 const TERM_STEPS = [
   { t:'cmd',  s:'whoami' },
-  { t:'out',  s:'majek7x — penetration tester · offensive security' },
+  { t:'out',  s:'majek7x — penetration tester · bug bounty hunter' },
   { t:'cmd',  s:'./recon.sh --quick' },
   { t:'stats' },
   { t:'cmd',  s:'cat motd.txt' },
@@ -1315,7 +1219,6 @@ runTerminal();
 /* ---------- boot ---------- */
 rebuildPosts();
 renderPosts();
-renderLab();
 syncPosts();
 </script>
 </body>
