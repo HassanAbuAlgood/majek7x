@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
+  --sp:clamp(48px,6vw,72px);--hero-top:clamp(36px,5vw,64px);--hero-bot:clamp(40px,5vw,60px);
   color-scheme:light;
   --bg:#F6F1E7; --surface:#FDFBF4; --surface2:#F1EADA;
   --ink:#211C15; --ink-2:#5F574A; --ink-3:#8D8374;
@@ -58,7 +59,7 @@ a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:28px;padding-right:28px}
 svg{flex-shrink:0}
 
 #progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;z-index:120}
@@ -75,7 +76,8 @@ svg{flex-shrink:0}
 .gh-pill:hover{border-color:var(--accent);color:var(--ink);background:var(--surface)}
 .gh-pill .gh-repo{color:var(--ink);font-weight:600}
 .gh-stat{display:flex;align-items:center;gap:5px}
-.gh-stat b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;min-width:44px;text-align:right}
+.gh-stat b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;min-width:2ch;text-align:left}
+.gh-pill.off .gh-stat,.gh-pill.off .gh-dot{display:none}
 .gh-dot{width:7px;height:7px;border-radius:50%;background:var(--ink-3)}
 .gh-dot.live{background:var(--ok)}
 .gh-dot.live::after{content:'';position:absolute;width:7px;height:7px;border-radius:50%;border:1.5px solid var(--ok);animation:ping 2.2s ease-out infinite}
@@ -87,24 +89,24 @@ svg{flex-shrink:0}
 .theme-switch button:hover{color:var(--ink)}
 .theme-switch button[aria-checked="true"]:hover{color:var(--bg)}
 
-.hero{position:relative;overflow:hidden}
+.hero{position:relative;overflow:hidden;padding:0;border-bottom:1px solid var(--line)}
 .hero::before{content:'';position:absolute;inset:0;pointer-events:none;
   background-image:radial-gradient(var(--dot) 1.1px, transparent 1.6px);background-size:26px 26px;
   -webkit-mask-image:linear-gradient(#000 55%, transparent 96%);mask-image:linear-gradient(#000 55%, transparent 96%)}
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:60px;align-items:center;min-height:calc(100svh - 64px);padding-top:56px;padding-bottom:64px}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:60px;align-items:center;padding-top:var(--hero-top);padding-bottom:var(--hero-bot)}
 @keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 .rise{animation:riseIn .8s cubic-bezier(.2,.7,.2,1) both}
-.eyebrow{font:600 12.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:22px}
+.eyebrow{font:600 12.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:18px}
 .eyebrow em{font-style:normal;color:var(--accent)}
-.hero-h1{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(40px,5.6vw,68px);line-height:1.06;letter-spacing:-.022em;margin-bottom:26px}
+.hero-h1{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(40px,5.6vw,68px);line-height:1.08;letter-spacing:-.022em;margin-bottom:22px}
 .hh-type{display:block;margin-top:8px}
 #tw{font-style:italic;color:var(--accent-ink)}
 .tw-caret{display:inline-block;width:.5ch;height:.86em;background:var(--accent);margin-left:3px;transform:translateY(.1em);animation:blink 1.1s steps(1) infinite}
 .tw-caret.busy{animation:none;opacity:1}
 @keyframes blink{50%{opacity:0}}
-.lede{font-size:18px;line-height:1.7;color:var(--ink-2);max-width:52ch;margin-bottom:32px}
+.lede{font-size:18px;line-height:1.7;color:var(--ink-2);max-width:52ch;margin-bottom:28px}
 .lede code{font-family:'JetBrains Mono';font-size:.85em;background:var(--code-inline);padding:.15em .4em;border-radius:5px}
-.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
 .btn{display:inline-flex;align-items:center;gap:10px;font:600 13.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.03em;padding:14px 24px;border-radius:11px;border:1px solid transparent;text-decoration:none;
   transition:transform .18s ease, box-shadow .18s ease, border-color .2s, background .2s, color .2s}
 .btn-solid{background:var(--accent);color:var(--on-accent)}
@@ -112,10 +114,6 @@ svg{flex-shrink:0}
 .btn-ghost{border-color:var(--line-2);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent-ink);transform:translateY(-2px)}
 .btn:disabled{opacity:.55;cursor:default}
-.guide-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:34px}
-.guide-label{font:600 11.5px 'JetBrains Mono';color:var(--ink-3);letter-spacing:.06em}
-.guide-link{font:600 12.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--accent-ink);border-bottom:1.5px solid var(--accent);padding:2px 0;cursor:pointer;transition:opacity .2s}
-.guide-link:hover{opacity:.65}
 .hero-status{display:flex;align-items:center;gap:10px;font:500 12.5px 'JetBrains Mono';color:var(--ink-3);letter-spacing:.02em;flex-wrap:wrap}
 .hero-status .sep{color:var(--line-2)}
 .pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);position:relative;display:inline-block;color:var(--accent)}
@@ -142,8 +140,9 @@ svg{flex-shrink:0}
 .t-live .pulse-dot{width:6px;height:6px}
 .t-caret{display:inline-block;width:8px;height:15px;background:var(--term-olive);vertical-align:-2px;animation:blink 1.05s steps(1) infinite}
 
-section{padding:84px 0}
-.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:36px;flex-wrap:wrap}
+section{padding-top:var(--sp);padding-bottom:var(--sp)}
+.hero + section{padding-top:calc(var(--sp) * .85)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px;flex-wrap:wrap}
 .sec-idx{font:600 13px 'JetBrains Mono';color:var(--accent);letter-spacing:.1em}
 .sec-head h2{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(30px,3.8vw,42px);letter-spacing:-.015em}
 .sec-rule{flex:1;height:1px;background:var(--line);align-self:center;min-width:40px}
@@ -159,7 +158,18 @@ section{padding:84px 0}
 @keyframes skel{to{background-position:-200% 0}}
 
 /* filter bar */
-#filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+#filter-bar{display:flex;gap:8px;flex-wrap:wrap}
+.sort-wrap{position:relative;margin-left:auto}
+.sort-wrap::after{content:'';position:absolute;right:15px;top:50%;width:6px;height:6px;border-right:1.5px solid var(--ink-3);border-bottom:1.5px solid var(--ink-3);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+#sort-select{appearance:none;-webkit-appearance:none;font:600 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-2);background:var(--surface);border:1px solid var(--line-2);border-radius:999px;padding:8px 36px 8px 16px;cursor:pointer;transition:border-color .18s}
+#sort-select:hover{border-color:var(--accent)}
+.grp{display:flex;align-items:center;gap:14px;margin-top:40px;font:600 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3)}
+.grp:first-child{margin-top:0}
+.grp b{color:var(--ink);font-weight:600}
+.grp::after{content:'';order:3;flex:1;height:1px;background:var(--line)}
+.grp + .post-list{margin-top:16px}
+.featured + .grp,.reveal + .grp{margin-top:40px}
 .f-btn{font:600 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;padding:7px 14px;border:1px solid var(--line-2);border-radius:999px;background:var(--surface);color:var(--ink-2);cursor:pointer;transition:all .18s}
 .f-btn:hover{border-color:var(--accent);color:var(--accent-ink);transform:translateY(-1px)}
 .f-btn.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
@@ -190,7 +200,7 @@ section{padding:84px 0}
 .ft-right .cb-pre{flex:1;max-height:360px}
 
 /* post cards (grid) */
-.post-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:20px;margin-top:26px}
+.post-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:18px;margin-top:20px}
 .post-row{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px 18px;cursor:pointer;box-shadow:var(--shadow-rest);
   transition:transform .24s cubic-bezier(.2,.7,.25,1), box-shadow .24s ease, border-color .24s ease}
 .post-row:hover,.post-row:focus-visible{transform:translateY(-5px);box-shadow:var(--shadow-lift);border-color:var(--line-2)}
@@ -250,23 +260,11 @@ section{padding:84px 0}
 [data-theme="dark"] .tok-fn{color:#7FBFC9}
 [data-theme="dark"] .tok-rgx,[data-theme="dark"] .tok-type{color:#C6A3D9}
 
-/* lab */
-.band{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.lab-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:56px;align-items:center}
-.lab-kicker{font:600 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.14em;color:var(--accent-ink);margin-bottom:14px}
-.lab-note h3{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(24px,2.4vw,31px);letter-spacing:-.015em;line-height:1.3;margin-bottom:16px}
-.lab-note p{color:var(--ink-2);font-size:15.5px;line-height:1.7;margin-bottom:18px}
-.lab-note ul{list-style:none;margin:.2em 0 0;padding:0}
-.lab-note li{position:relative;padding-left:24px;margin:.5em 0;font:500 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-2)}
-.lab-note ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:600}
-.lab-note[dir="rtl"] ul li{padding-left:0;padding-right:26px}
-.lab-note[dir="rtl"] ul li::before{left:auto;right:0}
-
 /* footer */
-footer{border-top:1px solid var(--line);padding:76px 0 44px;margin-top:30px}
+footer{border-top:1px solid var(--line);padding:56px 0 36px}
 .foot-big{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(34px,4.6vw,54px);letter-spacing:-.02em;margin-bottom:20px}
 .foot-big em{font-style:italic;color:var(--accent-ink)}
-.foot-bio{max-width:56ch;color:var(--ink-2);font-size:16px;line-height:1.7;margin-bottom:48px}
+.foot-bio{max-width:56ch;color:var(--ink-2);font-size:16px;line-height:1.7;margin-bottom:36px}
 .foot-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:26px;font:500 12.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3)}
 .foot-links{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .foot-links a,.foot-links button{font:inherit;color:var(--ink-2);text-decoration:none;transition:color .2s;cursor:pointer}
@@ -325,16 +323,39 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
   background:var(--ink);color:var(--bg);font:500 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;padding:11px 18px;border-radius:10px;box-shadow:var(--shadow-lift);transition:opacity .3s,transform .3s;max-width:90vw;text-align:center}
 #toast.on{opacity:1;transform:translate(-50%,0)}
 
+/* ---- RTL / Arabic polish ---- */
+[dir="rtl"],[dir="rtl"] *{letter-spacing:0 !important}
+[dir="rtl"] .chip,[dir="rtl"] .lvchip,[dir="rtl"].eyebrow{text-transform:none}
+.cb-code{font-family:'JetBrains Mono','IBM Plex Sans Arabic',monospace}
+.cb-code,.cb-code .ln{direction:ltr;unicode-bidi:isolate;text-align:left}
+.prose code,.lede code{unicode-bidi:isolate;direction:ltr}
+.prose[dir="rtl"]{font-size:17.5px;line-height:2}
+.reader-title[dir="rtl"]{line-height:1.55}
+.reader-kicker[dir="rtl"],.reader-meta[dir="rtl"]{text-align:right}
+.post-row[dir="rtl"] .pr-title{line-height:1.6}
+.post-row[dir="rtl"] .pr-excerpt,.ft-left[dir="rtl"] .ft-excerpt{line-height:1.9;text-align:right}
+.ft-left[dir="rtl"] .ft-title{line-height:1.55;text-align:right}
+.post-row[dir="rtl"] .pr-arrow svg,.ft-left[dir="rtl"] .ft-cta svg{transform:scaleX(-1)}
+.post-row[dir="rtl"]:hover .pr-arrow svg{transform:scaleX(-1) translate(2px,-2px)}
+.featured:hover .ft-left[dir="rtl"] .ft-cta svg{transform:scaleX(-1) translate(4px,-4px)}
+.reader[data-ui="ar"] .reader-head .wrap{flex-direction:row-reverse}
+.reader[data-ui="ar"] .reader-back svg{transform:scaleX(-1)}
+.reader[data-ui="ar"] .reader-end{direction:rtl}
+.owner-note{margin-top:2.4em;border:1.5px dashed var(--line-2);border-radius:12px;padding:16px 20px;background:var(--surface);font-size:14.5px;line-height:1.8;color:var(--ink-2)}
+.owner-note b{display:block;font:600 12px 'JetBrains Mono';color:var(--accent-ink);margin-bottom:6px}
+.owner-note p{margin:0}
+.head-nav{display:flex;gap:26px;font:500 12.5px 'JetBrains Mono',monospace}
+.head-nav a,.head-nav button{color:var(--ink-2);text-decoration:none;transition:color .2s}
+.head-nav a:hover,.head-nav button:hover{color:var(--accent-ink)}
+@media (max-width:860px){.head-nav{display:none}}
 @media (max-width:960px){
-  .hero .wrap{grid-template-columns:1fr;min-height:0;padding-top:64px;padding-bottom:56px;gap:48px}
+  .hero .wrap{grid-template-columns:1fr;gap:44px}
   .terminal{justify-self:start;max-width:560px}
   .featured{grid-template-columns:1fr}
   .ft-right{border-left:none;border-top:1px solid var(--line)}
-  .lab-grid{grid-template-columns:1fr;gap:36px}
 }
 @media (max-width:760px){
   .gh-repo{display:none}
-  section{padding:60px 0}
 }
 @media (max-width:560px){
   .gh-pill{padding:7px 10px;gap:7px}
@@ -356,6 +377,12 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Majek7x — home">majek7x<span class="brand-cursor">_</span></a>
+    <nav class="head-nav" aria-label="Primary">
+      <a href="#writing">Writing</a>
+      <button type="button" data-page="roadmap">Roadmap</button>
+      <button type="button" data-page="tools">Toolkit</button>
+      <button type="button" data-about>About</button>
+    </nav>
     <div class="head-right">
       <a class="gh-pill" id="gh-pill" href="#" target="_blank" rel="noopener" aria-label="Live GitHub stars and forks">
         <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -397,7 +424,7 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
           <span class="hh-type" aria-hidden="true">I <span id="tw"></span><span class="tw-caret" id="tw-caret"></span></span>
           <span class="sr-only">I break systems legally and hunt bugs for bounties.</span>
         </h1>
-        <p class="lede rise" style="animation-delay:.22s">Penetration tester &amp; bug bounty hunter. Field notes from recon, exploitation, and everything I break along the way — published straight from markdown in a repo. No CMS, no build step.</p>
+        <p class="lede rise" style="animation-delay:.22s">Penetration tester &amp; bug bounty hunter. Field notes on recon, exploitation, and writeups — published straight from markdown in a GitHub repo.</p>
         <div class="cta-row rise" style="animation-delay:.3s">
           <a class="btn btn-solid" href="#writing">
             Read the latest
@@ -407,11 +434,6 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
             About me
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
-        </div>
-        <div class="guide-row rise" style="animation-delay:.34s">
-          <span class="guide-label">// للمتعلمين:</span>
-          <button type="button" class="guide-link" data-page="roadmap">خريطة التعلم ↗</button>
-          <button type="button" class="guide-link" data-page="tools">أدواتي ↗</button>
         </div>
         <div class="hero-status rise" style="animation-delay:.38s">
           <span class="pulse-dot" aria-hidden="true"></span>
@@ -438,7 +460,17 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
       <span class="sec-rule"></span>
       <span class="sec-note" id="sec-note">syncing with github…</span>
     </div>
-    <div id="filter-bar" hidden></div>
+    <div class="toolbar" id="toolbar" hidden>
+      <div id="filter-bar"></div>
+      <label class="sort-wrap"><span class="sr-only">ترتيب المقالات</span>
+        <select id="sort-select">
+          <option value="new">الأحدث أولًا (مجمّعة بالشهر)</option>
+          <option value="old">الأقدم أولًا (مجمّعة بالشهر)</option>
+          <option value="short">الأقصر قراءة</option>
+          <option value="long">الأطول قراءة</option>
+        </select>
+      </label>
+    </div>
     <div id="post-list" aria-live="polite">
       <div class="skel skel-f"></div>
       <div class="skel-g">
@@ -450,30 +482,6 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
     </div>
   </section>
 
-  <div class="band">
-    <section id="lab" class="wrap" aria-label="Snippet of the week">
-      <div class="sec-head">
-        <span class="sec-idx">(02)</span>
-        <h2>From the lab</h2>
-        <span class="sec-rule"></span>
-        <span class="sec-note">one snippet, every week</span>
-      </div>
-      <div class="lab-grid">
-        <div class="lab-note reveal" id="lab-note">
-          <div class="lab-kicker">SNIPPET № 042 — PYTHON</div>
-          <h3>A TCP connect scan in 15 lines</h3>
-          <p>Sometimes you don't need nmap — you need to know if a port is open on a host, fast, from any machine with Python. connect_ex() returns an error code instead of throwing, so closed ports cost you nothing but the timeout.</p>
-          <ul>
-            <li>connect_ex() — error code, not exception, zero try/except noise</li>
-            <li>ThreadPoolExecutor — 64 sockets probed at the same instant</li>
-            <li>0.5s timeout — don't stare at closed ports, move on</li>
-          </ul>
-        </div>
-        <div class="reveal" style="--d:.1s" id="snippet-code"></div>
-      </div>
-    </section>
-  </div>
-
 </main>
 
 <footer id="about-footer">
@@ -481,7 +489,7 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
     <h2 class="foot-big">Thanks for <em>reading.</em></h2>
     <p class="foot-bio">I'm Majek7x — a penetration tester &amp; bug bounty hunter. I write field notes between engagements: recon tricks, tooling, writeups, and the occasional CTF. This entire site is one HTML file plus a folder of markdown; new posts appear automatically from the repo. View source; steal anything.</p>
     <div class="foot-bar">
-      <span>© 2025 Majek7x — test before attackers do</span>
+      <span>© <span id="yr">2025</span> Majek7x — test before attackers do</span>
       <div class="foot-links">
         <button type="button" data-page="roadmap">roadmap</button>
         <button type="button" data-page="tools">toolkit</button>
@@ -531,6 +539,7 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 const $  = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const OWNER = new URLSearchParams(location.search).has('edit'); /* افتح الموقع بـ ?edit عشان تشوف تلميحات المالك */
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 const CONFIG = {
@@ -750,22 +759,6 @@ const LANGMAP = { js:'js', javascript:'js', ts:'js', typescript:'js', rust:'rust
 const EXT = { js:'js', javascript:'js', ts:'ts', typescript:'ts', rust:'rs', rs:'rs',
   sh:'sh', bash:'sh', shell:'sh', zsh:'sh', toml:'toml', py:'py', python:'py', diff:'diff', text:'txt' };
 
-/* ---------- lab fallback snippet ---------- */
-const PY_SCAN = String.raw`import socket
-import concurrent.futures as cf
-
-def probe(port, host="10.10.10.7", timeout=0.5):
-    with socket.socket() as s:
-        s.settimeout(timeout)
-        # connect_ex -> error code, not an exception
-        return port if s.connect_ex((host, port)) == 0 else None
-
-targets = [21, 22, 80, 443, 3389, 8080]
-with cf.ThreadPoolExecutor(64) as ex:
-    open_ports = [p for p in ex.map(probe, targets) if p]
-
-print("open:", open_ports or "none")`;
- $('#snippet-code').innerHTML = codeBlock('connect_scan.py', 'py', PY_SCAN, 'PYTHON');
 
 /* ---------- markdown → HTML ---------- */
 function mdToHtml(md){
@@ -839,6 +832,8 @@ function parseFront(raw){
 }
 function makeExcerpt(md){
   let t = md.replace(/```[\s\S]*?```/g, ' ')
+            .replace(/^\s{0,3}#{1,6}\s.*$/gm, ' ')
+            .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
             .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
             .replace(/[#>*`~_]/g, '')
             .replace(/\s+/g, ' ').trim();
@@ -849,9 +844,10 @@ function firstFence(md){
   return m ? { lang: m[1].trim().split(/\s+/)[0] || 'text', code: m[2].replace(/\n$/, '') } : null;
 }
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-function fmtDate(s){
+function fmtDate(s, rtl){
   const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(s || '');
   if (!m) return '';
+  if (rtl) return new Date(Date.UTC(+m[1], +m[2]-1, +m[3])).toLocaleDateString('ar-EG-u-nu-latn', { day:'numeric', month:'long', year:'numeric', timeZone:'UTC' });
   return `${MONTHS[+m[2]-1]} ${+m[3]}, ${m[1]}`;
 }
 
@@ -888,7 +884,9 @@ const dynPosts = new Map();
 let cacheStatus = { live: false };
 let fetchFailed = false;
 let failType = null;
-let shown = 7;
+const PAGE = 6;
+let shown = PAGE;
+let sortMode = 'new';
 let activeTag = '';
 
 async function fetchJSON(url){
@@ -972,7 +970,6 @@ async function syncPosts(){
     await rootFile('about.md', 'about');
     await rootFile('roadmap.md', 'roadmap');
     await rootFile('tools.md', 'tools');
-    await rootFile('lab.md', 'lab');
 
     cache.at = Date.now();
     try{ localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); }catch(e){}
@@ -983,7 +980,6 @@ async function syncPosts(){
   }
   rebuildPosts();
   renderPosts();
-  renderLab();
 }
 
 /* ---------- filter bar ---------- */
@@ -1002,6 +998,7 @@ function renderFilters(posts){
   const b = e.target.closest('.f-btn');
   if (!b) return;
   activeTag = b.dataset.tag || '';
+  shown = PAGE;
   renderPosts();
 });
 
@@ -1011,15 +1008,15 @@ function lvChip(p){
 }
 function featuredHTML(p){
   const fc = firstFence(p.raw);
-  const tag = p.tags[0] || 'post';
-  const d = fmtDate(p.date);
+  const tag = p.tags[0] || 'post'; const rtl = p.dir === 'rtl';
+  const d = fmtDate(p.date, p.dir === 'rtl');
   return `<article class="featured${fc ? '' : ' solo'}" tabindex="0" role="button" data-post="${escAttr(p.id)}" aria-label="Read latest: ${escAttr(p.title)}">
-    <div class="ft-left">
-      <div class="ft-kicker">LATEST · ${esc(tag.toUpperCase())} · ${p.minutes} MIN</div>
+    <div class="ft-left" dir="${p.dir}">
+      <div class="ft-kicker">${rtl ? 'الأحدث' : 'LATEST'} · ${esc(tag.toUpperCase())} · ${rtl ? p.minutes + ' دقايق' : p.minutes + ' MIN'}</div>
       <h3 class="ft-title" dir="${p.dir}">${esc(p.title)}</h3>
       <p class="ft-excerpt" dir="${p.dir}">${esc(p.excerpt)}</p>
-      <div class="ft-meta">${lvChip(p)}<span class="chip">${esc(tag)}</span>${d ? `<span>${d}</span>` : ''}<span>${p.minutes} min read</span></div>
-      <span class="ft-cta">Read the post
+      <div class="ft-meta">${lvChip(p)}<span class="chip">${esc(tag)}</span>${d ? `<span>${d}</span>` : ''}<span>${rtl ? p.minutes + ' دقايق قراءة' : p.minutes + ' min read'}</span></div>
+      <span class="ft-cta">${rtl ? 'اقرأ المقال' : 'Read the post'}
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
       </span>
     </div>
@@ -1027,9 +1024,9 @@ function featuredHTML(p){
   </article>`;
 }
 function rowHTML(p, i){
-  const tag = p.tags[0] || 'post';
-  const d = fmtDate(p.date);
-  return `<article class="post-row" tabindex="0" role="button" data-post="${escAttr(p.id)}" aria-label="Read: ${escAttr(p.title)}">
+  const tag = p.tags[0] || 'post'; const rtl = p.dir === 'rtl';
+  const d = fmtDate(p.date, p.dir === 'rtl');
+  return `<article class="post-row" dir="${p.dir}" tabindex="0" role="button" data-post="${escAttr(p.id)}" aria-label="Read: ${escAttr(p.title)}">
     <div class="pr-top">
       <span class="pr-idx">${String(i + 1).padStart(2, '0')}</span>
       <div class="pr-chips">${lvChip(p)}<span class="chip">${esc(tag)}</span></div>
@@ -1037,12 +1034,13 @@ function rowHTML(p, i){
     <h3 class="pr-title" dir="${p.dir}">${esc(p.title)}</h3>
     <p class="pr-excerpt" dir="${p.dir}">${esc(p.excerpt)}</p>
     <div class="pr-foot">
-      <span>${d ? d + ' · ' : ''}${p.minutes} min</span>
+      <span>${d ? d + ' · ' : ''}${rtl ? p.minutes + ' دقايق' : p.minutes + ' min'}</span>
       <span class="pr-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
     </div>
   </article>`;
 }
 function emptyCard(){
+  if (!OWNER) return `<div class="empty-card"><div class="ec-title">// قريبًا</div><p>أول مقال لسه تحت الكتابة — خليك قريب.</p></div>`;
   return `<div class="empty-card">
     <div class="ec-title">// فولدر posts/ لسه فاضي</div>
     <p>اعمل أول مقال: من GitHub — <code>Add file → Create new file</code> وسمّيه <code>posts/ahlan.md</code>:</p>
@@ -1060,18 +1058,30 @@ level: مبتدئ
 function errCard(type){
   const map = {
     rate:   ['// GitHub API — rate limit مؤقت',
-             'حد الطلبات خلص مؤقتًا (60 طلب/ساعة لكل IP). استنى شوية أو جرّب من شبكة تانية — الكاش المحلي بيشغّل الموقع عادي في الأثناء.'],
+             'GitHub وقّف الطلبات مؤقتًا (الحد 60 طلب في الساعة لكل IP). استنى دقايق وجرّب تاني، أو افتح الموقع من شبكة تانية.'],
     branch: ['// الريبو أو البرانش مش موجود',
              'تأكد إن <code>CONFIG.repo</code> صح، وإن البرانش الرئيسي اسمه <code>main</code> (مش master).'],
     net:    ['// مفيش اتصال بالنت',
              'المتصفح مقدرش يوصل لـ GitHub. تأكد من الشبكة وجرّب تاني.'],
   };
-  const [t, d] = map[type] || map.net;
+  const [t, d] = (type === 'branch' && !OWNER) ? ['// المدونة مش متاحة دلوقتي', 'في مشكلة مؤقتة في تحميل المحتوى. جرّب تاني بعد شوية.'] : (map[type] || map.net);
   return `<div class="empty-card">
     <div class="ec-title">${t}</div>
     <p>${d}</p>
     <button class="btn btn-ghost" type="button" id="retry-sync">إعادة المحاولة ↻</button>
   </div>`;
+}
+const byDateDesc = (a, b) => (b.date || '').localeCompare(a.date || '');
+function sortList(list){
+  if (sortMode === 'short') return [...list].sort((a, b) => a.minutes - b.minutes || byDateDesc(a, b));
+  if (sortMode === 'long')  return [...list].sort((a, b) => b.minutes - a.minutes || byDateDesc(a, b));
+  const dated = list.filter(p => p.date).sort(sortMode === 'old' ? (a, b) => -byDateDesc(a, b) : byDateDesc);
+  return [...dated, ...list.filter(p => !p.date)];
+}
+function monthLabel(key){
+  if (!key) return 'بدون تاريخ';
+  const [y, m] = key.split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, 1)).toLocaleDateString('ar-EG-u-nu-latn', { month:'long', year:'numeric', timeZone:'UTC' });
 }
 function renderPosts(){
   const listEl = $('#post-list');
@@ -1079,6 +1089,7 @@ function renderPosts(){
   const posts = sortedPosts();
   const total = posts.length;
   renderFilters(posts);
+  $('#toolbar').hidden = total < 1;
   $('#sec-note').textContent = total
     ? `${total} post${total > 1 ? 's' : ''} · ${cacheStatus.live ? 'synced from github' : 'from cache'}`
     : (fetchFailed ? 'sync failed' : 'waiting for your first post');
@@ -1095,58 +1106,45 @@ function renderPosts(){
     return;
   }
 
-  /* فلتر نشط: اعرض الكل المطابق في جريد واحد */
-  if (activeTag){
-    const match = posts.filter(p => (p.tags.length ? p.tags : ['post']).includes(activeTag));
-    listEl.innerHTML = match.length
-      ? '<div class="post-list">' + match.map((p, i) => `<div class="reveal in" style="--d:${(i % 6) * .05}s">${rowHTML(p, i)}</div>`).join('') + '</div>'
-      : '<div class="empty-card"><div class="ec-title">// مفيش مقالات بالتاج ده لسه</div></div>';
+  const base = activeTag ? posts.filter(p => (p.tags.length ? p.tags : ['post']).includes(activeTag)) : posts;
+  if (!base.length){
+    listEl.innerHTML = '<div class="empty-card"><div class="ec-title">// مفيش مقالات بالتاج ده لسه</div></div>';
     lmWrap.hidden = true;
     updateProgress();
     return;
   }
 
-  let html = `<div class="reveal in">${featuredHTML(posts[0])}</div><div class="post-list">`;
-  posts.slice(1, 1 + shown).forEach((p, i) => {
+  const list = sortList(base);
+  const useFeatured = sortMode === 'new' && !activeTag;
+  const items = useFeatured ? list.slice(1) : list;
+  const visible = items.slice(0, shown);
+  const grouped = sortMode === 'new' || sortMode === 'old';
+  const counts = {};
+  if (grouped) items.forEach(p => { const k = (p.date || '').slice(0, 7); counts[k] = (counts[k] || 0) + 1; });
+
+  let html = useFeatured ? `<div class="reveal in">${featuredHTML(list[0])}</div>` : '';
+  let cur = null, open = false;
+  visible.forEach((p, i) => {
+    if (grouped){
+      const k = (p.date || '').slice(0, 7);
+      if (k !== cur){
+        if (open) html += '</div>';
+        html += `<div class="grp"><b>${monthLabel(k)}</b><span>${counts[k]} ${counts[k] === 1 ? 'مقال' : 'مقالات'}</span></div><div class="post-list">`;
+        cur = k; open = true;
+      }
+    } else if (!open){ html += '<div class="post-list">'; open = true; }
     html += `<div class="reveal in" style="--d:${(i % 6) * .05}s">${rowHTML(p, i)}</div>`;
   });
-  html += '</div>';
+  if (open) html += '</div>';
   listEl.innerHTML = html;
 
-  const remaining = posts.length - 1 - shown;
+  const remaining = items.length - shown;
   lmWrap.hidden = remaining <= 0;
-  if (remaining > 0) $('#load-more').textContent = `مقالات أقدم (${remaining} متبقي) ↓`;
+  if (remaining > 0) $('#load-more').textContent = `مقالات أكتر (${remaining} متبقي) ↓`;
   updateProgress();
 }
- $('#load-more').addEventListener('click', () => { shown += 7; renderPosts(); });
-
-/* ---------- From the lab: بيقرا من lab.md لو موجود ---------- */
-function renderLab(){
-  const lab = cache.lab && cache.lab.raw;
-  if (!lab || !lab.trim()) return;
-  const { meta, body } = parseFront(lab);
-  const fence = firstFence(body);
-  const proseMd = body.replace(/```[^\n`]*\n[\s\S]*?```/, '');
-  const dir = resolveDir(meta, body);
-
-  const note = $('#lab-note');
-  note.setAttribute('dir', dir);
-  note.innerHTML =
-    `<div class="lab-kicker">${esc(meta.kicker || 'SNIPPET OF THE WEEK')}</div>` +
-    `<h3 dir="${dir}">${esc(meta.title || 'Snippet of the week')}</h3>` +
-    mdToHtml(proseMd);
-
-  const sn = $('#snippet-code');
-  const grid = document.querySelector('.lab-grid');
-  if (fence){
-    sn.hidden = false;
-    grid.style.gridTemplateColumns = '';
-    sn.innerHTML = codeBlock(meta.file || ('snippet.' + (EXT[fence.lang] || 'txt')), LANGMAP[fence.lang] || 'text', fence.code);
-  } else {
-    sn.hidden = true;
-    grid.style.gridTemplateColumns = '1fr';
-  }
-}
+ $('#load-more').addEventListener('click', () => { shown += PAGE; renderPosts(); });
+$('#sort-select').addEventListener('change', e => { sortMode = e.target.value; shown = PAGE; renderPosts(); });
 
 /* ---------- giscus comments ---------- */
 function hideGiscus(){
@@ -1190,22 +1188,31 @@ function openReaderShell(){
   updateReaderProgress();
   $('#reader-close').focus();
 }
+function setReaderUI(dir, label){
+  reader.dataset.ui = dir === 'rtl' ? 'ar' : 'en';
+  $('#reader-kicker').dir = dir;
+  $('#reader-meta').dir = dir;
+  $('#reader-back-label').textContent = label;
+  $$('.reader-back-label2').forEach(el => el.textContent = label);
+}
 function openPost(id){
   const p = dynPosts.get(id);
   if (!p){ toast('post not found 🤷'); return; }
-  $('#reader-back-label').textContent = 'all posts';
-  $$('.reader-back-label2').forEach(el => el.textContent = 'all posts');
+  setReaderUI(p.dir, p.dir === 'rtl' ? 'كل المقالات' : 'all posts');
   $('#reader-kicker').textContent = (p.tags[0] || 'post').toUpperCase();
   const titleEl = $('#reader-title'), bodyEl = $('#reader-body');
   titleEl.dir = p.dir;
   bodyEl.dir = p.dir;
   titleEl.textContent = p.title;
-  const d = fmtDate(p.date);
+  const d = fmtDate(p.date, p.dir === 'rtl');
   $('#reader-meta').innerHTML =
-    `${lvChip(p)}<span class="chip">${esc(p.tags[0] || 'post')}</span>${d ? `<span>${d}</span><span class="dotsep">·</span>` : ''}<span>${p.minutes} min read</span>`;
+    `${lvChip(p)}<span class="chip">${esc(p.tags[0] || 'post')}</span>${d ? `<span>${d}</span><span class="dotsep">·</span>` : ''}<span>${p.dir === 'rtl' ? p.minutes + ' دقايق قراءة' : p.minutes + ' min read'}</span>`;
   bodyEl.innerHTML = p.html;
   openReaderShell();
   mountGiscus('post:' + p.id);
+}
+function ownerNote(slot){
+  return OWNER ? `<div class="owner-note"><b>// ملاحظة للمالك</b><p>ده محتوى افتراضي. عشان تحط محتواك اعمل ملف <code>${slot}.md</code> في جذر الريبو (مش جوه <code>posts/</code>) واكتب فيه Markdown عادي — بعد الـ Commit هيتبدّل تلقائيًا.</p></div>` : '';
 }
 function staticPageHTML(slot, fbTitle, tplMd){
   const raw = cache[slot] && cache[slot].raw;
@@ -1213,13 +1220,7 @@ function staticPageHTML(slot, fbTitle, tplMd){
     const { meta, body } = parseFront(raw);
     return { title: meta.title || fbTitle, dir: resolveDir(meta, body), html: mdToHtml(body) };
   }
-  return {
-    title: fbTitle, dir: 'rtl',
-    html:
-      `<p>الصفحة دي محتاجة ملف اسمه <code>${slot}.md</code> في <strong>جذر الريبو</strong> (مش جوه posts). اكتب فيه بـ Markdown العادي زي الشكل ده:</p>` +
-      codeBlock(slot + '.md', 'text', tplMd) +
-      `<p>واعمل Commit — هتظهر هنا فورًا.</p>`,
-  };
+  return { title: fbTitle, dir: 'rtl', html: mdToHtml(tplMd.replace(/^#\s.*\n+/, '')) + ownerNote(slot) };
 }
 function aboutHTML(){
   const user = CONFIG.repo.split('/')[0];
@@ -1237,20 +1238,12 @@ function aboutHTML(){
     return { title: meta.title || 'Majek7x', dir: resolveDir(meta, body), html: head + mdToHtml(body) };
   }
   const tpl = `## من أنا
-مختص اختبار اختراق (Penetration Testing) و Bug Bounty Hunter…
-
-## الخبرة والشهادات
-- …
+أنا Majek7x — بكتب ملاحظات ميدانية بين الشغل: حيل الـ recon، الأدوات، الـ writeups، وأحيانًا CTF.
 
 ## تواصل معايا
 - LinkedIn: [حسابي](https://www.linkedin.com/in/hassan-ashraf-abu-algood-081261296)
 - Telegram: [@BenAbu_Algood](https://t.me/BenAbu_Algood)`;
-  return {
-    title: 'Majek7x', dir: 'rtl',
-    html: head +
-      `<p>الصفحة دي محتاجة ملف اسمه <code>about.md</code> في <strong>جذر الريبو</strong>. اكتب فيه معلوماتك بـ Markdown العادي زي الشكل ده:</p>` +
-      codeBlock('about.md', 'text', tpl),
-  };
+  return { title: 'Majek7x', dir: 'rtl', html: head + mdToHtml(tpl) + ownerNote('about') };
 }
 const STATIC_PAGES = {
   roadmap: {
@@ -1291,8 +1284,7 @@ function openStatic(slot){
   const cfg = STATIC_PAGES[slot];
   if (!cfg) return;
   const a = staticPageHTML(slot, cfg.fbTitle, cfg.tpl);
-  $('#reader-back-label').textContent = 'رجوع';
-  $$('.reader-back-label2').forEach(el => el.textContent = 'رجوع');
+  setReaderUI(a.dir, 'رجوع');
   $('#reader-kicker').textContent = cfg.kicker;
   const titleEl = $('#reader-title'), bodyEl = $('#reader-body');
   titleEl.dir = a.dir;
@@ -1305,8 +1297,7 @@ function openStatic(slot){
 }
 function openAbout(){
   const a = aboutHTML();
-  $('#reader-back-label').textContent = 'رجوع';
-  $$('.reader-back-label2').forEach(el => el.textContent = 'رجوع');
+  setReaderUI(a.dir, 'رجوع');
   $('#reader-kicker').textContent = 'ABOUT ME';
   const titleEl = $('#reader-title'), bodyEl = $('#reader-body');
   titleEl.dir = a.dir;
@@ -1430,8 +1421,7 @@ const ghPromise = (async () => {
 ghPromise.then(v => {
   const pill = $('#gh-pill');
   if (!v){
-    $('#gh-stars').textContent = 'n/a';
-    $('#gh-forks').textContent = 'n/a';
+    pill.classList.add('off');
     pill.title = 'GitHub API unreachable right now';
     return;
   }
@@ -1509,9 +1499,9 @@ async function runTerminal(){
 runTerminal();
 
 /* ---------- boot ---------- */
+$('#yr').textContent = new Date().getFullYear();
 rebuildPosts();
 renderPosts();
-renderLab();
 syncPosts();
 </script>
 </body>
