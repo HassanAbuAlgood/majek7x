@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Majek7x — build log</title>
-<meta name="description" content="Majek7x — a programmer's blog. One article at a time, straight from markdown.">
+<title>Majek7x — security log</title>
+<meta name="description" content="Majek7x — penetration tester & offensive security. Field notes, tooling and writeups, published straight from markdown.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23201B15'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='28' fill='%23E89B4B' text-anchor='middle'%3EM_%3C/text%3E%3C/svg%3E">
 <script>
 /* Apply theme before first paint — no flash */
@@ -75,7 +75,7 @@ svg{flex-shrink:0}
 .brand{font-family:'JetBrains Mono';font-weight:600;font-size:15.5px;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:baseline}
 .brand-cursor{color:var(--accent);animation:blink 1.15s steps(1) infinite;margin-left:1px}
 .nav{display:flex;gap:26px;margin:0 auto}
-.nav a{font:500 13.5px 'JetBrains Mono';letter-spacing:.03em;text-decoration:none;color:var(--ink-2);position:relative;padding:4px 0}
+.nav a{font:500 13.5px 'JetBrains Mono';letter-spacing:.03em;text-decoration:none;color:var(--ink-2);position:relative;padding:4px 0;cursor:pointer}
 .nav a::after{content:'';position:absolute;left:0;bottom:0;height:1.5px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .25s ease}
 .nav a:hover{color:var(--ink)}
 .nav a:hover::after{transform:scaleX(1);transform-origin:left}
@@ -174,7 +174,6 @@ section{padding:78px 0}
 .ft-left{padding:38px 40px 36px;display:flex;flex-direction:column;gap:0}
 .ft-kicker{font:600 11.5px 'JetBrains Mono';letter-spacing:.12em;color:var(--accent-ink);margin-bottom:18px}
 .ft-title{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(24px,2.6vw,33px);line-height:1.25;letter-spacing:-.015em;margin-bottom:16px;transition:color .2s}
-.ft-title em{font-style:italic;color:var(--ink-2)}
 .featured:hover .ft-title{color:var(--accent-ink)}
 .ft-excerpt{color:var(--ink-2);font-size:15.5px;line-height:1.65;margin-bottom:22px}
 .ft-meta{display:flex;align-items:center;gap:14px;font:500 12px 'JetBrains Mono';color:var(--ink-3);margin-bottom:26px;flex-wrap:wrap}
@@ -204,13 +203,13 @@ section{padding:78px 0}
 .post-row:hover .pr-arrow{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
 .post-row:hover .pr-arrow svg{transform:translate(2px,-2px)}
 
-/* load more + empty state */
 #load-more-wrap{display:flex;justify-content:center;margin-top:26px}
 .empty-card{border:1.5px dashed var(--line-2);border-radius:16px;padding:40px 36px;background:var(--surface);text-align:center}
 .empty-card .ec-title{font:600 13px 'JetBrains Mono';color:var(--accent-ink);letter-spacing:.08em;margin-bottom:14px}
 .empty-card p{color:var(--ink-2);font-size:15px;margin:8px 0}
 .empty-card pre{display:inline-block;text-align:left;font:400 13px/1.7 'JetBrains Mono';background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:14px 20px;margin:10px 0;direction:ltr}
 .empty-card code{font-family:'JetBrains Mono';font-size:.85em;background:var(--code-inline);padding:.15em .4em;border-radius:5px;direction:ltr}
+.empty-card .btn{margin-top:12px}
 
 /* ============ code blocks ============ */
 .codeblock{background:var(--code-bg);border:1px solid var(--line);border-radius:13px;overflow:hidden;box-shadow:var(--shadow-rest)}
@@ -280,6 +279,12 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 .reader-title{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(30px,4.4vw,44px);line-height:1.2;letter-spacing:-.02em;margin-bottom:22px}
 .reader-meta{display:flex;align-items:center;gap:14px;font:500 12.5px 'JetBrains Mono';color:var(--ink-3);padding-bottom:26px;border-bottom:1px solid var(--line);margin-bottom:36px;flex-wrap:wrap}
 .dotsep{color:var(--line-2)}
+.about-card{display:flex;align-items:center;gap:18px;margin-bottom:34px}
+.about-avatar{width:84px;height:84px;border-radius:50%;border:2px solid var(--accent);display:block;background:var(--surface2)}
+.about-id b{display:block;font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-size:22px;letter-spacing:-.01em}
+.about-links{display:flex;gap:16px;margin-top:4px}
+.about-links a{font:500 12.5px 'JetBrains Mono';color:var(--ink-2);text-decoration:none}
+.about-links a:hover{color:var(--accent-ink)}
 .prose{font-size:16.5px;line-height:1.85}
 .prose p{margin:0 0 1.25em}
 .prose h2,.prose h3,.prose h4{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;letter-spacing:-.01em;margin:1.8em 0 .6em}
@@ -297,9 +302,12 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 .prose .codeblock{margin:1.8em 0}
 .prose-img{max-width:100%;border-radius:12px;border:1px solid var(--line);margin:.6em 0}
 .prose-hr{border:none;height:1px;background:var(--line);margin:2.2em 0}
-[dir="rtl"].prose ul li,.prose[dir="rtl"] ul li{padding-left:0;padding-right:26px}
-[dir="rtl"].prose ul li::before,.prose[dir="rtl"] ul li::before{left:auto;right:0}
-[dir="rtl"].prose blockquote,.prose[dir="rtl"] blockquote{border-left:none;border-right:3px solid var(--accent);padding:.2em 1.3em .2em 0}
+.prose[dir="rtl"] ul li{padding-left:0;padding-right:26px}
+.prose[dir="rtl"] ul li::before{left:auto;right:0}
+.prose[dir="rtl"] blockquote{border-left:none;border-right:3px solid var(--accent);padding:.2em 1.3em .2em 0}
+.prose[dir="rtl"] ol li{padding-left:0;padding-right:32px}
+.prose[dir="rtl"] ol li::before{left:auto;right:0}
+.prose[dir="rtl"] .codeblock{direction:ltr;text-align:left}
 .reader-end{margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
 
 #toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,14px);opacity:0;pointer-events:none;z-index:150;
@@ -311,7 +319,6 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
   .hero .wrap{grid-template-columns:1fr;min-height:0;padding-top:64px;padding-bottom:56px;gap:48px}
   .terminal{justify-self:start;max-width:560px}
   .featured{grid-template-columns:1fr}
-  .featured.solo ~ .post-list{margin-top:14px}
   .ft-right{border-left:none;border-top:1px solid var(--line)}
   .lab-grid{grid-template-columns:1fr;gap:36px}
 }
@@ -346,7 +353,7 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
     <nav class="nav" aria-label="Main">
       <a href="#writing">writing</a>
       <a href="#lab">lab</a>
-      <a href="#about">about</a>
+      <a href="#about" data-about>about</a>
     </nav>
     <div class="head-right">
       <a class="gh-pill" id="gh-pill" href="#" target="_blank" rel="noopener" aria-label="Live GitHub stars and forks">
@@ -384,20 +391,20 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
   <section class="hero" aria-label="Introduction">
     <div class="wrap">
       <div>
-        <p class="eyebrow rise" style="animation-delay:.05s">// build log of <em>majek7x</em> — one article a day</p>
+        <p class="eyebrow rise" style="animation-delay:.05s">// offsec log of <em>majek7x</em> — field notes &amp; writeups</p>
         <h1 class="hero-h1 rise" style="animation-delay:.12s">
           <span>Hi, I'm Majek7x.</span>
           <span class="hh-type" aria-hidden="true">I <span id="tw"></span><span class="tw-caret" id="tw-caret"></span></span>
-          <span class="sr-only">I write code and blog about it every day.</span>
+          <span class="sr-only">I break systems legally and blog about it.</span>
         </h1>
-        <p class="lede rise" style="animation-delay:.22s">Programmer &amp; tinkerer. Daily notes about code, tooling, and the war stories in between — published straight from markdown files in a repo. No CMS, no build step, <code>view-source</code> friendly.</p>
+        <p class="lede rise" style="animation-delay:.22s">Penetration tester &amp; offensive security. Field notes about recon, exploitation, tooling, and everything that breaks at 2 a.m. — published straight from markdown in a repo. No CMS, no build step, <code>view-source</code> friendly.</p>
         <div class="cta-row rise" style="animation-delay:.3s">
           <a class="btn btn-solid" href="#writing">
             Read the latest
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
           </a>
-          <button class="btn btn-ghost" type="button" data-post="meta">
-            كيف تنشر مقال؟
+          <button class="btn btn-ghost" type="button" data-about>
+            About me
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
@@ -405,14 +412,14 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
           <span class="pulse-dot" aria-hidden="true"></span>
           <span>local time — <span id="clock">--:--:--</span></span>
           <span class="sep">·</span>
-          <span>1 HTML file + your markdown</span>
+          <span>recon · exploit · report</span>
         </div>
       </div>
 
       <div class="terminal rise" style="animation-delay:.25s" aria-label="Terminal introduction">
         <div class="term-head">
           <span class="tdots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="term-title">majek7x@github.io — zsh</span>
+          <span class="term-title">majek7x@kali — zsh</span>
         </div>
         <div class="term-body" id="term-body"></div>
       </div>
@@ -428,7 +435,6 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
       <span class="sec-note" id="sec-note">syncing with github…</span>
     </div>
 
-    <!-- posts get injected here; skeletons show while loading -->
     <div id="post-list" aria-live="polite">
       <div class="skel skel-f"></div>
       <div class="skel skel-r"></div>
@@ -451,13 +457,13 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
       </div>
       <div class="lab-grid">
         <div class="lab-note reveal">
-          <div class="lab-kicker">SNIPPET № 042 — RUST</div>
-          <h3>p99() in seven lines</h3>
-          <p>Tail latency is the only latency users can feel, and the cheapest honest percentile is the one you compute yourself. Sort in place, walk to the 99th mark, clamp the index — done.</p>
+          <div class="lab-kicker">SNIPPET № 042 — PYTHON</div>
+          <h3>A TCP connect scan in 15 lines</h3>
+          <p>Sometimes you don't need nmap — you need to know if one port is open on one host, fast, from any machine with Python. connect_ex() returns an error code instead of throwing, so closed ports cost you nothing but the timeout.</p>
           <ul class="lab-points">
-            <li>f64::total_cmp — a total order, no NaN surprises</li>
-            <li>ceil() so small samples still hit the tail</li>
-            <li>Option, because an empty set has no opinion</li>
+            <li>connect_ex() — error code, not exception, zero try/except noise</li>
+            <li>ThreadPoolExecutor — 64 sockets probed at the same instant</li>
+            <li>0.5s timeout — don't stare at closed ports, move on</li>
           </ul>
         </div>
         <div class="reveal" style="--d:.1s" id="snippet-code"></div>
@@ -468,14 +474,15 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 </main>
 
 <!-- ================= footer ================= -->
-<footer id="about">
+<footer id="about-footer">
   <div class="wrap">
     <h2 class="foot-big">Thanks for <em>reading.</em></h2>
-    <p class="foot-bio">I'm Majek7x — a programmer who ships something small every day and writes it down. This entire site is one HTML file plus a folder of markdown; new posts are picked up automatically from the repo. View source; steal anything.</p>
+    <p class="foot-bio">I'm Majek7x — a penetration tester who writes field notes between engagements: recon tricks, tooling, post-mortems, and the occasional CTF writeup. This entire site is one HTML file plus a folder of markdown; new posts appear automatically from the repo. View source; steal anything.</p>
     <div class="foot-bar">
-      <span>© 2025 Majek7x — hand-rolled, not hand-waved</span>
+      <span>© 2025 Majek7x — test before attackers do</span>
       <div class="foot-links">
         <a href="https://github.com/aboelgoodelmajek-prog" target="_blank" rel="noopener">github</a>
+        <button type="button" data-about>about</button>
         <a href="#" id="rss-link">rss</a>
         <button type="button" id="to-top">↑ top</button>
         <span class="kbd-hint"><kbd>T</kbd> switch theme</span>
@@ -484,13 +491,13 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
   </div>
 </footer>
 
-<!-- ================= reader overlay ================= -->
+<!-- ================= reader overlay (posts + about) ================= -->
 <div class="reader" id="reader" aria-hidden="true" role="dialog" aria-label="Article reader">
   <div class="reader-head">
     <div class="wrap">
       <button class="reader-back" type="button" id="reader-close">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-        all posts
+        <span id="reader-back-label">all posts</span>
       </button>
       <span class="esc-hint">esc to close</span>
     </div>
@@ -500,11 +507,12 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
     <div class="reader-kicker" id="reader-kicker"></div>
     <h1 class="reader-title" id="reader-title" dir="auto"></h1>
     <div class="reader-meta" id="reader-meta"></div>
+    <div id="reader-extra"></div>
     <div class="prose" id="reader-body" dir="auto"></div>
     <div class="reader-end">
       <button class="reader-back" type="button" id="reader-close-bottom">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-        back to all posts
+        <span class="reader-back-label2">all posts</span>
       </button>
     </div>
   </div>
@@ -521,10 +529,9 @@ const $$ = s => [...document.querySelectorAll(s)];
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-/* ⚙️ الإعداد الوحيد اللي ممكن تحتاج تعدّله:
-   لو السايت على حساب باسم مختلف أو في repo تاني، غيّر سطر repo */
+/* ⚙️ الإعداد الوحيد — اتعدل على اسم ريبوك وبرانشك */
 const CONFIG = {
-  repo: 'aboelgoodelmajek-prog/majek7x.github.io',   // owner/repo
+  repo: 'aboelgoodelmajek-prog/majek7x.github.io',
   branch: 'main',
   postsPath: 'posts',
 };
@@ -580,17 +587,17 @@ addEventListener('resize', updateProgress);
 addEventListener('load', updateProgress);
 updateProgress();
 
-/* ---------- live clock (visitor local time) ---------- */
+/* ---------- live clock ---------- */
 const clockFmt = new Intl.DateTimeFormat('en-GB', { hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false });
 const tick = () => { $('#clock').textContent = clockFmt.format(new Date()); };
 tick(); setInterval(tick, 1000);
 
 /* ---------- typewriter headline ---------- */
 const PHRASES = [
-  'write code every day.',
-  'break things, then fix them.',
-  'ship tiny side projects.',
-  'blog from the terminal.',
+  'break things (with permission).',
+  'hunt bugs for a living.',
+  'read logs at 2 a.m.',
+  'test fences before attackers do.',
 ];
 async function typeLoop(){
   const el = $('#tw'), caret = $('#tw-caret');
@@ -695,6 +702,14 @@ function hl(src, lang){
 const IC_COPY  = '<svg class="ic-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
 const IC_CHECK = '<svg class="ic-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>';
 
+function renderLines(code, lang){
+  const body = hl(code.replace(/\s+$/, ''), lang);
+  return body.split('\n').map(l => {
+    let cls = 'ln';
+    if (lang === 'diff') cls += l.startsWith('+') ? ' ln-add' : l.startsWith('-') ? ' ln-del' : '';
+    return `<span class="${cls}">${l || ' '}</span>`;
+  }).join('');
+}
 function mountInner(file, lang, code, tag){
   return `<div class="cb-head">
       <span class="tdots" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -704,14 +719,6 @@ function mountInner(file, lang, code, tag){
     </div>
     <pre class="cb-pre"><code class="cb-code">${renderLines(code, lang)}</code></pre>`;
 }
-function renderLines(code, lang){
-  const body = hl(code.replace(/\s+$/, ''), lang);
-  return body.split('\n').map(l => {
-    let cls = 'ln';
-    if (lang === 'diff') cls += l.startsWith('+') ? ' ln-add' : l.startsWith('-') ? ' ln-del' : '';
-    return `<span class="${cls}">${l || ' '}</span>`;
-  }).join('');
-}
 function codeBlock(file, lang, code, tag){ return `<div class="codeblock">${mountInner(file, lang, code, tag)}</div>`; }
 
 const LANGMAP = { js:'js', javascript:'js', ts:'js', typescript:'js', rust:'rust', rs:'rust',
@@ -719,18 +726,24 @@ const LANGMAP = { js:'js', javascript:'js', ts:'js', typescript:'js', rust:'rust
 const EXT = { js:'js', javascript:'js', ts:'ts', typescript:'ts', rust:'rs', rs:'rs',
   sh:'sh', bash:'sh', shell:'sh', zsh:'sh', toml:'toml', py:'py', python:'py', diff:'diff', text:'txt' };
 
-/* ---------- lab snippet (static showcase) ---------- */
-const RUST_P99 = String.raw`/// p99 of a sample set, sorted in place.
-/// Numbers lie — but percentiles lie slowest.
-pub fn p99(samples: &mut [f64]) -> Option<f64> {
-    if samples.is_empty() { return None; }
-    samples.sort_by(f64::total_cmp);
-    let idx = (samples.len() as f64 * 0.99).ceil() as usize;
-    Some(samples[(idx - 1).min(samples.len() - 1)])
-}`;
- $('#snippet-code').innerHTML = codeBlock('latency.rs', 'rust', RUST_P99, 'RUST');
+/* ---------- lab snippet ---------- */
+const PY_SCAN = String.raw`import socket
+import concurrent.futures as cf
 
-/* ---------- markdown → HTML (small honest renderer) ---------- */
+def probe(port, host="10.10.10.7", timeout=0.5):
+    with socket.socket() as s:
+        s.settimeout(timeout)
+        # connect_ex -> error code, not an exception
+        return port if s.connect_ex((host, port)) == 0 else None
+
+targets = [21, 22, 80, 443, 3389, 8080]
+with cf.ThreadPoolExecutor(64) as ex:
+    open_ports = [p for p in ex.map(probe, targets) if p]
+
+print("open:", open_ports or "none")`;
+ $('#snippet-code').innerHTML = codeBlock('connect_scan.py', 'py', PY_SCAN, 'PYTHON');
+
+/* ---------- markdown → HTML ---------- */
 function mdToHtml(md){
   const fences = [];
   md = md.replace(/```([^\n`]*)\n([\s\S]*?)```/g, (m, info, code) => {
@@ -761,7 +774,7 @@ function mdToHtml(md){
       i++; continue;
     }
     if (m = L.match(/^(#{1,4})\s+(.*)$/)){
-      const lvl = Math.min(m[1].length + 1, 4);       // # → h2 (المقال عنده عنوان كبير بالفعل)
+      const lvl = Math.min(m[1].length + 1, 4);
       out += `<h${lvl}>${inline(m[2].trim())}</h${lvl}>`; i++; continue;
     }
     if (/^\s*(-{3,}|\*{3,})\s*$/.test(L)){ out += '<hr class="prose-hr">'; i++; continue; }
@@ -818,50 +831,8 @@ function fmtDate(s){
   return `${MONTHS[+m[2]-1]} ${+m[3]}, ${m[1]}`;
 }
 
-/* ---------- built-in post: publishing guide (يكتب بالعربي كمان!) ---------- */
-const META_MD = `أهلًا! الموقع ده بسيط جدًا من جوه: ملف **HTML** واحد وفولدر اسمه \`posts/\`. أي ملف Markdown تنزّله هناك بينزل على الصفحة لوحده — من غير كود ولا build ولا لوحة تحكم.
-
-## تنشر مقال جديد في دقيقة
-
-من واجهة GitHub (لابتوب أو موبايل):
-
-1. افتح الريبو واضغط **Add file → Create new file**
-2. سمّي الملف \`posts/اسم-المقال.md\`
-3. الصق في أول الملف:
-
-\`\`\`toml
----
-title: عنوان المقال
-date: 2025-06-01
-tags: تجارب, كود
----
-\`\`\`
-
-4. اكتب المقال تحته بـ Markdown عادي واضغط **Commit changes**
-
-خلاص — أول زائر يفتح الموقع هيلاقي المقال ظهر.
-
-## قواعد سريعة
-
-- \`date\` بيتحول لصيغة حلوة، ولو نسيت هياخد التاريخ من اسم الملف
-- \`minutes\` اختياري — لو مش كاتبه بيتحسب لوحده من عدد الكلمات
-- أي ملف يبدأ بـ \`_\` يبقى **draft** ومش بينشر
-- أي كود بين \`\`\` ليه زرار Copy وتلوين تلقائي
-- وعربي؟ انت قاري مقال بالعربي دلوقتي أصلاً 😉
-
-> الفكرة كلها: تكتب وتنشر، والباقي على الموقع.`;
-
-const BUILTINS = new Map();
-(function(){
-  const p = { id:'meta', title:'إزاي تنشر مقال جديد من غير ما تلمس الكود',
-    kicker:'دليل النشر · Colophon', date:'', tags:['meta'], minutes:3, raw: META_MD };
-  p.excerpt = makeExcerpt(p.raw);
-  p.html = mdToHtml(p.raw);
-  BUILTINS.set(p.id, p);
-})();
-
-/* ---------- dynamic posts: auto-discovered from the repo ---------- */
-const CACHE_KEY = 'm7x-posts-v1';
+/* ---------- cache & dynamic posts ---------- */
+const CACHE_KEY = 'm7x-posts-v2';
 let cache = {};
 try{ cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'); }catch(e){ cache = {}; }
 cache.files = cache.files || {};
@@ -869,6 +840,7 @@ cache.files = cache.files || {};
 const dynPosts = new Map();
 let cacheStatus = { live: false };
 let fetchFailed = false;
+let failType = null;          // 'rate' | 'branch' | 'net' | null
 let shown = 7;
 
 function b64ToUtf8(b64){
@@ -880,8 +852,13 @@ async function fetchJSON(url){
   if (!r.ok) throw new Error('HTTP ' + r.status);
   return r.json();
 }
+/* محتوى الملفات بييجي من raw.githubusercontent — بلا rate limit */
+const rawURL = path =>
+  `https://raw.githubusercontent.com/${CONFIG.repo}/${CONFIG.branch}/` +
+  path.split('/').map(encodeURIComponent).join('/');
 
-function postFromRaw(name, raw){
+function postFromRaw(path, raw){
+  const name = path.split('/').pop();
   if (name.startsWith('_')) return null;               // الملفات اللي بـ _ = drafts
   const { meta, body } = parseFront(raw);
   const slug = name.replace(/\.md$/i, '');
@@ -898,39 +875,69 @@ function postFromRaw(name, raw){
     html: mdToHtml(body),
   };
 }
-
 function rebuildPosts(){
   dynPosts.clear();
-  for (const [name, f] of Object.entries(cache.files)){
-    const p = postFromRaw(name, f.raw);
+  for (const [path, f] of Object.entries(cache.files)){
+    const p = postFromRaw(path, f.raw);
     if (p) dynPosts.set(p.id, p);
   }
 }
 const sortedPosts = () => [...dynPosts.values()].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
-/* يجيب قائمة الملفات من GitHub API ويحدّث اللي اتغيّر بس (بالـ sha) */
+/* طلب API واحد بس لقائمة الملفات — المحتوى نفسه من raw (بلا حدود) */
 async function syncPosts(){
+  let tree = null;
+  failType = null;
   try{
-    const files = await fetchJSON(`https://api.github.com/repos/${CONFIG.repo}/contents/${CONFIG.postsPath}?ref=${CONFIG.branch}`);
-    const mds = files.filter(f => f.type === 'file' && /\.md$/i.test(f.name));
-    const need = mds.filter(f => !(cache.files[f.name] && cache.files[f.name].sha === f.sha)).slice(0, 25);
-    for (const f of need){
-      const d = await fetchJSON(f.url + '?ref=' + CONFIG.branch);
-      cache.files[f.name] = { sha: f.sha, raw: b64ToUtf8(d.content) };
+    tree = await fetchJSON(`https://api.github.com/repos/${CONFIG.repo}/git/trees/${CONFIG.branch}?recursive=1`);
+  }catch(err){
+    const m = /HTTP (\d+)/.exec(err.message || '');
+    const code = m ? +m[1] : 0;
+    failType = code === 403 ? 'rate' : code === 404 ? 'branch' : 'net';
+  }
+
+  if (tree){
+    const mds = tree.tree.filter(e =>
+      e.type === 'blob' &&
+      e.path.startsWith(CONFIG.postsPath + '/') &&
+      /\.md$/i.test(e.path));
+
+    /* امسح من الكاش أي ملف اتمسح من الريبو */
+    const keep = new Set(mds.map(f => f.path));
+    for (const name of Object.keys(cache.files)) if (!keep.has(name)) delete cache.files[name];
+
+    /* نزّل اللي اتغيّر بس (بالـ sha) */
+    for (const f of mds.slice(0, 30)){
+      const cur = cache.files[f.path];
+      if (cur && cur.sha === f.sha) continue;
+      try{
+        const r = await fetch(rawURL(f.path));
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        cache.files[f.path] = { sha: f.sha, raw: await r.text() };
+      }catch(e){ /* لو فشل نزّل، خلي القديم موجود */ }
     }
+
+    /* صفحة about — ملف about.md في جذر الريبو */
+    const aboutEntry = tree.tree.find(e => e.type === 'blob' && e.path === 'about.md');
+    if (aboutEntry){
+      const cur = cache.about;
+      if (!cur || cur.sha !== aboutEntry.sha){
+        try{
+          const r = await fetch(rawURL('about.md'));
+          if (r.ok) cache.about = { sha: aboutEntry.sha, raw: await r.text() };
+        }catch(e){}
+      }
+    } else cache.about = null;
+
     cache.at = Date.now();
     try{ localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); }catch(e){}
     cacheStatus.live = true; fetchFailed = false;
-  }catch(err){
+  } else {
     cacheStatus.live = false;
     fetchFailed = Object.keys(cache.files).length === 0;
   }
   rebuildPosts();
   renderPosts();
-  const pill = $('#gh-pill');
-  pill.title = cacheStatus.live
-    ? 'Posts synced live from the GitHub API'
-    : (fetchFailed ? 'GitHub API unreachable (rate limit?)' : 'Showing cached posts');
 }
 
 /* ---------- rendering the list ---------- */
@@ -968,7 +975,7 @@ function rowHTML(p, i){
 function emptyCard(){
   return `<div class="empty-card">
     <div class="ec-title">// فولدر posts/ لسه فاضي</div>
-    <p>ضيف أول مقال: اعمل ملف اسمه <code>posts/ahlan.md</code> جواه:</p>
+    <p>اعمل أول مقال: من GitHub — <code>Add file → Create new file</code> وسمّيه <code>posts/ahlan.md</code>:</p>
     <pre>---
 title: أهلاً بالعالم
 date: 2025-06-01
@@ -979,11 +986,20 @@ tags: بداية
     <p>اعمله Commit — هيظهر هنا على طول، من غير أي كود.</p>
   </div>`;
 }
-function errCard(){
+function errCard(type){
+  const map = {
+    rate:   ['// GitHub API — rate limit مؤقت',
+             'حد الطلبات خلص مؤقتًا (60 طلب/ساعة لكل IP). استنى شوية أو جرّب من شبكة تانية — الكاش المحلي بيشغّل الموقع عادي في الأثناء.'],
+    branch: ['// الريبو أو البرانش مش موجود',
+             'تأكد إن إعداد <code>CONFIG.repo</code> في أول السكريبت صح، وإن البرانش الرئيسي اسمه <code>main</code> (مش master).'],
+    net:    ['// مفيش اتصال بالنت',
+             'المتصفح مقدرش يوصل لـ GitHub. تأكد من الشبكة وجرّب تاني.'],
+  };
+  const [t, d] = map[type] || map.net;
   return `<div class="empty-card">
-    <div class="ec-title">// مقدرتش أوصل لـ GitHub API</div>
-    <p>غالبًا rate limit مؤقت — جرّب تاني بعد شوية.</p>
-    <p>ولو الريبو اسمه مختلف، عدّل <code>CONFIG.repo</code> في أول السكريبت.</p>
+    <div class="ec-title">${t}</div>
+    <p>${d}</p>
+    <button class="btn btn-ghost" type="button" id="retry-sync">إعادة المحاولة ↻</button>
   </div>`;
 }
 function renderPosts(){
@@ -992,10 +1008,15 @@ function renderPosts(){
   const total = posts.length;
   $('#sec-note').textContent = total
     ? `${total} post${total > 1 ? 's' : ''} · ${cacheStatus.live ? 'synced from github' : 'from cache'}`
-    : (fetchFailed ? 'github sync failed' : 'waiting for your first post');
+    : (fetchFailed ? 'sync failed' : 'waiting for your first post');
 
   if (!total){
-    listEl.innerHTML = fetchFailed ? errCard() : emptyCard();
+    listEl.innerHTML = fetchFailed ? errCard(failType) : emptyCard();
+    const rb = $('#retry-sync');
+    if (rb) rb.addEventListener('click', () => {
+      rb.disabled = true; rb.textContent = 'جاري المحاولة…';
+      setTimeout(syncPosts, 300);
+    });
     $('#load-more-wrap').hidden = true;
     updateProgress();
     return;
@@ -1015,14 +1036,7 @@ function renderPosts(){
 const reader = $('#reader');
 let lastFocus = null;
 
-function openPost(id){
-  const p = dynPosts.get(id) || BUILTINS.get(id);
-  if (!p){ toast('post not found 🤷'); return; }
-  $('#reader-kicker').textContent = p.kicker || ((p.tags[0] || 'post').toUpperCase());
-  $('#reader-title').textContent = p.title;
-  $('#reader-meta').innerHTML =
-    `<span class="chip">${esc(p.tags[0] || 'post')}</span><span>${fmtDate(p.date)}</span><span class="dotsep">·</span><span>${p.minutes} min read</span>`;
-  $('#reader-body').innerHTML = p.html;
+function openReaderShell(){
   lastFocus = document.activeElement;
   reader.classList.add('open');
   reader.setAttribute('aria-hidden', 'false');
@@ -1030,6 +1044,64 @@ function openPost(id){
   reader.scrollTop = 0;
   updateReaderProgress();
   $('#reader-close').focus();
+}
+function openPost(id){
+  const p = dynPosts.get(id);
+  if (!p){ toast('post not found 🤷'); return; }
+  $('#reader-back-label').textContent = 'all posts';
+  $$('.reader-back-label2').forEach(el => el.textContent = 'all posts');
+  $('#reader-extra').innerHTML = '';
+  $('#reader-kicker').textContent = (p.tags[0] || 'post').toUpperCase();
+  $('#reader-title').textContent = p.title;
+  $('#reader-meta').innerHTML =
+    `<span class="chip">${esc(p.tags[0] || 'post')}</span><span>${fmtDate(p.date)}</span><span class="dotsep">·</span><span>${p.minutes} min read</span>`;
+  $('#reader-body').innerHTML = p.html;
+  openReaderShell();
+}
+
+/* صفحة About — بتتقرا من about.md في جذر الريبو */
+function aboutHTML(){
+  const user = CONFIG.repo.split('/')[0];
+  const avatar = `<img class="about-avatar" src="https://github.com/${encodeURIComponent(user)}.png" alt="${escAttr(user)}">`;
+  const links = `<div class="about-links"><a href="https://github.com/${encodeURIComponent(user)}" target="_blank" rel="noopener">github/${esc(user)} ↗</a></div>`;
+  const head = `<div class="about-card">${avatar}<div class="about-id"><b>Majek7x</b>${links}</div></div>`;
+
+  const raw = cache.about && cache.about.raw;
+  if (raw && raw.trim()){
+    const { meta, body } = parseFront(raw);
+    return { title: meta.title || 'Majek7x', html: head + mdToHtml(body) };
+  }
+  return {
+    title: 'Majek7x',
+    html: head + `<div class="prose">
+      <p>الصفحة دي محتاجة ملف اسمه <code>about.md</code> في <strong>جذر الريبو</strong> (مش جوه posts).</p>
+      <p>من GitHub: <code>Add file → Create new file</code> → اسمه <code>about.md</code> → اكتب فيه معلوماتك بـ Markdown العادي:</p>
+      <pre>## من أنا
+مختص اختبار اختراق…
+
+## الخبرة
+- …
+
+## تواصل معايا
+- LinkedIn: …</pre>
+      <p>واعمل Commit — هتلاقيها هنا فورًا، وصورتك جاية من GitHub أوتوماتيك.</p>
+    </div>`,
+  };
+}
+function openAbout(){
+  const a = aboutHTML();
+  $('#reader-back-label').textContent = 'رجوع';
+  $$('.reader-back-label2').forEach(el => el.textContent = 'رجوع');
+  $('#reader-extra').innerHTML = '';
+  $('#reader-kicker').textContent = 'ABOUT ME';
+  $('#reader-title').textContent = a.title;
+  $('#reader-meta').innerHTML = `<span class="chip">offsec</span><span>penetration testing</span>`;
+  /* الـ about مش عايز dir=auto كله — المحتوى لوحده هو اللي بيتظبط */
+  const bodyEl = $('#reader-body');
+  bodyEl.removeAttribute('dir');
+  bodyEl.innerHTML = a.html;
+  bodyEl.querySelectorAll('.prose').forEach(el => el.setAttribute('dir', 'auto'));
+  openReaderShell();
 }
 function closePost(){
   reader.classList.remove('open');
@@ -1075,8 +1147,9 @@ function handleCopy(btn){
 /* ---------- one delegated click handler ---------- */
 document.addEventListener('click', e => {
   const cb = e.target.closest('.cb-copy');
-  if (cb){ handleCopy(cb); return; }                        // copy doesn't open the post
-  if (e.target.closest('#rss-link')){ e.preventDefault(); toast('RSS جاي قريب — قول آمين 🙏'); return; }
+  if (cb){ handleCopy(cb); return; }
+  if (e.target.closest('[data-about]')){ e.preventDefault(); openAbout(); return; }
+  if (e.target.closest('#rss-link')){ e.preventDefault(); toast('RSS جاي قريب 🙏'); return; }
   if (e.target.closest('#to-top')){ scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }); return; }
   const opener = e.target.closest('[data-post]');
   if (opener) openPost(opener.dataset.post);
@@ -1094,7 +1167,7 @@ document.addEventListener('keydown', e => {
   }
 });
 
-/* ---------- scroll reveal (for static elements) ---------- */
+/* ---------- scroll reveal ---------- */
 const io = new IntersectionObserver(entries => {
   entries.forEach(en => { if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
 }, { threshold: .12 });
@@ -1132,11 +1205,10 @@ const ghPromise = (async () => {
   }
 })();
 
-/* header pill → points at the user's repo */
 (function(){
   const pill = $('#gh-pill');
   pill.href = 'https://github.com/' + CONFIG.repo;
-  $('#gh-repo').textContent = CONFIG.repo.split('/')[0];
+  $('#gh-repo').textContent = CONFIG.repo.split('/')[1];
 })();
 
 ghPromise.then(v => {
@@ -1156,11 +1228,11 @@ ghPromise.then(v => {
 /* ---------- hero terminal sequence ---------- */
 const TERM_STEPS = [
   { t:'cmd',  s:'whoami' },
-  { t:'out',  s:'majek7x — ships something small every day, writes it down' },
-  { t:'cmd',  s:`gh repo view ${CONFIG.repo}` },
+  { t:'out',  s:'majek7x — penetration tester · offensive security' },
+  { t:'cmd',  s:'./recon.sh --quick' },
   { t:'stats' },
-  { t:'cmd',  s:'./motd' },
-  { t:'out',  s:'"Ship it. Then blog about it."' },
+  { t:'cmd',  s:'cat motd.txt' },
+  { t:'out',  s:'"The quieter you become, the more you can hear."' },
   { t:'end' },
 ];
 (function buildTerminal(){
@@ -1172,13 +1244,13 @@ const TERM_STEPS = [
   };
   TERM_STEPS.forEach(st => {
     if (st.t === 'cmd') st.el = mk('t-line t-cmd',
-      `<span class="t-user">majek7x</span><span class="t-sym">@blog:~$</span> <span class="t-text"></span>`);
+      `<span class="t-user">majek7x</span><span class="t-sym">@kali:~$</span> <span class="t-text"></span>`);
     else if (st.t === 'out') st.el = mk('t-line t-out', esc(st.s));
     else if (st.t === 'stats') st.el = mk('t-line t-out t-stats',
       `<span class="t-kv">stars <b id="term-stars">·····</b></span>
        <span class="t-kv">forks <b id="term-forks">·····</b></span>
        <span class="t-live" id="term-live"><span class="pulse-dot green"></span>live</span>`);
-    else st.el = mk('t-line t-cmd', `<span class="t-user">majek7x</span><span class="t-sym">@blog:~$</span> <span class="t-caret" aria-hidden="true"></span>`);
+    else st.el = mk('t-line t-cmd', `<span class="t-user">majek7x</span><span class="t-sym">@kali:~$</span> <span class="t-caret" aria-hidden="true"></span>`);
   });
 })();
 
@@ -1220,10 +1292,10 @@ async function runTerminal(){
 }
 runTerminal();
 
-/* ---------- boot: show cache instantly, then sync ---------- */
+/* ---------- boot ---------- */
 rebuildPosts();
-renderPosts();        // لو فيه كاش هيظهر فورًا (بدون وميض)
-syncPosts();          // وبعدين يجيب الجديد من GitHub في الخلفية
+renderPosts();        // الكاش يظهر فورًا لو موجود
+syncPosts();          // وبعدين مزامنة في الخلفية (طلب API واحد + raw)
 </script>
 </body>
 </html>
