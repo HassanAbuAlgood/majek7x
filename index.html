@@ -102,9 +102,9 @@ svg{flex-shrink:0}
 .tw-caret{display:inline-block;width:.5ch;height:.86em;background:var(--accent);margin-left:3px;transform:translateY(.1em);animation:blink 1.1s steps(1) infinite}
 .tw-caret.busy{animation:none;opacity:1}
 @keyframes blink{50%{opacity:0}}
-.lede{font-size:18px;line-height:1.7;color:var(--ink-2);max-width:52ch;margin-bottom:34px}
+.lede{font-size:18px;line-height:1.7;color:var(--ink-2);max-width:52ch;margin-bottom:32px}
 .lede code{font-family:'JetBrains Mono';font-size:.85em;background:var(--code-inline);padding:.15em .4em;border-radius:5px}
-.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
 .btn{display:inline-flex;align-items:center;gap:10px;font:600 13.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.03em;padding:14px 24px;border-radius:11px;border:1px solid transparent;text-decoration:none;
   transition:transform .18s ease, box-shadow .18s ease, border-color .2s, background .2s, color .2s}
 .btn-solid{background:var(--accent);color:var(--on-accent)}
@@ -112,6 +112,10 @@ svg{flex-shrink:0}
 .btn-ghost{border-color:var(--line-2);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent-ink);transform:translateY(-2px)}
 .btn:disabled{opacity:.55;cursor:default}
+.guide-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:34px}
+.guide-label{font:600 11.5px 'JetBrains Mono';color:var(--ink-3);letter-spacing:.06em}
+.guide-link{font:600 12.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--accent-ink);border-bottom:1.5px solid var(--accent);padding:2px 0;cursor:pointer;transition:opacity .2s}
+.guide-link:hover{opacity:.65}
 .hero-status{display:flex;align-items:center;gap:10px;font:500 12.5px 'JetBrains Mono';color:var(--ink-3);letter-spacing:.02em;flex-wrap:wrap}
 .hero-status .sep{color:var(--line-2)}
 .pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);position:relative;display:inline-block;color:var(--accent)}
@@ -139,7 +143,7 @@ svg{flex-shrink:0}
 .t-caret{display:inline-block;width:8px;height:15px;background:var(--term-olive);vertical-align:-2px;animation:blink 1.05s steps(1) infinite}
 
 section{padding:84px 0}
-.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:40px;flex-wrap:wrap}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:36px;flex-wrap:wrap}
 .sec-idx{font:600 13px 'JetBrains Mono';color:var(--accent);letter-spacing:.1em}
 .sec-head h2{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(30px,3.8vw,42px);letter-spacing:-.015em}
 .sec-rule{flex:1;height:1px;background:var(--line);align-self:center;min-width:40px}
@@ -154,7 +158,20 @@ section{padding:84px 0}
 .skel-g .skel{margin:0;height:190px}
 @keyframes skel{to{background-position:-200% 0}}
 
-/* ============ featured card ============ */
+/* filter bar */
+#filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.f-btn{font:600 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;padding:7px 14px;border:1px solid var(--line-2);border-radius:999px;background:var(--surface);color:var(--ink-2);cursor:pointer;transition:all .18s}
+.f-btn:hover{border-color:var(--accent);color:var(--accent-ink);transform:translateY(-1px)}
+.f-btn.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.f-count{opacity:.6;margin-left:5px;font-weight:500}
+
+/* level chips */
+.lvchip{font:600 10px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.lvl-1{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}
+.lvl-2{background:color-mix(in srgb,var(--accent) 15%,transparent);color:var(--accent-ink)}
+.lvl-3{background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad)}
+
+/* featured card */
 .featured{display:grid;grid-template-columns:1.02fr .98fr;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-rest);cursor:pointer;
   transition:transform .24s cubic-bezier(.2,.7,.25,1), box-shadow .24s ease, border-color .24s ease}
 .featured.solo{grid-template-columns:1fr}
@@ -164,7 +181,7 @@ section{padding:84px 0}
 .ft-title{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(24px,2.6vw,33px);line-height:1.35;letter-spacing:-.015em;margin-bottom:16px;transition:color .2s}
 .featured:hover .ft-title{color:var(--accent-ink)}
 .ft-excerpt{color:var(--ink-2);font-size:15.5px;line-height:1.65;margin-bottom:22px}
-.ft-meta{display:flex;align-items:center;gap:14px;font:500 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3);margin-bottom:26px;flex-wrap:wrap}
+.ft-meta{display:flex;align-items:center;gap:12px;font:500 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3);margin-bottom:26px;flex-wrap:wrap}
 .ft-cta{margin-top:auto;display:inline-flex;align-items:center;gap:9px;font:600 13px 'JetBrains Mono';color:var(--accent-ink)}
 .ft-cta svg{transition:transform .22s}
 .featured:hover .ft-cta svg{transform:translate(4px,-4px)}
@@ -172,7 +189,7 @@ section{padding:84px 0}
 .ft-right .codeblock{border:none;border-radius:0;box-shadow:none;flex:1;display:flex;flex-direction:column}
 .ft-right .cb-pre{flex:1;max-height:360px}
 
-/* ============ post cards (grid) ============ */
+/* post cards (grid) */
 .post-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:20px;margin-top:26px}
 .post-row{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px 18px;cursor:pointer;box-shadow:var(--shadow-rest);
   transition:transform .24s cubic-bezier(.2,.7,.25,1), box-shadow .24s ease, border-color .24s ease}
@@ -180,6 +197,7 @@ section{padding:84px 0}
 .pr-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .pr-idx{font:600 13px 'JetBrains Mono';color:var(--ink-3);transition:color .2s}
 .post-row:hover .pr-idx{color:var(--accent)}
+.pr-chips{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 .pr-title{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:20px;letter-spacing:-.01em;line-height:1.4;transition:color .2s}
 .post-row:hover .pr-title{color:var(--accent-ink)}
 .pr-excerpt{color:var(--ink-2);font-size:14.5px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
@@ -190,6 +208,8 @@ section{padding:84px 0}
 .post-row:hover .pr-arrow{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
 .post-row:hover .pr-arrow svg{transform:translate(2px,-2px)}
 
+.chip{font:600 10.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);border:1px solid var(--line-2);border-radius:999px;padding:3px 10px;background:var(--bg);white-space:nowrap}
+
 #load-more-wrap{display:flex;justify-content:center;margin-top:32px}
 .empty-card{border:1.5px dashed var(--line-2);border-radius:16px;padding:40px 36px;background:var(--surface);text-align:center}
 .empty-card .ec-title{font:600 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--accent-ink);letter-spacing:.08em;margin-bottom:14px}
@@ -198,7 +218,7 @@ section{padding:84px 0}
 .empty-card code{font-family:'JetBrains Mono';font-size:.85em;background:var(--code-inline);padding:.15em .4em;border-radius:5px;direction:ltr}
 .empty-card .btn{margin-top:12px}
 
-/* ============ code blocks ============ */
+/* code blocks */
 .codeblock{background:var(--code-bg);border:1px solid var(--line);border-radius:13px;overflow:hidden;box-shadow:var(--shadow-rest)}
 .cb-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--code-head)}
 .cb-file{font:600 12px 'JetBrains Mono';color:var(--ink-2);letter-spacing:.02em}
@@ -230,18 +250,30 @@ section{padding:84px 0}
 [data-theme="dark"] .tok-fn{color:#7FBFC9}
 [data-theme="dark"] .tok-rgx,[data-theme="dark"] .tok-type{color:#C6A3D9}
 
-/* ============ footer ============ */
+/* lab */
+.band{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lab-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:56px;align-items:center}
+.lab-kicker{font:600 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.14em;color:var(--accent-ink);margin-bottom:14px}
+.lab-note h3{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(24px,2.4vw,31px);letter-spacing:-.015em;line-height:1.3;margin-bottom:16px}
+.lab-note p{color:var(--ink-2);font-size:15.5px;line-height:1.7;margin-bottom:18px}
+.lab-note ul{list-style:none;margin:.2em 0 0;padding:0}
+.lab-note li{position:relative;padding-left:24px;margin:.5em 0;font:500 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-2)}
+.lab-note ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:600}
+.lab-note[dir="rtl"] ul li{padding-left:0;padding-right:26px}
+.lab-note[dir="rtl"] ul li::before{left:auto;right:0}
+
+/* footer */
 footer{border-top:1px solid var(--line);padding:76px 0 44px;margin-top:30px}
 .foot-big{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(34px,4.6vw,54px);letter-spacing:-.02em;margin-bottom:20px}
 .foot-big em{font-style:italic;color:var(--accent-ink)}
 .foot-bio{max-width:56ch;color:var(--ink-2);font-size:16px;line-height:1.7;margin-bottom:48px}
 .foot-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:26px;font:500 12.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3)}
-.foot-links{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
-.foot-links a,.foot-links button{font:inherit;color:var(--ink-2);text-decoration:none;transition:color .2s}
+.foot-links{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.foot-links a,.foot-links button{font:inherit;color:var(--ink-2);text-decoration:none;transition:color .2s;cursor:pointer}
 .foot-links a:hover,.foot-links button:hover{color:var(--accent-ink)}
 kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-bottom-width:2px;border-radius:5px;padding:2px 6px;color:var(--ink-2);background:var(--surface)}
 
-/* ============ reader overlay ============ */
+/* reader overlay */
 .reader{position:fixed;inset:0;z-index:100;background:var(--bg);overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .35s ease,transform .35s ease,visibility .35s}
 .reader.open{opacity:1;visibility:visible;transform:none}
 .reader-head{position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line);
@@ -256,12 +288,14 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 .reader-title{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(30px,4.4vw,44px);line-height:1.3;letter-spacing:-.02em;margin-bottom:22px}
 .reader-meta{display:flex;align-items:center;gap:14px;font:500 12.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3);padding-bottom:26px;border-bottom:1px solid var(--line);margin-bottom:36px;flex-wrap:wrap}
 .dotsep{color:var(--line-2)}
-.about-card{display:flex;align-items:center;gap:18px;margin-bottom:34px}
+.about-card{display:flex;align-items:center;gap:18px;margin-bottom:34px;flex-wrap:wrap}
 .about-avatar{width:84px;height:84px;border-radius:50%;border:2px solid var(--accent);display:block;background:var(--surface2)}
 .about-id b{display:block;font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-size:22px;letter-spacing:-.01em}
-.about-links{display:flex;gap:16px;margin-top:4px}
+.about-links{display:flex;gap:16px;margin-top:4px;flex-wrap:wrap}
 .about-links a{font:500 12.5px 'JetBrains Mono';color:var(--ink-2);text-decoration:none}
 .about-links a:hover{color:var(--accent-ink)}
+#giscus-wrap{margin-top:48px;border-top:1px solid var(--line);padding-top:28px}
+.giscus-head{font:600 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-2);margin-bottom:18px}
 .prose{font-size:16.5px;line-height:1.85}
 .prose p{margin:0 0 1.25em}
 .prose h2,.prose h3,.prose h4{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;letter-spacing:-.01em;margin:1.8em 0 .6em}
@@ -296,6 +330,7 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
   .terminal{justify-self:start;max-width:560px}
   .featured{grid-template-columns:1fr}
   .ft-right{border-left:none;border-top:1px solid var(--line)}
+  .lab-grid{grid-template-columns:1fr;gap:36px}
 }
 @media (max-width:760px){
   .gh-repo{display:none}
@@ -373,6 +408,11 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
+        <div class="guide-row rise" style="animation-delay:.34s">
+          <span class="guide-label">// للمتعلمين:</span>
+          <button type="button" class="guide-link" data-page="roadmap">خريطة التعلم ↗</button>
+          <button type="button" class="guide-link" data-page="tools">أدواتي ↗</button>
+        </div>
         <div class="hero-status rise" style="animation-delay:.38s">
           <span class="pulse-dot" aria-hidden="true"></span>
           <span>local time — <span id="clock">--:--:--</span></span>
@@ -398,6 +438,7 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
       <span class="sec-rule"></span>
       <span class="sec-note" id="sec-note">syncing with github…</span>
     </div>
+    <div id="filter-bar" hidden></div>
     <div id="post-list" aria-live="polite">
       <div class="skel skel-f"></div>
       <div class="skel-g">
@@ -409,6 +450,30 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
     </div>
   </section>
 
+  <div class="band">
+    <section id="lab" class="wrap" aria-label="Snippet of the week">
+      <div class="sec-head">
+        <span class="sec-idx">(02)</span>
+        <h2>From the lab</h2>
+        <span class="sec-rule"></span>
+        <span class="sec-note">one snippet, every week</span>
+      </div>
+      <div class="lab-grid">
+        <div class="lab-note reveal" id="lab-note">
+          <div class="lab-kicker">SNIPPET № 042 — PYTHON</div>
+          <h3>A TCP connect scan in 15 lines</h3>
+          <p>Sometimes you don't need nmap — you need to know if a port is open on a host, fast, from any machine with Python. connect_ex() returns an error code instead of throwing, so closed ports cost you nothing but the timeout.</p>
+          <ul>
+            <li>connect_ex() — error code, not exception, zero try/except noise</li>
+            <li>ThreadPoolExecutor — 64 sockets probed at the same instant</li>
+            <li>0.5s timeout — don't stare at closed ports, move on</li>
+          </ul>
+        </div>
+        <div class="reveal" style="--d:.1s" id="snippet-code"></div>
+      </div>
+    </section>
+  </div>
+
 </main>
 
 <footer id="about-footer">
@@ -418,6 +483,10 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
     <div class="foot-bar">
       <span>© 2025 Majek7x — test before attackers do</span>
       <div class="foot-links">
+        <button type="button" data-page="roadmap">roadmap</button>
+        <button type="button" data-page="tools">toolkit</button>
+        <a href="https://www.linkedin.com/in/hassan-ashraf-abu-algood-081261296" target="_blank" rel="noopener">linkedin</a>
+        <a href="https://t.me/BenAbu_Algood" target="_blank" rel="noopener">telegram</a>
         <a href="https://github.com/HassanAbuAlgood" target="_blank" rel="noopener">github</a>
         <a href="#" id="rss-link">rss</a>
         <button type="button" id="to-top">↑ top</button>
@@ -443,6 +512,10 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
     <h1 class="reader-title" id="reader-title" dir="auto"></h1>
     <div class="reader-meta" id="reader-meta"></div>
     <div class="prose" id="reader-body" dir="auto"></div>
+    <div id="giscus-wrap" hidden>
+      <div class="giscus-head">💬 التعليقات — عبر GitHub Discussions</div>
+      <div id="giscus-box"></div>
+    </div>
     <div class="reader-end">
       <button class="reader-back" type="button" id="reader-close-bottom">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
@@ -464,6 +537,18 @@ const CONFIG = {
   repo: 'HassanAbuAlgood/Majek7x',
   branch: 'main',
   postsPath: 'posts',
+  social: {
+    linkedin: 'https://www.linkedin.com/in/hassan-ashraf-abu-algood-081261296',
+    telegram: 'https://t.me/BenAbu_Algood',
+  },
+};
+
+/* 💬 giscus (التعليقات): جيب الـ IDs من giscus.app وحطهم هنا — من غيرهم التعليقات مش بتظهر */
+const GISCUS = {
+  repo: 'HassanAbuAlgood/Majek7x',
+  repoId: '',              // ← placeholder
+  category: 'Announcements',
+  categoryId: '',          // ← placeholder
 };
 
 /* ---------- toast ---------- */
@@ -484,6 +569,15 @@ const CYCLE     = ['light', 'dark', 'system'];
 const LABELS    = { light: 'Light', dark: 'Dark', system: 'System — follows your OS' };
 let themingTimer;
 
+function syncGiscusTheme(){
+  try{
+    const f = document.querySelector('iframe.giscus-frame');
+    if (!f) return;
+    f.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light' } } },
+      'https://giscus.app');
+  }catch(e){}
+}
 function applyTheme(animate){
   const resolved = mode === 'system' ? (mqDark.matches ? 'dark' : 'light') : mode;
   if (animate){
@@ -494,6 +588,7 @@ function applyTheme(animate){
   document.documentElement.dataset.theme = resolved;
   $('#ts-thumb').style.transform = `translateX(${BTN_ORDER.indexOf(mode) * 34}px)`;
   $$('.theme-switch button').forEach(b => b.setAttribute('aria-checked', String(b.dataset.mode === mode)));
+  syncGiscusTheme();
 }
 function setMode(m, animate){
   mode = m;
@@ -655,6 +750,23 @@ const LANGMAP = { js:'js', javascript:'js', ts:'js', typescript:'js', rust:'rust
 const EXT = { js:'js', javascript:'js', ts:'ts', typescript:'ts', rust:'rs', rs:'rs',
   sh:'sh', bash:'sh', shell:'sh', zsh:'sh', toml:'toml', py:'py', python:'py', diff:'diff', text:'txt' };
 
+/* ---------- lab fallback snippet ---------- */
+const PY_SCAN = String.raw`import socket
+import concurrent.futures as cf
+
+def probe(port, host="10.10.10.7", timeout=0.5):
+    with socket.socket() as s:
+        s.settimeout(timeout)
+        # connect_ex -> error code, not an exception
+        return port if s.connect_ex((host, port)) == 0 else None
+
+targets = [21, 22, 80, 443, 3389, 8080]
+with cf.ThreadPoolExecutor(64) as ex:
+    open_ports = [p for p in ex.map(probe, targets) if p]
+
+print("open:", open_ports or "none")`;
+ $('#snippet-code').innerHTML = codeBlock('connect_scan.py', 'py', PY_SCAN, 'PYTHON');
+
 /* ---------- markdown → HTML ---------- */
 function mdToHtml(md){
   const fences = [];
@@ -746,7 +858,6 @@ function fmtDate(s){
 /* ---------- اكتشاف اتجاه النص ---------- */
 const RTL_RE = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
 const hasRTL = s => RTL_RE.test(s || '');
-
 function resolveDir(meta, body){
   const d = (meta.dir || '').toLowerCase();
   if (d === 'rtl' || d === 'ltr') return d;
@@ -757,8 +868,18 @@ function resolveDir(meta, body){
   return hasRTL(prose) ? 'rtl' : 'ltr';
 }
 
+/* ---------- شارة المستوى ---------- */
+function levelInfo(raw){
+  const s = (raw || '').trim().toLowerCase();
+  if (!s) return null;
+  let cls = 'lvl-2';
+  if (/(مبتدئ|مبتدئة|beginner|basic|أساسي|اساسي|intro)/.test(s)) cls = 'lvl-1';
+  else if (/(متقدم|advanced|pro|expert)/.test(s)) cls = 'lvl-3';
+  return { label: raw.trim(), cls };
+}
+
 /* ---------- cache & posts ---------- */
-const CACHE_KEY = 'm7x-posts-v3';
+const CACHE_KEY = 'm7x-posts-v4';
 let cache = {};
 try{ cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'); }catch(e){ cache = {}; }
 cache.files = cache.files || {};
@@ -768,6 +889,7 @@ let cacheStatus = { live: false };
 let fetchFailed = false;
 let failType = null;
 let shown = 7;
+let activeTag = '';
 
 async function fetchJSON(url){
   const r = await fetch(url, { headers: { 'Accept': 'application/vnd.github+json' } });
@@ -790,6 +912,7 @@ function postFromRaw(path, raw){
     title: meta.title || slug,
     date: meta.date || (dateMatch ? dateMatch[1] : ''),
     tags: (meta.tags || meta.tag || '').split(',').map(s => s.trim()).filter(Boolean),
+    level: levelInfo(meta.level),
     minutes: meta.minutes ? (parseInt(meta.minutes) || 1) : Math.max(1, Math.round(words / 190)),
     dir: resolveDir(meta, body),
     raw: body,
@@ -806,7 +929,6 @@ function rebuildPosts(){
 }
 const sortedPosts = () => [...dynPosts.values()].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
-/* طلب API واحد + تحميل المحتوى من raw (بلا rate limit) */
 async function syncPosts(){
   let tree = null;
   failType = null;
@@ -837,16 +959,20 @@ async function syncPosts(){
       }catch(e){}
     }
 
-    /* about.md في جذر الريبو */
-    const aboutEntry = tree.tree.find(e => e.type === 'blob' && e.path === 'about.md');
-    if (!aboutEntry){
-      cache.about = null;
-    } else if (!cache.about || cache.about.sha !== aboutEntry.sha){
+    const rootFile = async (name, slot) => {
+      const entry = tree.tree.find(e => e.type === 'blob' && e.path === name);
+      if (!entry){ cache[slot] = null; return; }
+      const cur = cache[slot];
+      if (cur && cur.sha === entry.sha) return;
       try{
-        const r = await fetch(rawURL('about.md'));
-        if (r.ok) cache.about = { sha: aboutEntry.sha, raw: await r.text() };
+        const r = await fetch(rawURL(name));
+        if (r.ok) cache[slot] = { sha: entry.sha, raw: await r.text() };
       }catch(e){}
-    }
+    };
+    await rootFile('about.md', 'about');
+    await rootFile('roadmap.md', 'roadmap');
+    await rootFile('tools.md', 'tools');
+    await rootFile('lab.md', 'lab');
 
     cache.at = Date.now();
     try{ localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); }catch(e){}
@@ -857,9 +983,32 @@ async function syncPosts(){
   }
   rebuildPosts();
   renderPosts();
+  renderLab();
 }
 
+/* ---------- filter bar ---------- */
+function renderFilters(posts){
+  const bar = $('#filter-bar');
+  const counts = {};
+  posts.forEach(p => (p.tags.length ? p.tags : ['post']).forEach(t => counts[t] = (counts[t] || 0) + 1));
+  const tags = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
+  if (tags.length < 2){ bar.hidden = true; return; }
+  bar.hidden = false;
+  bar.innerHTML =
+    `<button type="button" class="f-btn ${activeTag === '' ? 'active' : ''}" data-tag="">الكل<span class="f-count">${posts.length}</span></button>` +
+    tags.map(t => `<button type="button" class="f-btn ${activeTag === t ? 'active' : ''}" data-tag="${escAttr(t)}">${esc(t)}<span class="f-count">${counts[t]}</span></button>`).join('');
+}
+ $('#filter-bar').addEventListener('click', e => {
+  const b = e.target.closest('.f-btn');
+  if (!b) return;
+  activeTag = b.dataset.tag || '';
+  renderPosts();
+});
+
 /* ---------- rendering ---------- */
+function lvChip(p){
+  return p.level ? `<span class="lvchip ${p.level.cls}">${esc(p.level.label)}</span>` : '';
+}
 function featuredHTML(p){
   const fc = firstFence(p.raw);
   const tag = p.tags[0] || 'post';
@@ -869,7 +1018,7 @@ function featuredHTML(p){
       <div class="ft-kicker">LATEST · ${esc(tag.toUpperCase())} · ${p.minutes} MIN</div>
       <h3 class="ft-title" dir="${p.dir}">${esc(p.title)}</h3>
       <p class="ft-excerpt" dir="${p.dir}">${esc(p.excerpt)}</p>
-      <div class="ft-meta"><span class="chip">${esc(tag)}</span>${d ? `<span>${d}</span>` : ''}<span>${p.minutes} min read</span></div>
+      <div class="ft-meta">${lvChip(p)}<span class="chip">${esc(tag)}</span>${d ? `<span>${d}</span>` : ''}<span>${p.minutes} min read</span></div>
       <span class="ft-cta">Read the post
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
       </span>
@@ -883,7 +1032,7 @@ function rowHTML(p, i){
   return `<article class="post-row" tabindex="0" role="button" data-post="${escAttr(p.id)}" aria-label="Read: ${escAttr(p.title)}">
     <div class="pr-top">
       <span class="pr-idx">${String(i + 1).padStart(2, '0')}</span>
-      <span class="chip">${esc(tag)}</span>
+      <div class="pr-chips">${lvChip(p)}<span class="chip">${esc(tag)}</span></div>
     </div>
     <h3 class="pr-title" dir="${p.dir}">${esc(p.title)}</h3>
     <p class="pr-excerpt" dir="${p.dir}">${esc(p.excerpt)}</p>
@@ -901,6 +1050,7 @@ function emptyCard(){
 title: أهلاً بالعالم
 date: 2025-06-01
 tags: بداية
+level: مبتدئ
 ---
 
 اكتب مقالك هنا…</pre>
@@ -928,6 +1078,7 @@ function renderPosts(){
   const lmWrap = $('#load-more-wrap');
   const posts = sortedPosts();
   const total = posts.length;
+  renderFilters(posts);
   $('#sec-note').textContent = total
     ? `${total} post${total > 1 ? 's' : ''} · ${cacheStatus.live ? 'synced from github' : 'from cache'}`
     : (fetchFailed ? 'sync failed' : 'waiting for your first post');
@@ -943,6 +1094,18 @@ function renderPosts(){
     updateProgress();
     return;
   }
+
+  /* فلتر نشط: اعرض الكل المطابق في جريد واحد */
+  if (activeTag){
+    const match = posts.filter(p => (p.tags.length ? p.tags : ['post']).includes(activeTag));
+    listEl.innerHTML = match.length
+      ? '<div class="post-list">' + match.map((p, i) => `<div class="reveal in" style="--d:${(i % 6) * .05}s">${rowHTML(p, i)}</div>`).join('') + '</div>'
+      : '<div class="empty-card"><div class="ec-title">// مفيش مقالات بالتاج ده لسه</div></div>';
+    lmWrap.hidden = true;
+    updateProgress();
+    return;
+  }
+
   let html = `<div class="reveal in">${featuredHTML(posts[0])}</div><div class="post-list">`;
   posts.slice(1, 1 + shown).forEach((p, i) => {
     html += `<div class="reveal in" style="--d:${(i % 6) * .05}s">${rowHTML(p, i)}</div>`;
@@ -956,6 +1119,63 @@ function renderPosts(){
   updateProgress();
 }
  $('#load-more').addEventListener('click', () => { shown += 7; renderPosts(); });
+
+/* ---------- From the lab: بيقرا من lab.md لو موجود ---------- */
+function renderLab(){
+  const lab = cache.lab && cache.lab.raw;
+  if (!lab || !lab.trim()) return;
+  const { meta, body } = parseFront(lab);
+  const fence = firstFence(body);
+  const proseMd = body.replace(/```[^\n`]*\n[\s\S]*?```/, '');
+  const dir = resolveDir(meta, body);
+
+  const note = $('#lab-note');
+  note.setAttribute('dir', dir);
+  note.innerHTML =
+    `<div class="lab-kicker">${esc(meta.kicker || 'SNIPPET OF THE WEEK')}</div>` +
+    `<h3 dir="${dir}">${esc(meta.title || 'Snippet of the week')}</h3>` +
+    mdToHtml(proseMd);
+
+  const sn = $('#snippet-code');
+  const grid = document.querySelector('.lab-grid');
+  if (fence){
+    sn.hidden = false;
+    grid.style.gridTemplateColumns = '';
+    sn.innerHTML = codeBlock(meta.file || ('snippet.' + (EXT[fence.lang] || 'txt')), LANGMAP[fence.lang] || 'text', fence.code);
+  } else {
+    sn.hidden = true;
+    grid.style.gridTemplateColumns = '1fr';
+  }
+}
+
+/* ---------- giscus comments ---------- */
+function hideGiscus(){
+  $('#giscus-wrap').hidden = true;
+  $('#giscus-box').innerHTML = '';
+}
+function mountGiscus(term){
+  const wrap = $('#giscus-wrap'), box = $('#giscus-box');
+  if (!GISCUS.repoId || !GISCUS.categoryId){ hideGiscus(); return; }
+  wrap.hidden = false;
+  box.innerHTML = '';
+  const s = document.createElement('script');
+  s.src = 'https://giscus.app/client.js';
+  s.setAttribute('data-repo', GISCUS.repo);
+  s.setAttribute('data-repo-id', GISCUS.repoId);
+  s.setAttribute('data-category', GISCUS.category);
+  s.setAttribute('data-category-id', GISCUS.categoryId);
+  s.setAttribute('data-mapping', 'specific-term');
+  s.setAttribute('data-term', term);
+  s.setAttribute('data-strict', '0');
+  s.setAttribute('data-reactions-enabled', '1');
+  s.setAttribute('data-emit-metadata', '0');
+  s.setAttribute('data-input-position', 'top');
+  s.setAttribute('data-theme', document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
+  s.setAttribute('data-lang', 'ar');
+  s.crossOrigin = 'anonymous';
+  s.async = true;
+  box.appendChild(s);
+}
 
 /* ---------- reader overlay ---------- */
 const reader = $('#reader');
@@ -982,15 +1202,33 @@ function openPost(id){
   titleEl.textContent = p.title;
   const d = fmtDate(p.date);
   $('#reader-meta').innerHTML =
-    `<span class="chip">${esc(p.tags[0] || 'post')}</span>${d ? `<span>${d}</span><span class="dotsep">·</span>` : ''}<span>${p.minutes} min read</span>`;
+    `${lvChip(p)}<span class="chip">${esc(p.tags[0] || 'post')}</span>${d ? `<span>${d}</span><span class="dotsep">·</span>` : ''}<span>${p.minutes} min read</span>`;
   bodyEl.innerHTML = p.html;
   openReaderShell();
+  mountGiscus('post:' + p.id);
 }
-
+function staticPageHTML(slot, fbTitle, tplMd){
+  const raw = cache[slot] && cache[slot].raw;
+  if (raw && raw.trim()){
+    const { meta, body } = parseFront(raw);
+    return { title: meta.title || fbTitle, dir: resolveDir(meta, body), html: mdToHtml(body) };
+  }
+  return {
+    title: fbTitle, dir: 'rtl',
+    html:
+      `<p>الصفحة دي محتاجة ملف اسمه <code>${slot}.md</code> في <strong>جذر الريبو</strong> (مش جوه posts). اكتب فيه بـ Markdown العادي زي الشكل ده:</p>` +
+      codeBlock(slot + '.md', 'text', tplMd) +
+      `<p>واعمل Commit — هتظهر هنا فورًا.</p>`,
+  };
+}
 function aboutHTML(){
   const user = CONFIG.repo.split('/')[0];
   const avatar = `<img class="about-avatar" src="https://github.com/${encodeURIComponent(user)}.png" alt="${escAttr(user)}">`;
-  const links = `<div class="about-links"><a href="https://github.com/${encodeURIComponent(user)}" target="_blank" rel="noopener">github/${esc(user)} ↗</a></div>`;
+  const links = `<div class="about-links">
+    <a href="https://github.com/${encodeURIComponent(user)}" target="_blank" rel="noopener">github ↗</a>
+    <a href="${escAttr(CONFIG.social.linkedin)}" target="_blank" rel="noopener">linkedin ↗</a>
+    <a href="${escAttr(CONFIG.social.telegram)}" target="_blank" rel="noopener">telegram ↗</a>
+  </div>`;
   const head = `<div class="about-card">${avatar}<div class="about-id"><b>Majek7x</b>${links}</div></div>`;
 
   const raw = cache.about && cache.about.raw;
@@ -999,20 +1237,71 @@ function aboutHTML(){
     return { title: meta.title || 'Majek7x', dir: resolveDir(meta, body), html: head + mdToHtml(body) };
   }
   const tpl = `## من أنا
-مختص اختبار اختراق (Penetration Testing) و Bug Bounty…
+مختص اختبار اختراق (Penetration Testing) و Bug Bounty Hunter…
 
 ## الخبرة والشهادات
 - …
 
 ## تواصل معايا
-- LinkedIn: [رابطك هنا](https://linkedin.com/in/...)`;
+- LinkedIn: [حسابي](https://www.linkedin.com/in/hassan-ashraf-abu-algood-081261296)
+- Telegram: [@BenAbu_Algood](https://t.me/BenAbu_Algood)`;
   return {
     title: 'Majek7x', dir: 'rtl',
     html: head +
-      `<p>الصفحة دي محتاجة ملف اسمه <code>about.md</code> في <strong>جذر الريبو</strong> (مش جوه posts). اكتب فيه معلوماتك بـ Markdown العادي زي الشكل ده:</p>` +
-      codeBlock('about.md', 'text', tpl) +
-      `<p>واعمل Commit — هتلاقيها هنا فورًا، وصورتك جاية من GitHub أوتوماتيك.</p>`,
+      `<p>الصفحة دي محتاجة ملف اسمه <code>about.md</code> في <strong>جذر الريبو</strong>. اكتب فيه معلوماتك بـ Markdown العادي زي الشكل ده:</p>` +
+      codeBlock('about.md', 'text', tpl),
   };
+}
+const STATIC_PAGES = {
+  roadmap: {
+    kicker: 'ROADMAP', chips: `<span class="chip">learning path</span>`,
+    fbTitle: 'خريطة التعلم',
+    tpl: `# خريطة تعلم Penetration Testing
+
+## المرحلة 1 — الأساسيات
+- شبكات: TCP/IP و OSI و subnetting
+- Linux وسطر الأوامر
+- Python للأتمتة
+
+## المرحلة 2 — أمن الويب
+- HTTP و OWASP Top 10
+- أدوات: nmap و Burp Suite و ffuf
+
+## المرحلة 3 — الاحتراف
+- بناء لاب شخصي
+- HackTheBox / TryHackMe
+- Bug Bounty بمنهجية واضحة`,
+  },
+  tools: {
+    kicker: 'TOOLKIT', chips: `<span class="chip">tools i use</span>`,
+    fbTitle: 'أدواتي',
+    tpl: `# الأدوات اللي أستخدمها
+
+## Recon
+- nmap · subfinder · httpx
+
+## Web
+- Burp Suite · ffuf · sqlmap
+
+## OSINT
+- theHarvester · Shodan`,
+  },
+};
+function openStatic(slot){
+  const cfg = STATIC_PAGES[slot];
+  if (!cfg) return;
+  const a = staticPageHTML(slot, cfg.fbTitle, cfg.tpl);
+  $('#reader-back-label').textContent = 'رجوع';
+  $$('.reader-back-label2').forEach(el => el.textContent = 'رجوع');
+  $('#reader-kicker').textContent = cfg.kicker;
+  const titleEl = $('#reader-title'), bodyEl = $('#reader-body');
+  titleEl.dir = a.dir;
+  bodyEl.dir = a.dir;
+  titleEl.textContent = a.title;
+  $('#reader-meta').innerHTML = cfg.chips;
+  bodyEl.innerHTML = a.html;
+  openReaderShell();
+  hideGiscus();
 }
 function openAbout(){
   const a = aboutHTML();
@@ -1026,6 +1315,7 @@ function openAbout(){
   $('#reader-meta').innerHTML = `<span class="chip">offsec</span><span>pentesting · bug bounty</span>`;
   bodyEl.innerHTML = a.html;
   openReaderShell();
+  hideGiscus();
 }
 function closePost(){
   reader.classList.remove('open');
@@ -1073,6 +1363,8 @@ document.addEventListener('click', e => {
   const cb = e.target.closest('.cb-copy');
   if (cb){ handleCopy(cb); return; }
   if (e.target.closest('[data-about]')){ e.preventDefault(); openAbout(); return; }
+  const pg = e.target.closest('[data-page]');
+  if (pg){ e.preventDefault(); openStatic(pg.dataset.page); return; }
   if (e.target.closest('#rss-link')){ e.preventDefault(); toast('RSS جاي قريب 🙏'); return; }
   if (e.target.closest('#to-top')){ scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }); return; }
   const opener = e.target.closest('[data-post]');
@@ -1219,6 +1511,7 @@ runTerminal();
 /* ---------- boot ---------- */
 rebuildPosts();
 renderPosts();
+renderLab();
 syncPosts();
 </script>
 </body>
