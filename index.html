@@ -7,7 +7,6 @@
 <meta name="description" content="Majek7x — penetration tester & offensive security. Field notes, tooling and writeups, published straight from markdown.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23201B15'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='28' fill='%23E89B4B' text-anchor='middle'%3EM_%3C/text%3E%3C/svg%3E">
 <script>
-/* Apply theme before first paint — no flash */
 (function(){try{
   var m = localStorage.getItem('m7x-theme') || 'system';
   var dark = m === 'dark' || (m === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
@@ -18,7 +17,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ============ tokens ============ */
 :root{
   color-scheme:light;
   --bg:#F6F1E7; --surface:#FDFBF4; --surface2:#F1EADA;
@@ -50,25 +48,21 @@
 html.theming, html.theming *, html.theming *::before, html.theming *::after{
   transition: background-color .5s ease, color .5s ease, border-color .5s ease, box-shadow .5s ease, fill .5s ease, stroke .5s ease !important;
 }
-
-/* ============ base ============ */
 *{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none !important}
 html{scroll-behavior:smooth;scroll-padding-top:92px}
 body{font-family:'Instrument Sans','IBM Plex Sans Arabic',sans-serif;font-size:16px;line-height:1.6;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
 body.locked{overflow:hidden}
 ::selection{background:var(--accent);color:var(--on-accent)}
 a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
-.mono{font-family:'JetBrains Mono',monospace}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 svg{flex-shrink:0}
 
-/* ============ progress bar ============ */
 #progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;z-index:120}
 
-/* ============ header ============ */
 .site-head{position:sticky;top:0;z-index:80;border-bottom:1px solid var(--line);
   background:color-mix(in srgb, var(--bg) 84%, transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .site-head .wrap{display:flex;align-items:center;gap:28px;height:64px}
@@ -98,7 +92,6 @@ svg{flex-shrink:0}
 .theme-switch button:hover{color:var(--ink)}
 .theme-switch button[aria-checked="true"]:hover{color:var(--bg)}
 
-/* ============ hero ============ */
 .hero{position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;pointer-events:none;
   background-image:radial-gradient(var(--dot) 1.1px, transparent 1.6px);background-size:26px 26px;
@@ -106,7 +99,7 @@ svg{flex-shrink:0}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:60px;align-items:center;min-height:calc(100svh - 64px);padding-top:56px;padding-bottom:64px}
 @keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 .rise{animation:riseIn .8s cubic-bezier(.2,.7,.2,1) both}
-.eyebrow{font:600 12.5px 'JetBrains Mono';letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:22px}
+.eyebrow{font:600 12.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:22px}
 .eyebrow em{font-style:normal;color:var(--accent)}
 .hero-h1{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(40px,5.6vw,68px);line-height:1.06;letter-spacing:-.022em;margin-bottom:26px}
 .hh-type{display:block;margin-top:8px}
@@ -117,13 +110,14 @@ svg{flex-shrink:0}
 .lede{font-size:18px;line-height:1.7;color:var(--ink-2);max-width:52ch;margin-bottom:34px}
 .lede code{font-family:'JetBrains Mono';font-size:.85em;background:var(--code-inline);padding:.15em .4em;border-radius:5px}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px}
-.btn{display:inline-flex;align-items:center;gap:10px;font:600 13.5px 'JetBrains Mono';letter-spacing:.03em;padding:14px 24px;border-radius:11px;border:1px solid transparent;text-decoration:none;
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 13.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.03em;padding:14px 24px;border-radius:11px;border:1px solid transparent;text-decoration:none;
   transition:transform .18s ease, box-shadow .18s ease, border-color .2s, background .2s, color .2s}
 .btn-solid{background:var(--accent);color:var(--on-accent)}
 .btn-solid:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px color-mix(in srgb, var(--accent) 60%, transparent)}
 .btn-ghost{border-color:var(--line-2);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent-ink);transform:translateY(-2px)}
-.hero-status{display:flex;align-items:center;gap:10px;font:500 12.5px 'JetBrains Mono';color:var(--ink-3);letter-spacing:.02em}
+.btn:disabled{opacity:.55;cursor:default}
+.hero-status{display:flex;align-items:center;gap:10px;font:500 12.5px 'JetBrains Mono';color:var(--ink-3);letter-spacing:.02em;flex-wrap:wrap}
 .hero-status .sep{color:var(--line-2)}
 .pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);position:relative;display:inline-block;color:var(--accent)}
 .pulse-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid currentColor;animation:ping 2.4s ease-out infinite}
@@ -149,34 +143,33 @@ svg{flex-shrink:0}
 .t-live .pulse-dot{width:6px;height:6px}
 .t-caret{display:inline-block;width:8px;height:15px;background:var(--term-olive);vertical-align:-2px;animation:blink 1.05s steps(1) infinite}
 
-/* ============ sections ============ */
 section{padding:78px 0}
 .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:36px;flex-wrap:wrap}
 .sec-idx{font:600 13px 'JetBrains Mono';color:var(--accent);letter-spacing:.1em}
 .sec-head h2{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(30px,3.8vw,42px);letter-spacing:-.015em}
 .sec-rule{flex:1;height:1px;background:var(--line);align-self:center;min-width:40px}
-.sec-note{font:500 12px 'JetBrains Mono';color:var(--ink-3)}
+.sec-note{font:500 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3)}
 
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease var(--d,0s), transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
 .reveal.in{opacity:1;transform:none}
 
-/* skeletons */
 .skel{border-radius:14px;border:1px solid var(--line);background:linear-gradient(100deg,var(--surface) 40%,var(--surface2) 50%,var(--surface) 60%);background-size:200% 100%;animation:skel 1.4s linear infinite;margin-bottom:14px}
 .skel-f{height:280px}
-.skel-r{height:96px}
+.skel-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.skel-g .skel{margin:0;height:190px}
 @keyframes skel{to{background-position:-200% 0}}
 
-/* ============ article cards ============ */
+/* ============ featured card ============ */
 .featured{display:grid;grid-template-columns:1.02fr .98fr;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-rest);cursor:pointer;
   transition:transform .24s cubic-bezier(.2,.7,.25,1), box-shadow .24s ease, border-color .24s ease}
 .featured.solo{grid-template-columns:1fr}
 .featured:hover,.featured:focus-visible{transform:translateY(-6px);box-shadow:var(--shadow-lift);border-color:var(--line-2)}
 .ft-left{padding:38px 40px 36px;display:flex;flex-direction:column;gap:0}
-.ft-kicker{font:600 11.5px 'JetBrains Mono';letter-spacing:.12em;color:var(--accent-ink);margin-bottom:18px}
-.ft-title{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(24px,2.6vw,33px);line-height:1.25;letter-spacing:-.015em;margin-bottom:16px;transition:color .2s}
+.ft-kicker{font:600 11.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.12em;color:var(--accent-ink);margin-bottom:18px}
+.ft-title{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(24px,2.6vw,33px);line-height:1.35;letter-spacing:-.015em;margin-bottom:16px;transition:color .2s}
 .featured:hover .ft-title{color:var(--accent-ink)}
 .ft-excerpt{color:var(--ink-2);font-size:15.5px;line-height:1.65;margin-bottom:22px}
-.ft-meta{display:flex;align-items:center;gap:14px;font:500 12px 'JetBrains Mono';color:var(--ink-3);margin-bottom:26px;flex-wrap:wrap}
+.ft-meta{display:flex;align-items:center;gap:14px;font:500 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3);margin-bottom:26px;flex-wrap:wrap}
 .ft-cta{margin-top:auto;display:inline-flex;align-items:center;gap:9px;font:600 13px 'JetBrains Mono';color:var(--accent-ink)}
 .ft-cta svg{transition:transform .22s}
 .featured:hover .ft-cta svg{transform:translate(4px,-4px)}
@@ -184,28 +177,27 @@ section{padding:78px 0}
 .ft-right .codeblock{border:none;border-radius:0;box-shadow:none;flex:1;display:flex;flex-direction:column}
 .ft-right .cb-pre{flex:1;max-height:360px}
 
-.post-list{display:grid;gap:14px}
-.post-row{display:grid;grid-template-columns:52px 1fr auto 40px;grid-template-areas:"idx main meta arrow";align-items:center;gap:22px;
-  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px 28px;cursor:pointer;box-shadow:var(--shadow-rest);
+/* ============ post cards (grid) ============ */
+.post-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.post-row{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px 18px;cursor:pointer;box-shadow:var(--shadow-rest);
   transition:transform .24s cubic-bezier(.2,.7,.25,1), box-shadow .24s ease, border-color .24s ease}
 .post-row:hover,.post-row:focus-visible{transform:translateY(-5px);box-shadow:var(--shadow-lift);border-color:var(--line-2)}
-.pr-idx{grid-area:idx;font:600 14px 'JetBrains Mono';color:var(--ink-3);transition:color .2s}
+.pr-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pr-idx{font:600 13px 'JetBrains Mono';color:var(--ink-3);transition:color .2s}
 .post-row:hover .pr-idx{color:var(--accent)}
-.pr-main{grid-area:main;min-width:0}
-.pr-title{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:21px;letter-spacing:-.01em;line-height:1.3;margin-bottom:7px;transition:color .2s}
+.pr-title{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:20px;letter-spacing:-.01em;line-height:1.4;transition:color .2s}
 .post-row:hover .pr-title{color:var(--accent-ink)}
-.pr-excerpt{color:var(--ink-2);font-size:14.5px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.pr-meta{grid-area:meta;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-.pr-date-row{display:flex;align-items:center;gap:12px;font:500 12px 'JetBrains Mono';color:var(--ink-3)}
-.chip{font:600 10.5px 'JetBrains Mono';letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);border:1px solid var(--line-2);border-radius:999px;padding:3px 10px;background:var(--bg)}
-.pr-arrow{grid-area:arrow;width:38px;height:38px;border:1px solid var(--line-2);border-radius:50%;display:grid;place-items:center;color:var(--ink-3);transition:all .22s}
+.pr-excerpt{color:var(--ink-2);font-size:14.5px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pr-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:13px;
+  font:500 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3)}
+.pr-arrow{width:30px;height:30px;border:1px solid var(--line-2);border-radius:50%;display:grid;place-items:center;color:var(--ink-3);transition:all .22s}
 .pr-arrow svg{transition:transform .22s}
 .post-row:hover .pr-arrow{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
 .post-row:hover .pr-arrow svg{transform:translate(2px,-2px)}
 
-#load-more-wrap{display:flex;justify-content:center;margin-top:26px}
+#load-more-wrap{display:flex;justify-content:center;margin-top:28px}
 .empty-card{border:1.5px dashed var(--line-2);border-radius:16px;padding:40px 36px;background:var(--surface);text-align:center}
-.empty-card .ec-title{font:600 13px 'JetBrains Mono';color:var(--accent-ink);letter-spacing:.08em;margin-bottom:14px}
+.empty-card .ec-title{font:600 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--accent-ink);letter-spacing:.08em;margin-bottom:14px}
 .empty-card p{color:var(--ink-2);font-size:15px;margin:8px 0}
 .empty-card pre{display:inline-block;text-align:left;font:400 13px/1.7 'JetBrains Mono';background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:14px 20px;margin:10px 0;direction:ltr}
 .empty-card code{font-family:'JetBrains Mono';font-size:.85em;background:var(--code-inline);padding:.15em .4em;border-radius:5px;direction:ltr}
@@ -246,19 +238,24 @@ section{padding:78px 0}
 /* ============ lab ============ */
 .band{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .lab-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:56px;align-items:center}
-.lab-kicker{font:600 12px 'JetBrains Mono';letter-spacing:.14em;color:var(--accent-ink);margin-bottom:14px}
-.lab-note h3{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(24px,2.4vw,31px);letter-spacing:-.015em;line-height:1.25;margin-bottom:16px}
+.lab-kicker{font:600 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.14em;color:var(--accent-ink);margin-bottom:14px}
+.lab-note h3{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(24px,2.4vw,31px);letter-spacing:-.015em;line-height:1.3;margin-bottom:16px}
 .lab-note p{color:var(--ink-2);font-size:15.5px;line-height:1.7;margin-bottom:18px}
-.lab-points{list-style:none}
-.lab-points li{position:relative;padding-left:24px;margin:.5em 0;font:500 13px 'JetBrains Mono';color:var(--ink-2)}
-.lab-points li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:600}
+.lab-note ul{list-style:none;margin:.2em 0 0;padding:0}
+.lab-note li{position:relative;padding-left:24px;margin:.5em 0;font:500 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-2)}
+.lab-note ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:600}
+.lab-note ol{list-style:none;counter-reset:labn;margin:.2em 0 0;padding:0}
+.lab-note ol li{counter-increment:labn;padding-left:30px}
+.lab-note ol li::before{content:counter(labn) '.';position:absolute;left:0;color:var(--accent);font-weight:600}
+.lab-note[dir="rtl"] ul li,.lab-note[dir="rtl"] ol li{padding-left:0;padding-right:26px}
+.lab-note[dir="rtl"] ul li::before,.lab-note[dir="rtl"] ol li::before{left:auto;right:0}
 
 /* ============ footer ============ */
 footer{border-top:1px solid var(--line);padding:72px 0 44px;margin-top:20px}
 .foot-big{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(34px,4.6vw,54px);letter-spacing:-.02em;margin-bottom:20px}
 .foot-big em{font-style:italic;color:var(--accent-ink)}
 .foot-bio{max-width:56ch;color:var(--ink-2);font-size:16px;line-height:1.7;margin-bottom:48px}
-.foot-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:26px;font:500 12.5px 'JetBrains Mono';color:var(--ink-3)}
+.foot-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:26px;font:500 12.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3)}
 .foot-links{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
 .foot-links a,.foot-links button{font:inherit;color:var(--ink-2);text-decoration:none;transition:color .2s}
 .foot-links a:hover,.foot-links button:hover{color:var(--accent-ink)}
@@ -270,14 +267,14 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 .reader-head{position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line);
   background:color-mix(in srgb, var(--bg) 86%, transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .reader-head .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
-.reader-back{display:inline-flex;align-items:center;gap:9px;font:600 13px 'JetBrains Mono';color:var(--ink-2);transition:color .2s}
+.reader-back{display:inline-flex;align-items:center;gap:9px;font:600 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-2);transition:color .2s}
 .reader-back:hover{color:var(--accent-ink)}
 .esc-hint{font:500 11.5px 'JetBrains Mono';color:var(--ink-3)}
 #reader-progress{position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%}
 .reader-article{max-width:760px;margin:0 auto;padding:60px 28px 110px}
-.reader-kicker{font:600 12px 'JetBrains Mono';letter-spacing:.12em;color:var(--accent-ink);text-transform:uppercase;margin-bottom:18px}
-.reader-title{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(30px,4.4vw,44px);line-height:1.2;letter-spacing:-.02em;margin-bottom:22px}
-.reader-meta{display:flex;align-items:center;gap:14px;font:500 12.5px 'JetBrains Mono';color:var(--ink-3);padding-bottom:26px;border-bottom:1px solid var(--line);margin-bottom:36px;flex-wrap:wrap}
+.reader-kicker{font:600 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.12em;color:var(--accent-ink);text-transform:uppercase;margin-bottom:18px}
+.reader-title{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(30px,4.4vw,44px);line-height:1.3;letter-spacing:-.02em;margin-bottom:22px}
+.reader-meta{display:flex;align-items:center;gap:14px;font:500 12.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3);padding-bottom:26px;border-bottom:1px solid var(--line);margin-bottom:36px;flex-wrap:wrap}
 .dotsep{color:var(--line-2)}
 .about-card{display:flex;align-items:center;gap:18px;margin-bottom:34px}
 .about-avatar{width:84px;height:84px;border-radius:50%;border:2px solid var(--accent);display:block;background:var(--surface2)}
@@ -290,7 +287,7 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 .prose h2,.prose h3,.prose h4{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;letter-spacing:-.01em;margin:1.8em 0 .6em}
 .prose h2{font-size:26px}.prose h3{font-size:22px}.prose h4{font-size:18.5px}
 .prose strong{font-weight:600}
-.prose code{font-family:'JetBrains Mono';font-size:.84em;background:var(--code-inline);padding:.15em .42em;border-radius:5px}
+.prose code{font-family:'JetBrains Mono','IBM Plex Sans Arabic',monospace;font-size:.84em;background:var(--code-inline);padding:.15em .42em;border-radius:5px}
 .prose a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
 .prose ul,.prose ol{list-style:none;margin:0 0 1.4em}
 .prose li{position:relative;padding-left:26px;margin:.55em 0}
@@ -304,17 +301,16 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 .prose-hr{border:none;height:1px;background:var(--line);margin:2.2em 0}
 .prose[dir="rtl"] ul li{padding-left:0;padding-right:26px}
 .prose[dir="rtl"] ul li::before{left:auto;right:0}
-.prose[dir="rtl"] blockquote{border-left:none;border-right:3px solid var(--accent);padding:.2em 1.3em .2em 0}
 .prose[dir="rtl"] ol li{padding-left:0;padding-right:32px}
 .prose[dir="rtl"] ol li::before{left:auto;right:0}
+.prose[dir="rtl"] blockquote{border-left:none;border-right:3px solid var(--accent);padding:.2em 1.3em .2em 0}
 .prose[dir="rtl"] .codeblock{direction:ltr;text-align:left}
 .reader-end{margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
 
 #toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,14px);opacity:0;pointer-events:none;z-index:150;
-  background:var(--ink);color:var(--bg);font:500 13px 'JetBrains Mono';padding:11px 18px;border-radius:10px;box-shadow:var(--shadow-lift);transition:opacity .3s,transform .3s;max-width:90vw;text-align:center}
+  background:var(--ink);color:var(--bg);font:500 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;padding:11px 18px;border-radius:10px;box-shadow:var(--shadow-lift);transition:opacity .3s,transform .3s;max-width:90vw;text-align:center}
 #toast.on{opacity:1;transform:translate(-50%,0)}
 
-/* ============ responsive ============ */
 @media (max-width:960px){
   .hero .wrap{grid-template-columns:1fr;min-height:0;padding-top:64px;padding-bottom:56px;gap:48px}
   .terminal{justify-self:start;max-width:560px}
@@ -324,16 +320,14 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 }
 @media (max-width:860px){ .nav{display:none} }
 @media (max-width:760px){
-  .post-row{grid-template-columns:44px 1fr 38px;grid-template-areas:"idx main arrow" "idx meta arrow";row-gap:12px;padding:20px 20px}
-  .pr-meta{flex-direction:row;align-items:center;gap:12px}
   .gh-repo{display:none}
   section{padding:58px 0}
 }
 @media (max-width:560px){
-  .pr-excerpt{display:none}
   .gh-pill{padding:7px 10px;gap:7px}
   .head-right{gap:8px}
   .wrap{padding:0 18px}
+  .post-list{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
@@ -346,14 +340,13 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 
 <div id="progress" role="presentation"></div>
 
-<!-- ================= header ================= -->
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Majek7x — home">majek7x<span class="brand-cursor">_</span></a>
     <nav class="nav" aria-label="Main">
       <a href="#writing">writing</a>
       <a href="#lab">lab</a>
-      <a href="#about" data-about>about</a>
+      <a href="#about-footer" data-about>about</a>
     </nav>
     <div class="head-right">
       <a class="gh-pill" id="gh-pill" href="#" target="_blank" rel="noopener" aria-label="Live GitHub stars and forks">
@@ -387,7 +380,6 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 
 <main id="top">
 
-  <!-- ================= hero ================= -->
   <section class="hero" aria-label="Introduction">
     <div class="wrap">
       <div>
@@ -426,7 +418,6 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
     </div>
   </section>
 
-  <!-- ================= writing ================= -->
   <section id="writing" class="wrap" aria-label="Writing">
     <div class="sec-head">
       <span class="sec-idx">(01)</span>
@@ -434,19 +425,17 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
       <span class="sec-rule"></span>
       <span class="sec-note" id="sec-note">syncing with github…</span>
     </div>
-
     <div id="post-list" aria-live="polite">
       <div class="skel skel-f"></div>
-      <div class="skel skel-r"></div>
-      <div class="skel skel-r"></div>
-      <div class="skel skel-r"></div>
+      <div class="skel skel-g">
+        <div class="skel"></div><div class="skel"></div><div class="skel"></div>
+      </div>
     </div>
     <div id="load-more-wrap" hidden>
-      <button class="btn btn-ghost" type="button" id="load-more">Load older posts ↓</button>
+      <button class="btn btn-ghost" type="button" id="load-more">مقالات أقدم ↓</button>
     </div>
   </section>
 
-  <!-- ================= lab ================= -->
   <div class="band">
     <section id="lab" class="wrap" aria-label="Snippet of the week">
       <div class="sec-head">
@@ -456,11 +445,11 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
         <span class="sec-note">one snippet, every week</span>
       </div>
       <div class="lab-grid">
-        <div class="lab-note reveal">
+        <div class="lab-note reveal" id="lab-note">
           <div class="lab-kicker">SNIPPET № 042 — PYTHON</div>
           <h3>A TCP connect scan in 15 lines</h3>
           <p>Sometimes you don't need nmap — you need to know if one port is open on one host, fast, from any machine with Python. connect_ex() returns an error code instead of throwing, so closed ports cost you nothing but the timeout.</p>
-          <ul class="lab-points">
+          <ul>
             <li>connect_ex() — error code, not exception, zero try/except noise</li>
             <li>ThreadPoolExecutor — 64 sockets probed at the same instant</li>
             <li>0.5s timeout — don't stare at closed ports, move on</li>
@@ -473,7 +462,6 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 
 </main>
 
-<!-- ================= footer ================= -->
 <footer id="about-footer">
   <div class="wrap">
     <h2 class="foot-big">Thanks for <em>reading.</em></h2>
@@ -482,7 +470,6 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
       <span>© 2025 Majek7x — test before attackers do</span>
       <div class="foot-links">
         <a href="https://github.com/aboelgoodelmajek-prog" target="_blank" rel="noopener">github</a>
-        <button type="button" data-about>about</button>
         <a href="#" id="rss-link">rss</a>
         <button type="button" id="to-top">↑ top</button>
         <span class="kbd-hint"><kbd>T</kbd> switch theme</span>
@@ -491,7 +478,6 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
   </div>
 </footer>
 
-<!-- ================= reader overlay (posts + about) ================= -->
 <div class="reader" id="reader" aria-hidden="true" role="dialog" aria-label="Article reader">
   <div class="reader-head">
     <div class="wrap">
@@ -507,7 +493,6 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
     <div class="reader-kicker" id="reader-kicker"></div>
     <h1 class="reader-title" id="reader-title" dir="auto"></h1>
     <div class="reader-meta" id="reader-meta"></div>
-    <div id="reader-extra"></div>
     <div class="prose" id="reader-body" dir="auto"></div>
     <div class="reader-end">
       <button class="reader-back" type="button" id="reader-close-bottom">
@@ -521,15 +506,11 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
 <div id="toast" role="status" aria-live="polite"></div>
 
 <script>
-/* =========================================================
-   Majek7x — one HTML file + posts/*.md from the repo
-   ========================================================= */
 const $  = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-/* ⚙️ الإعداد الوحيد — اتعدل على اسم ريبوك وبرانشك */
 const CONFIG = {
   repo: 'aboelgoodelmajek-prog/majek7x.github.io',
   branch: 'main',
@@ -546,7 +527,7 @@ function toast(msg){
   toastTimer = setTimeout(() => t.classList.remove('on'), 2200);
 }
 
-/* ---------- 3-state theme (light / dark / system) ---------- */
+/* ---------- 3-state theme ---------- */
 const mqDark = matchMedia('(prefers-color-scheme: dark)');
 let mode = localStorage.getItem('m7x-theme') || 'system';
 const BTN_ORDER = ['light', 'system', 'dark'];
@@ -592,7 +573,7 @@ const clockFmt = new Intl.DateTimeFormat('en-GB', { hour:'2-digit', minute:'2-di
 const tick = () => { $('#clock').textContent = clockFmt.format(new Date()); };
 tick(); setInterval(tick, 1000);
 
-/* ---------- typewriter headline ---------- */
+/* ---------- typewriter ---------- */
 const PHRASES = [
   'break things (with permission).',
   'hunt bugs for a living.',
@@ -618,7 +599,7 @@ async function typeLoop(){
 }
 typeLoop();
 
-/* ---------- tiny syntax highlighter ---------- */
+/* ---------- syntax highlighter ---------- */
 function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 const escAttr = s => esc(String(s)).replace(/"/g,'&quot;');
 
@@ -698,7 +679,6 @@ function hl(src, lang){
   return out;
 }
 
-/* ---------- code block rendering + copy ---------- */
 const IC_COPY  = '<svg class="ic-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
 const IC_CHECK = '<svg class="ic-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>';
 
@@ -726,7 +706,7 @@ const LANGMAP = { js:'js', javascript:'js', ts:'js', typescript:'js', rust:'rust
 const EXT = { js:'js', javascript:'js', ts:'ts', typescript:'ts', rust:'rs', rs:'rs',
   sh:'sh', bash:'sh', shell:'sh', zsh:'sh', toml:'toml', py:'py', python:'py', diff:'diff', text:'txt' };
 
-/* ---------- lab snippet ---------- */
+/* ---------- lab fallback snippet ---------- */
 const PY_SCAN = String.raw`import socket
 import concurrent.futures as cf
 
@@ -831,7 +811,21 @@ function fmtDate(s){
   return `${MONTHS[+m[2]-1]} ${+m[3]}, ${m[1]}`;
 }
 
-/* ---------- cache & dynamic posts ---------- */
+/* ---------- اكتشاف اتجاه النص ---------- */
+const RTL_RE = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+const hasRTL = s => RTL_RE.test(s || '');
+
+function resolveDir(meta, body){
+  const d = (meta.dir || '').toLowerCase();
+  if (d === 'rtl' || d === 'ltr') return d;
+  const lang = (meta.lang || '').toLowerCase();
+  if (['ar','fa','he','ur'].some(l => lang.startsWith(l))) return 'rtl';
+  if (lang.startsWith('en')) return 'ltr';
+  const prose = (body || '').replace(/```[\s\S]*?```/g, ' ').replace(/`[^`]*`/g, ' ');
+  return hasRTL(prose) ? 'rtl' : 'ltr';
+}
+
+/* ---------- cache & posts ---------- */
 const CACHE_KEY = 'm7x-posts-v2';
 let cache = {};
 try{ cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'); }catch(e){ cache = {}; }
@@ -840,26 +834,21 @@ cache.files = cache.files || {};
 const dynPosts = new Map();
 let cacheStatus = { live: false };
 let fetchFailed = false;
-let failType = null;          // 'rate' | 'branch' | 'net' | null
+let failType = null;
 let shown = 7;
 
-function b64ToUtf8(b64){
-  const bytes = Uint8Array.from(atob(b64.replace(/\n/g, '')), c => c.charCodeAt(0));
-  return new TextDecoder('utf-8').decode(bytes);
-}
 async function fetchJSON(url){
   const r = await fetch(url, { headers: { 'Accept': 'application/vnd.github+json' } });
   if (!r.ok) throw new Error('HTTP ' + r.status);
   return r.json();
 }
-/* محتوى الملفات بييجي من raw.githubusercontent — بلا rate limit */
 const rawURL = path =>
   `https://raw.githubusercontent.com/${CONFIG.repo}/${CONFIG.branch}/` +
   path.split('/').map(encodeURIComponent).join('/');
 
 function postFromRaw(path, raw){
   const name = path.split('/').pop();
-  if (name.startsWith('_')) return null;               // الملفات اللي بـ _ = drafts
+  if (name.startsWith('_')) return null;
   const { meta, body } = parseFront(raw);
   const slug = name.replace(/\.md$/i, '');
   const dateMatch = /^(\d{4}-\d{2}-\d{2})/.exec(slug);
@@ -870,6 +859,7 @@ function postFromRaw(path, raw){
     date: meta.date || (dateMatch ? dateMatch[1] : ''),
     tags: (meta.tags || meta.tag || '').split(',').map(s => s.trim()).filter(Boolean),
     minutes: meta.minutes ? (parseInt(meta.minutes) || 1) : Math.max(1, Math.round(words / 190)),
+    dir: resolveDir(meta, body),
     raw: body,
     excerpt: makeExcerpt(body),
     html: mdToHtml(body),
@@ -884,7 +874,7 @@ function rebuildPosts(){
 }
 const sortedPosts = () => [...dynPosts.values()].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
-/* طلب API واحد بس لقائمة الملفات — المحتوى نفسه من raw (بلا حدود) */
+/* طلب API واحد + تحميل المحتوى من raw (بلا rate limit) */
 async function syncPosts(){
   let tree = null;
   failType = null;
@@ -902,11 +892,9 @@ async function syncPosts(){
       e.path.startsWith(CONFIG.postsPath + '/') &&
       /\.md$/i.test(e.path));
 
-    /* امسح من الكاش أي ملف اتمسح من الريبو */
     const keep = new Set(mds.map(f => f.path));
     for (const name of Object.keys(cache.files)) if (!keep.has(name)) delete cache.files[name];
 
-    /* نزّل اللي اتغيّر بس (بالـ sha) */
     for (const f of mds.slice(0, 30)){
       const cur = cache.files[f.path];
       if (cur && cur.sha === f.sha) continue;
@@ -914,20 +902,21 @@ async function syncPosts(){
         const r = await fetch(rawURL(f.path));
         if (!r.ok) throw new Error('HTTP ' + r.status);
         cache.files[f.path] = { sha: f.sha, raw: await r.text() };
-      }catch(e){ /* لو فشل نزّل، خلي القديم موجود */ }
+      }catch(e){}
     }
 
-    /* صفحة about — ملف about.md في جذر الريبو */
-    const aboutEntry = tree.tree.find(e => e.type === 'blob' && e.path === 'about.md');
-    if (aboutEntry){
-      const cur = cache.about;
-      if (!cur || cur.sha !== aboutEntry.sha){
-        try{
-          const r = await fetch(rawURL('about.md'));
-          if (r.ok) cache.about = { sha: aboutEntry.sha, raw: await r.text() };
-        }catch(e){}
-      }
-    } else cache.about = null;
+    const rootFile = async (name, slot) => {
+      const entry = tree.tree.find(e => e.type === 'blob' && e.path === name);
+      if (!entry){ cache[slot] = null; return; }
+      const cur = cache[slot];
+      if (cur && cur.sha === entry.sha) return;
+      try{
+        const r = await fetch(rawURL(name));
+        if (r.ok) cache[slot] = { sha: entry.sha, raw: await r.text() };
+      }catch(e){}
+    };
+    await rootFile('about.md', 'about');
+    await rootFile('lab.md', 'lab');
 
     cache.at = Date.now();
     try{ localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); }catch(e){}
@@ -938,17 +927,18 @@ async function syncPosts(){
   }
   rebuildPosts();
   renderPosts();
+  renderLab();
 }
 
-/* ---------- rendering the list ---------- */
+/* ---------- rendering ---------- */
 function featuredHTML(p){
   const fc = firstFence(p.raw);
   const tag = p.tags[0] || 'post';
   return `<article class="featured${fc ? '' : ' solo'}" tabindex="0" role="button" data-post="${escAttr(p.id)}" aria-label="Read latest: ${escAttr(p.title)}">
     <div class="ft-left">
       <div class="ft-kicker">LATEST · ${esc(tag.toUpperCase())} · ${p.minutes} MIN</div>
-      <h3 class="ft-title" dir="auto">${esc(p.title)}</h3>
-      <p class="ft-excerpt" dir="auto">${esc(p.excerpt)}</p>
+      <h3 class="ft-title" dir="${p.dir}">${esc(p.title)}</h3>
+      <p class="ft-excerpt" dir="${p.dir}">${esc(p.excerpt)}</p>
       <div class="ft-meta"><span class="chip">${esc(tag)}</span><span>${fmtDate(p.date)}</span><span>${p.minutes} min read</span></div>
       <span class="ft-cta">Read the post
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
@@ -960,16 +950,16 @@ function featuredHTML(p){
 function rowHTML(p, i){
   const tag = p.tags[0] || 'post';
   return `<article class="post-row" tabindex="0" role="button" data-post="${escAttr(p.id)}" aria-label="Read: ${escAttr(p.title)}">
-    <span class="pr-idx">${String(i + 1).padStart(2, '0')}</span>
-    <div class="pr-main">
-      <h3 class="pr-title" dir="auto">${esc(p.title)}</h3>
-      <p class="pr-excerpt" dir="auto">${esc(p.excerpt)}</p>
-    </div>
-    <div class="pr-meta">
+    <div class="pr-top">
+      <span class="pr-idx">${String(i + 1).padStart(2, '0')}</span>
       <span class="chip">${esc(tag)}</span>
-      <span class="pr-date-row"><span>${fmtDate(p.date)}</span><span>·</span><span>${p.minutes} min</span></span>
     </div>
-    <span class="pr-arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+    <h3 class="pr-title" dir="${p.dir}">${esc(p.title)}</h3>
+    <p class="pr-excerpt" dir="${p.dir}">${esc(p.excerpt)}</p>
+    <div class="pr-foot">
+      <span>${fmtDate(p.date)} · ${p.minutes} min</span>
+      <span class="pr-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+    </div>
   </article>`;
 }
 function emptyCard(){
@@ -991,7 +981,7 @@ function errCard(type){
     rate:   ['// GitHub API — rate limit مؤقت',
              'حد الطلبات خلص مؤقتًا (60 طلب/ساعة لكل IP). استنى شوية أو جرّب من شبكة تانية — الكاش المحلي بيشغّل الموقع عادي في الأثناء.'],
     branch: ['// الريبو أو البرانش مش موجود',
-             'تأكد إن إعداد <code>CONFIG.repo</code> في أول السكريبت صح، وإن البرانش الرئيسي اسمه <code>main</code> (مش master).'],
+             'تأكد إن <code>CONFIG.repo</code> صح، وإن البرانش الرئيسي اسمه <code>main</code> (مش master).'],
     net:    ['// مفيش اتصال بالنت',
              'المتصفح مقدرش يوصل لـ GitHub. تأكد من الشبكة وجرّب تاني.'],
   };
@@ -1004,6 +994,7 @@ function errCard(type){
 }
 function renderPosts(){
   const listEl = $('#post-list');
+  const lmWrap = $('#load-more-wrap');
   const posts = sortedPosts();
   const total = posts.length;
   $('#sec-note').textContent = total
@@ -1017,20 +1008,51 @@ function renderPosts(){
       rb.disabled = true; rb.textContent = 'جاري المحاولة…';
       setTimeout(syncPosts, 300);
     });
-    $('#load-more-wrap').hidden = true;
+    lmWrap.hidden = true;
     updateProgress();
     return;
   }
   let html = `<div class="reveal in">${featuredHTML(posts[0])}</div><div class="post-list">`;
   posts.slice(1, 1 + shown).forEach((p, i) => {
-    html += `<div class="reveal in" style="--d:${(i % 7) * .04}s">${rowHTML(p, i)}</div>`;
+    html += `<div class="reveal in" style="--d:${(i % 6) * .05}s">${rowHTML(p, i)}</div>`;
   });
   html += '</div>';
   listEl.innerHTML = html;
-  $('#load-more-wrap').hidden = (posts.length - 1) <= shown;
+
+  const remaining = posts.length - 1 - shown;
+  lmWrap.hidden = remaining <= 0;
+  if (remaining > 0) $('#load-more').textContent = `مقالات أقدم (${remaining} متبقي) ↓`;
   updateProgress();
 }
  $('#load-more').addEventListener('click', () => { shown += 7; renderPosts(); });
+
+/* ---------- From the lab: بيقرا من lab.md لو موجود ---------- */
+function renderLab(){
+  const lab = cache.lab && cache.lab.raw;
+  if (!lab || !lab.trim()) return;
+  const { meta, body } = parseFront(lab);
+  const fence = firstFence(body);
+  const proseMd = body.replace(/```[^\n`]*\n[\s\S]*?```/, '');
+  const dir = resolveDir(meta, body);
+
+  const note = $('#lab-note');
+  note.setAttribute('dir', dir);
+  note.innerHTML =
+    `<div class="lab-kicker">${esc(meta.kicker || 'SNIPPET OF THE WEEK')}</div>` +
+    `<h3 dir="${dir}">${esc(meta.title || 'Snippet of the week')}</h3>` +
+    mdToHtml(proseMd);
+
+  const sn = $('#snippet-code');
+  const grid = document.querySelector('.lab-grid');
+  if (fence){
+    sn.hidden = false;
+    grid.style.gridTemplateColumns = '';
+    sn.innerHTML = codeBlock(meta.file || ('snippet.' + (EXT[fence.lang] || 'txt')), LANGMAP[fence.lang] || 'text', fence.code);
+  } else {
+    sn.hidden = true;
+    grid.style.gridTemplateColumns = '1fr';
+  }
+}
 
 /* ---------- reader overlay ---------- */
 const reader = $('#reader');
@@ -1050,16 +1072,17 @@ function openPost(id){
   if (!p){ toast('post not found 🤷'); return; }
   $('#reader-back-label').textContent = 'all posts';
   $$('.reader-back-label2').forEach(el => el.textContent = 'all posts');
-  $('#reader-extra').innerHTML = '';
   $('#reader-kicker').textContent = (p.tags[0] || 'post').toUpperCase();
-  $('#reader-title').textContent = p.title;
+  const titleEl = $('#reader-title'), bodyEl = $('#reader-body');
+  titleEl.dir = p.dir;
+  bodyEl.dir = p.dir;
+  titleEl.textContent = p.title;
   $('#reader-meta').innerHTML =
     `<span class="chip">${esc(p.tags[0] || 'post')}</span><span>${fmtDate(p.date)}</span><span class="dotsep">·</span><span>${p.minutes} min read</span>`;
-  $('#reader-body').innerHTML = p.html;
+  bodyEl.innerHTML = p.html;
   openReaderShell();
 }
 
-/* صفحة About — بتتقرا من about.md في جذر الريبو */
 function aboutHTML(){
   const user = CONFIG.repo.split('/')[0];
   const avatar = `<img class="about-avatar" src="https://github.com/${encodeURIComponent(user)}.png" alt="${escAttr(user)}">`;
@@ -1069,38 +1092,35 @@ function aboutHTML(){
   const raw = cache.about && cache.about.raw;
   if (raw && raw.trim()){
     const { meta, body } = parseFront(raw);
-    return { title: meta.title || 'Majek7x', html: head + mdToHtml(body) };
+    return { title: meta.title || 'Majek7x', dir: resolveDir(meta, body), html: head + mdToHtml(body) };
   }
-  return {
-    title: 'Majek7x',
-    html: head + `<div class="prose">
-      <p>الصفحة دي محتاجة ملف اسمه <code>about.md</code> في <strong>جذر الريبو</strong> (مش جوه posts).</p>
-      <p>من GitHub: <code>Add file → Create new file</code> → اسمه <code>about.md</code> → اكتب فيه معلوماتك بـ Markdown العادي:</p>
-      <pre>## من أنا
-مختص اختبار اختراق…
+  const tpl = `## من أنا
+مختص اختبار اختراق (Penetration Testing) وأمن سيبراني…
 
-## الخبرة
+## الخبرة والشهادات
 - …
 
 ## تواصل معايا
-- LinkedIn: …</pre>
-      <p>واعمل Commit — هتلاقيها هنا فورًا، وصورتك جاية من GitHub أوتوماتيك.</p>
-    </div>`,
+- LinkedIn: [رابطك هنا](https://linkedin.com/in/...)`;
+  return {
+    title: 'Majek7x', dir: 'rtl',
+    html: head +
+      `<p>الصفحة دي محتاجة ملف اسمه <code>about.md</code> في <strong>جذر الريبو</strong> (مش جوه posts). اكتب فيه معلوماتك بـ Markdown العادي زي الشكل ده:</p>` +
+      codeBlock('about.md', 'text', tpl) +
+      `<p>واعمل Commit — هتلاقيها هنا فورًا، وصورتك جاية من GitHub أوتوماتيك.</p>`,
   };
 }
 function openAbout(){
   const a = aboutHTML();
   $('#reader-back-label').textContent = 'رجوع';
   $$('.reader-back-label2').forEach(el => el.textContent = 'رجوع');
-  $('#reader-extra').innerHTML = '';
   $('#reader-kicker').textContent = 'ABOUT ME';
-  $('#reader-title').textContent = a.title;
+  const titleEl = $('#reader-title'), bodyEl = $('#reader-body');
+  titleEl.dir = a.dir;
+  bodyEl.dir = a.dir;
+  titleEl.textContent = a.title;
   $('#reader-meta').innerHTML = `<span class="chip">offsec</span><span>penetration testing</span>`;
-  /* الـ about مش عايز dir=auto كله — المحتوى لوحده هو اللي بيتظبط */
-  const bodyEl = $('#reader-body');
-  bodyEl.removeAttribute('dir');
   bodyEl.innerHTML = a.html;
-  bodyEl.querySelectorAll('.prose').forEach(el => el.setAttribute('dir', 'auto'));
   openReaderShell();
 }
 function closePost(){
@@ -1117,7 +1137,7 @@ reader.addEventListener('scroll', updateReaderProgress, { passive: true });
  $('#reader-close').addEventListener('click', closePost);
  $('#reader-close-bottom').addEventListener('click', closePost);
 
-/* ---------- copy-to-clipboard with flash ---------- */
+/* ---------- copy-to-clipboard ---------- */
 function copyFallback(text, done){
   const ta = document.createElement('textarea');
   ta.value = text;
@@ -1173,7 +1193,7 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: .12 });
  $$('.reveal').forEach(el => io.observe(el));
 
-/* ---------- live GitHub stars & forks ---------- */
+/* ---------- GitHub stars & forks ---------- */
 const fmtFull = n => n.toLocaleString('en-US');
 const fmtK = n => n >= 10000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : fmtFull(n);
 
@@ -1225,7 +1245,7 @@ ghPromise.then(v => {
   countUp($('#gh-forks'), v.f, 1300, fmtK);
 });
 
-/* ---------- hero terminal sequence ---------- */
+/* ---------- hero terminal ---------- */
 const TERM_STEPS = [
   { t:'cmd',  s:'whoami' },
   { t:'out',  s:'majek7x — penetration tester · offensive security' },
@@ -1294,8 +1314,9 @@ runTerminal();
 
 /* ---------- boot ---------- */
 rebuildPosts();
-renderPosts();        // الكاش يظهر فورًا لو موجود
-syncPosts();          // وبعدين مزامنة في الخلفية (طلب API واحد + raw)
+renderPosts();
+renderLab();
+syncPosts();
 </script>
 </body>
 </html>
