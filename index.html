@@ -142,6 +142,8 @@ svg{flex-shrink:0}
 
 section{padding-top:var(--sp);padding-bottom:var(--sp)}
 .hero + section{padding-top:calc(var(--sp) * .85)}
+.sec-head + .sec-sub{margin-top:-14px;margin-bottom:26px;color:var(--ink-2);font-size:15.5px;max-width:60ch}
+#labs{border-top:1px solid var(--line)}
 .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px;flex-wrap:wrap}
 .sec-idx{font:600 13px 'JetBrains Mono';color:var(--accent);letter-spacing:.1em}
 .sec-head h2{font-family:'Fraunces','IBM Plex Sans Arabic',serif;font-weight:600;font-size:clamp(30px,3.8vw,42px);letter-spacing:-.015em}
@@ -159,11 +161,11 @@ section{padding-top:var(--sp);padding-bottom:var(--sp)}
 
 /* filter bar */
 .toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--line)}
-#filter-bar{display:flex;gap:8px;flex-wrap:wrap}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap}
 .sort-wrap{position:relative;margin-left:auto}
 .sort-wrap::after{content:'';position:absolute;right:15px;top:50%;width:6px;height:6px;border-right:1.5px solid var(--ink-3);border-bottom:1.5px solid var(--ink-3);transform:translateY(-70%) rotate(45deg);pointer-events:none}
-#sort-select{appearance:none;-webkit-appearance:none;font:600 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-2);background:var(--surface);border:1px solid var(--line-2);border-radius:999px;padding:8px 36px 8px 16px;cursor:pointer;transition:border-color .18s}
-#sort-select:hover{border-color:var(--accent)}
+.sort-select{appearance:none;-webkit-appearance:none;font:600 12px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-2);background:var(--surface);border:1px solid var(--line-2);border-radius:999px;padding:8px 36px 8px 16px;cursor:pointer;transition:border-color .18s}
+.sort-select:hover{border-color:var(--accent)}
 .grp{display:flex;align-items:center;gap:14px;margin-top:40px;font:600 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--ink-3)}
 .grp:first-child{margin-top:0}
 .grp b{color:var(--ink);font-weight:600}
@@ -220,7 +222,7 @@ section{padding-top:var(--sp);padding-bottom:var(--sp)}
 
 .chip{font:600 10.5px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);border:1px solid var(--line-2);border-radius:999px;padding:3px 10px;background:var(--bg);white-space:nowrap}
 
-#load-more-wrap{display:flex;justify-content:center;margin-top:32px}
+.load-more-wrap{display:flex;justify-content:center;margin-top:32px}
 .empty-card{border:1.5px dashed var(--line-2);border-radius:16px;padding:40px 36px;background:var(--surface);text-align:center}
 .empty-card .ec-title{font:600 13px 'JetBrains Mono','IBM Plex Sans Arabic',monospace;color:var(--accent-ink);letter-spacing:.08em;margin-bottom:14px}
 .empty-card p{color:var(--ink-2);font-size:15px;margin:8px 0}
@@ -378,7 +380,8 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Majek7x — home">majek7x<span class="brand-cursor">_</span></a>
     <nav class="head-nav" aria-label="Primary">
-      <a href="#writing">Writing</a>
+      <a href="#writing">Articles</a>
+      <a href="#labs">Writeups &amp; Labs</a>
       <button type="button" data-page="roadmap">Roadmap</button>
       <button type="button" data-page="tools">Toolkit</button>
       <button type="button" data-about>About</button>
@@ -453,17 +456,18 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
     </div>
   </section>
 
-  <section id="writing" class="wrap" aria-label="Writing">
+  <section id="writing" class="wrap" aria-label="Articles">
     <div class="sec-head">
       <span class="sec-idx">(01)</span>
-      <h2>Writing</h2>
+      <h2>Articles</h2>
       <span class="sec-rule"></span>
-      <span class="sec-note" id="sec-note">syncing with github…</span>
+      <span class="sec-note" id="articles-note">syncing with github…</span>
     </div>
-    <div class="toolbar" id="toolbar" hidden>
-      <div id="filter-bar"></div>
-      <label class="sort-wrap"><span class="sr-only">ترتيب المقالات</span>
-        <select id="sort-select">
+    <p class="sec-sub" dir="auto">مقالات وشروحات ونصائح — مرتبة بالتاريخ ومجمّعة بالشهر.</p>
+    <div class="toolbar" id="articles-toolbar" hidden>
+      <div class="filter-bar" id="articles-filter"></div>
+      <label class="sort-wrap"><span class="sr-only">ترتيب</span>
+        <select class="sort-select" id="articles-sort">
           <option value="new">الأحدث أولًا (مجمّعة بالشهر)</option>
           <option value="old">الأقدم أولًا (مجمّعة بالشهر)</option>
           <option value="short">الأقصر قراءة</option>
@@ -471,14 +475,38 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
         </select>
       </label>
     </div>
-    <div id="post-list" aria-live="polite">
-      <div class="skel skel-f"></div>
-      <div class="skel-g">
-        <div class="skel"></div><div class="skel"></div><div class="skel"></div>
-      </div>
+    <div id="articles-list" aria-live="polite">
+      <div class="skel-g"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
     </div>
-    <div id="load-more-wrap" hidden>
-      <button class="btn btn-ghost" type="button" id="load-more">مقالات أقدم ↓</button>
+    <div class="load-more-wrap" id="articles-more-wrap" hidden>
+      <button class="btn btn-ghost" type="button" id="articles-more">أكتر ↓</button>
+    </div>
+  </section>
+
+  <section id="labs" class="wrap" aria-label="Writeups and labs">
+    <div class="sec-head">
+      <span class="sec-idx">(02)</span>
+      <h2>Writeups &amp; Labs</h2>
+      <span class="sec-rule"></span>
+      <span class="sec-note" id="labs-note">syncing with github…</span>
+    </div>
+    <p class="sec-sub" dir="auto">ريتابات لتحديات الـCTF والـbug bounty، وحلول لابات (HTB / TryHackMe / PortSwigger) خطوة بخطوة.</p>
+    <div class="toolbar" id="labs-toolbar" hidden>
+      <div class="filter-bar" id="labs-filter"></div>
+      <label class="sort-wrap"><span class="sr-only">ترتيب</span>
+        <select class="sort-select" id="labs-sort">
+          <option value="new">الأحدث أولًا (مجمّعة بالشهر)</option>
+          <option value="old">الأقدم أولًا (مجمّعة بالشهر)</option>
+          <option value="short">الأقصر قراءة</option>
+          <option value="long">الأطول قراءة</option>
+        </select>
+      </label>
+    </div>
+    <div id="labs-list" aria-live="polite">
+      <div class="skel-g"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
+    </div>
+    <div class="load-more-wrap" id="labs-more-wrap" hidden>
+      <button class="btn btn-ghost" type="button" id="labs-more">أكتر ↓</button>
     </div>
   </section>
 
@@ -885,9 +913,11 @@ let cacheStatus = { live: false };
 let fetchFailed = false;
 let failType = null;
 const PAGE = 6;
-let shown = PAGE;
-let sortMode = 'new';
-let activeTag = '';
+const SECTIONS = {
+  articles: { nouns:['مقال','مقالات'], more:'مقالات' },
+  labs:     { nouns:['ريتاب','ريتابات'], more:'ريتابات' },
+};
+const st = { articles:{ tag:'', sort:'new', shown:PAGE }, labs:{ tag:'', sort:'new', shown:PAGE } };
 
 async function fetchJSON(url){
   const r = await fetch(url, { headers: { 'Accept': 'application/vnd.github+json' } });
@@ -903,10 +933,13 @@ function postFromRaw(path, raw){
   if (name.startsWith('_')) return null;
   const { meta, body } = parseFront(raw);
   const slug = name.replace(/\.md$/i, '');
+  const typ = String(meta.type || meta.kind || meta.category || '').toLowerCase().trim();
+  const kind = (/^(writeups?|labs?|ctf|walkthroughs?)$/.test(typ) || /\/(writeups?|labs?|ctf)\//i.test(path)) ? 'labs' : 'articles';
   const dateMatch = /^(\d{4}-\d{2}-\d{2})/.exec(slug);
   const words = body.split(/\s+/).filter(Boolean).length;
   return {
     id: slug,
+    kind,
     title: meta.title || slug,
     date: meta.date || (dateMatch ? dateMatch[1] : ''),
     tags: (meta.tags || meta.tag || '').split(',').map(s => s.trim()).filter(Boolean),
@@ -925,7 +958,7 @@ function rebuildPosts(){
     if (p) dynPosts.set(p.id, p);
   }
 }
-const sortedPosts = () => [...dynPosts.values()].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+const sortedPosts = kind => [...dynPosts.values()].filter(p => p.kind === kind).sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
 async function syncPosts(){
   let tree = null;
@@ -947,7 +980,7 @@ async function syncPosts(){
     const keep = new Set(mds.map(f => f.path));
     for (const name of Object.keys(cache.files)) if (!keep.has(name)) delete cache.files[name];
 
-    for (const f of mds.slice(0, 30)){
+    for (const f of mds.slice(0, 80)){
       const cur = cache.files[f.path];
       if (cur && cur.sha === f.sha) continue;
       try{
@@ -983,24 +1016,18 @@ async function syncPosts(){
 }
 
 /* ---------- filter bar ---------- */
-function renderFilters(posts){
-  const bar = $('#filter-bar');
+function renderFilters(key, posts){
+  const bar = $(`#${key}-filter`);
+  const cur = st[key].tag;
   const counts = {};
   posts.forEach(p => (p.tags.length ? p.tags : ['post']).forEach(t => counts[t] = (counts[t] || 0) + 1));
   const tags = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
   if (tags.length < 2){ bar.hidden = true; return; }
   bar.hidden = false;
   bar.innerHTML =
-    `<button type="button" class="f-btn ${activeTag === '' ? 'active' : ''}" data-tag="">الكل<span class="f-count">${posts.length}</span></button>` +
-    tags.map(t => `<button type="button" class="f-btn ${activeTag === t ? 'active' : ''}" data-tag="${escAttr(t)}">${esc(t)}<span class="f-count">${counts[t]}</span></button>`).join('');
+    `<button type="button" class="f-btn ${cur === '' ? 'active' : ''}" data-tag="">الكل<span class="f-count">${posts.length}</span></button>` +
+    tags.map(t => `<button type="button" class="f-btn ${cur === t ? 'active' : ''}" data-tag="${escAttr(t)}">${esc(t)}<span class="f-count">${counts[t]}</span></button>`).join('');
 }
- $('#filter-bar').addEventListener('click', e => {
-  const b = e.target.closest('.f-btn');
-  if (!b) return;
-  activeTag = b.dataset.tag || '';
-  shown = PAGE;
-  renderPosts();
-});
 
 /* ---------- rendering ---------- */
 function lvChip(p){
@@ -1039,8 +1066,22 @@ function rowHTML(p, i){
     </div>
   </article>`;
 }
-function emptyCard(){
-  if (!OWNER) return `<div class="empty-card"><div class="ec-title">// قريبًا</div><p>أول مقال لسه تحت الكتابة — خليك قريب.</p></div>`;
+function emptyCard(key){
+  if (!OWNER) return `<div class="empty-card"><div class="ec-title">// قريبًا</div><p>${key === 'labs' ? 'أول ريتاب أو لاب لسه تحت الكتابة — خليك قريب.' : 'أول مقال لسه تحت الكتابة — خليك قريب.'}</p></div>`;
+  if (key === 'labs') return `<div class="empty-card">
+    <div class="ec-title">// مفيش ريتابات لسه</div>
+    <p>ضيف ملف في <code>posts/writeups/</code> (أو <code>posts/labs/</code>) — أو حط <code>type: writeup</code> في أول الملف:</p>
+    <pre>---
+title: HTB — اسم الماشين
+date: 2025-06-01
+type: writeup
+tags: HTB, web
+level: متوسط
+---
+
+الـrecon، الـexploit، والـprivesc…</pre>
+    <p>اعمله Commit — هيظهر هنا لوحده.</p>
+  </div>`;
   return `<div class="empty-card">
     <div class="ec-title">// فولدر posts/ لسه فاضي</div>
     <p>اعمل أول مقال: من GitHub — <code>Add file → Create new file</code> وسمّيه <code>posts/ahlan.md</code>:</p>
@@ -1068,11 +1109,11 @@ function errCard(type){
   return `<div class="empty-card">
     <div class="ec-title">${t}</div>
     <p>${d}</p>
-    <button class="btn btn-ghost" type="button" id="retry-sync">إعادة المحاولة ↻</button>
+    <button class="btn btn-ghost retry-sync" type="button">إعادة المحاولة ↻</button>
   </div>`;
 }
 const byDateDesc = (a, b) => (b.date || '').localeCompare(a.date || '');
-function sortList(list){
+function sortList(list, sortMode){
   if (sortMode === 'short') return [...list].sort((a, b) => a.minutes - b.minutes || byDateDesc(a, b));
   if (sortMode === 'long')  return [...list].sort((a, b) => b.minutes - a.minutes || byDateDesc(a, b));
   const dated = list.filter(p => p.date).sort(sortMode === 'old' ? (a, b) => -byDateDesc(a, b) : byDateDesc);
@@ -1083,42 +1124,44 @@ function monthLabel(key){
   const [y, m] = key.split('-').map(Number);
   return new Date(Date.UTC(y, m - 1, 1)).toLocaleDateString('ar-EG-u-nu-latn', { month:'long', year:'numeric', timeZone:'UTC' });
 }
-function renderPosts(){
-  const listEl = $('#post-list');
-  const lmWrap = $('#load-more-wrap');
-  const posts = sortedPosts();
+function renderPosts(){ Object.keys(SECTIONS).forEach(renderSection); }
+function renderSection(key){
+  const S = st[key], cfg = SECTIONS[key];
+  const listEl = $(`#${key}-list`);
+  const lmWrap = $(`#${key}-more-wrap`);
+  const posts = sortedPosts(key);
   const total = posts.length;
-  renderFilters(posts);
-  $('#toolbar').hidden = total < 1;
-  $('#sec-note').textContent = total
-    ? `${total} post${total > 1 ? 's' : ''} · ${cacheStatus.live ? 'synced from github' : 'from cache'}`
+  renderFilters(key, posts);
+  $(`#${key}-toolbar`).hidden = total < 1;
+  const noun = total === 1 ? cfg.nouns[0] : cfg.nouns[1];
+  $(`#${key}-note`).textContent = total
+    ? `${total} ${noun} · ${cacheStatus.live ? 'synced from github' : 'from cache'}`
     : (fetchFailed ? 'sync failed' : 'waiting for your first post');
 
   if (!total){
-    listEl.innerHTML = fetchFailed ? errCard(failType) : emptyCard();
-    const rb = $('#retry-sync');
-    if (rb) rb.addEventListener('click', () => {
+    listEl.innerHTML = fetchFailed ? errCard(failType) : emptyCard(key);
+    $$('.retry-sync').forEach(rb => rb.addEventListener('click', () => {
       rb.disabled = true; rb.textContent = 'جاري المحاولة…';
       setTimeout(syncPosts, 300);
-    });
+    }));
     lmWrap.hidden = true;
     updateProgress();
     return;
   }
 
-  const base = activeTag ? posts.filter(p => (p.tags.length ? p.tags : ['post']).includes(activeTag)) : posts;
+  const base = S.tag ? posts.filter(p => (p.tags.length ? p.tags : ['post']).includes(S.tag)) : posts;
   if (!base.length){
-    listEl.innerHTML = '<div class="empty-card"><div class="ec-title">// مفيش مقالات بالتاج ده لسه</div></div>';
+    listEl.innerHTML = '<div class="empty-card"><div class="ec-title">// مفيش حاجة بالتاج ده لسه</div></div>';
     lmWrap.hidden = true;
     updateProgress();
     return;
   }
 
-  const list = sortList(base);
-  const useFeatured = sortMode === 'new' && !activeTag;
+  const list = sortList(base, S.sort);
+  const useFeatured = S.sort === 'new' && !S.tag;
   const items = useFeatured ? list.slice(1) : list;
-  const visible = items.slice(0, shown);
-  const grouped = sortMode === 'new' || sortMode === 'old';
+  const visible = items.slice(0, S.shown);
+  const grouped = S.sort === 'new' || S.sort === 'old';
   const counts = {};
   if (grouped) items.forEach(p => { const k = (p.date || '').slice(0, 7); counts[k] = (counts[k] || 0) + 1; });
 
@@ -1129,7 +1172,7 @@ function renderPosts(){
       const k = (p.date || '').slice(0, 7);
       if (k !== cur){
         if (open) html += '</div>';
-        html += `<div class="grp"><b>${monthLabel(k)}</b><span>${counts[k]} ${counts[k] === 1 ? 'مقال' : 'مقالات'}</span></div><div class="post-list">`;
+        html += `<div class="grp"><b>${monthLabel(k)}</b><span>${counts[k]} ${counts[k] === 1 ? cfg.nouns[0] : cfg.nouns[1]}</span></div><div class="post-list">`;
         cur = k; open = true;
       }
     } else if (!open){ html += '<div class="post-list">'; open = true; }
@@ -1138,13 +1181,19 @@ function renderPosts(){
   if (open) html += '</div>';
   listEl.innerHTML = html;
 
-  const remaining = items.length - shown;
+  const remaining = items.length - S.shown;
   lmWrap.hidden = remaining <= 0;
-  if (remaining > 0) $('#load-more').textContent = `مقالات أكتر (${remaining} متبقي) ↓`;
+  if (remaining > 0) $(`#${key}-more`).textContent = `${cfg.more} أكتر (${remaining} متبقي) ↓`;
   updateProgress();
 }
- $('#load-more').addEventListener('click', () => { shown += PAGE; renderPosts(); });
-$('#sort-select').addEventListener('change', e => { sortMode = e.target.value; shown = PAGE; renderPosts(); });
+Object.keys(SECTIONS).forEach(key => {
+  $(`#${key}-filter`).addEventListener('click', e => {
+    const b = e.target.closest('.f-btn'); if (!b) return;
+    st[key].tag = b.dataset.tag || ''; st[key].shown = PAGE; renderSection(key);
+  });
+  $(`#${key}-more`).addEventListener('click', () => { st[key].shown += PAGE; renderSection(key); });
+  $(`#${key}-sort`).addEventListener('change', e => { st[key].sort = e.target.value; st[key].shown = PAGE; renderSection(key); });
+});
 
 /* ---------- giscus comments ---------- */
 function hideGiscus(){
