@@ -1088,17 +1088,30 @@ function postFromRaw(path, raw){
   if (name.startsWith('_')) return null;
   const { meta, body } = parseFront(raw);
   const slug = name.replace(/\.md$/i, '');
+
+  let decPath = path;
+  try { decPath = decodeURIComponent(path).toLowerCase(); } catch(e){ decPath = path.toLowerCase(); }
+
   const typ = String(meta.type || meta.kind || meta.category || '').toLowerCase().trim();
   const rawTags = String(meta.tags || meta.tag || '').toLowerCase();
-  const isLabTag = /\b(writeups?|labs?|ctf|walkthroughs?)\b/i.test(rawTags);
-  const isLabPath = /\/(writeups?|labs?|ctf)\//i.test(path);
-  const isLabType = /^(writeups?|labs?|ctf|walkthroughs?)$/i.test(typ);
-  const kind = (isLabType || isLabPath || isLabTag) ? 'labs' : 'articles';
+  const h1Match = body.match(/^\s*#\s+(.+)$/m);
+  const title = meta.title || (h1Match ? h1Match[1].trim() : slug);
+
+  // Check folder path (English and Arabic: writeups, labs, ctf, رايتبس, لابات, تحديات...)
+  const isLabPath = /\/(writeup|lab|ctf|walkthrough|htb|thm|رايتب|لاب|تحدي)[^\/]*\//i.test(decPath);
+  // Check filename prefix
+  const isLabFile = /^(htb|thm|ctf|writeup|lab|رايتب)[-_]/i.test(name.toLowerCase());
+  // Check frontmatter type/category
+  const isLabType = /^(writeups?|labs?|ctf|walkthroughs?|htb|thm|رايتب|رايتبس|لاب|لابات|تحدي|تحديات)$/i.test(typ);
+  // Check tags
+  const isLabTag = /\b(writeups?|labs?|ctf|walkthroughs?|htb|thm|hackthebox|tryhackme)\b/i.test(rawTags) || /(رايتب|رايتبس|لاب|لابات|تحدي|تحديات)/i.test(rawTags);
+  // Check title
+  const isLabTitle = /^(htb|thm|ctf)\s*[-—:]/i.test(title) || /(writeup|رايتب|حل ماشين|حل تحدي|حل لاب)/i.test(title);
+
+  const kind = (isLabPath || isLabFile || isLabType || isLabTag || isLabTitle) ? 'labs' : 'articles';
 
   const dateMatch = /^(\d{4}-\d{2}-\d{2})/.exec(slug);
   const words = body.split(/\s+/).filter(Boolean).length;
-  const h1Match = body.match(/^\s*#\s+(.+)$/m);
-  const title = meta.title || (h1Match ? h1Match[1].trim() : slug);
 
   return {
     id: slug,
@@ -1374,21 +1387,37 @@ function renderSection(key){
   updateProgress();
 }
 
-/* ---------- VIEW NAVIGATION (ARTICLES, LABS, ROADMAP, TOOLKIT, ABOUT) ---------- */
+/* ---------- VIEW NAVIGATION (HOME, ARTICLES, LABS, ROADMAP, TOOLKIT, ABOUT) ---------- */
 const VIEWS = ['articles', 'labs', 'roadmap', 'tools', 'about'];
-let curView = 'articles';
+let curView = 'home';
 
 function showView(key, scroll){
+  if (key === 'home' || key === 'top' || !key){
+    curView = 'home';
+    $('#hero').hidden = false;
+    $('#writing').hidden = false;
+    $('#labs').hidden = true;
+    $('#roadmap').hidden = true;
+    $('#tools').hidden = true;
+    $('#about').hidden = true;
+    $$('[data-view]').forEach(a => a.classList.remove('active'));
+    if (scroll){
+      if (location.hash && location.hash !== '#top') history.replaceState(null, '', location.pathname);
+      window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+    }
+    return;
+  }
+
   if (!VIEWS.includes(key)) key = 'articles';
   curView = key;
 
   // Toggle sections
-  $('#hero').hidden = key !== 'articles';
-  $('#writing').hidden = key !== 'articles';
-  $('#labs').hidden = key !== 'labs';
-  $('#roadmap').hidden = key !== 'roadmap';
-  $('#tools').hidden = key !== 'tools';
-  $('#about').hidden = key !== 'about';
+  $('#hero').hidden = (key !== 'articles');
+  $('#writing').hidden = (key !== 'articles');
+  $('#labs').hidden = (key !== 'labs');
+  $('#roadmap').hidden = (key !== 'roadmap');
+  $('#tools').hidden = (key !== 'tools');
+  $('#about').hidden = (key !== 'about');
 
   // Toggle active underline on navigation
   $$('[data-view]').forEach(a => a.classList.toggle('active', a.dataset.view === key));
@@ -1396,17 +1425,25 @@ function showView(key, scroll){
   const hashTarget = key === 'articles' ? '#writing' : `#${key}`;
   if (scroll){
     if (location.hash !== hashTarget) history.replaceState(null, '', hashTarget);
-    const scrollEl = (key === 'articles') ? $('.view-tabs') : $(`#${key}`);
+    const scrollEl = (key === 'articles') ? $('#writing') : $(`#${key}`);
     const topOffset = scrollEl ? (scrollEl.getBoundingClientRect().top + scrollY - 76) : 0;
-    scrollTo({ top: Math.max(0, topOffset), behavior: reduced ? 'auto' : 'smooth' });
+    window.scrollTo({ top: Math.max(0, topOffset), behavior: reduced ? 'auto' : 'smooth' });
   }
 }
 
 document.addEventListener('click', e => {
+  // Brand name button click -> Go to Home and smooth scroll to top
+  if (e.target.closest('.brand')){
+    e.preventDefault();
+    showView('home', true);
+    return;
+  }
   const a = e.target.closest('[data-view]');
-  if (!a) return;
-  e.preventDefault();
-  showView(a.dataset.view, true);
+  if (a){
+    e.preventDefault();
+    showView(a.dataset.view, true);
+    return;
+  }
 });
 
 function handleHashChange(){
@@ -1415,7 +1452,8 @@ function handleHashChange(){
   else if (h === 'roadmap') showView('roadmap', false);
   else if (h === 'tools') showView('tools', false);
   else if (h === 'about') showView('about', false);
-  else showView('articles', false);
+  else if (h === 'writing') showView('articles', false);
+  else showView('home', false);
 }
 addEventListener('hashchange', handleHashChange);
 handleHashChange();
