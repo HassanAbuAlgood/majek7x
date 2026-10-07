@@ -416,6 +416,201 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
 }
+
+/* ---- Unified RTL Sections Layout (Articles, Labs, Roadmap, Toolkit, About) ---- */
+.sec-wrap {
+  direction: rtl;
+  text-align: right;
+  min-height: calc(100vh - 360px);
+}
+.sec-wrap .sec-head {
+  direction: rtl;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.sec-wrap .sec-idx {
+  order: 1;
+  color: var(--accent);
+  font: 600 13px 'JetBrains Mono', monospace;
+  letter-spacing: .05em;
+}
+.sec-wrap .sec-head h2 {
+  order: 2;
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 700;
+  font-size: clamp(26px, 3.4vw, 36px);
+  letter-spacing: normal;
+}
+.sec-wrap .sec-rule {
+  order: 3;
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+  align-self: center;
+  min-width: 40px;
+}
+.sec-wrap .sec-note {
+  order: 4;
+  margin-right: auto;
+  margin-left: 0;
+  font: 500 12px 'JetBrains Mono', 'IBM Plex Sans Arabic', monospace;
+  color: var(--ink-3);
+  direction: rtl;
+  text-align: left;
+}
+.sec-wrap .sec-sub {
+  direction: rtl;
+  text-align: right;
+  margin-top: -12px;
+  margin-bottom: 24px;
+  color: var(--ink-2);
+  font-size: 15.5px;
+  max-width: 72ch;
+  line-height: 1.8;
+}
+
+/* Toolbar in RTL: filters on right, sort on left */
+.sec-wrap .toolbar {
+  direction: rtl;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 20px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.sec-wrap .filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.sec-wrap .sort-wrap {
+  margin-right: auto;
+  margin-left: 0;
+}
+.sec-wrap .sort-wrap::after {
+  right: auto;
+  left: 14px;
+}
+.sec-wrap .sort-select {
+  padding: 8px 16px 8px 34px;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Tool Cards Grid */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+  margin-top: 24px;
+  direction: rtl;
+}
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px 26px;
+  box-shadow: var(--shadow-rest);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tool-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lift);
+}
+.tool-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+.tool-card-title {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+  margin: 0;
+}
+.tool-card-badge {
+  font: 600 11px 'JetBrains Mono', monospace;
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: .05em;
+  white-space: nowrap;
+}
+.tool-card-desc {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin: 0;
+}
+.tool-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 8px;
+  direction: ltr;
+  justify-content: flex-end;
+}
+.tool-tag {
+  font: 500 12.5px 'JetBrains Mono', monospace;
+  background: var(--surface2);
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  padding: 3px 9px;
+  color: var(--ink);
+}
+
+/* Roadmap Stage Cards */
+.stage-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 26px 28px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-rest);
+}
+.stage-card h3 {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--accent-ink);
+  margin: 0 0 16px;
+}
+.stage-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.stage-card li {
+  position: relative;
+  padding-right: 24px;
+  margin: 10px 0;
+  font-size: 15.5px;
+  color: var(--ink-2);
+  line-height: 1.8;
+}
+.stage-card li::before {
+  content: '—';
+  position: absolute;
+  right: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
 </style>
 </head>
 <body>
@@ -513,14 +708,14 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
   </nav>
 
   <!-- SECTION 1: ARTICLES -->
-  <section id="writing" class="wrap" aria-label="Articles">
+  <section id="writing" class="wrap sec-wrap" aria-label="Articles">
     <div class="sec-head">
       <span class="sec-idx">(01)</span>
-      <h2>Articles</h2>
+      <h2>المقالات · Articles</h2>
       <span class="sec-rule"></span>
-      <span class="sec-note" id="articles-note">syncing with github…</span>
+      <span class="sec-note" id="articles-note">جاري المزامنة مع GitHub…</span>
     </div>
-    <p class="sec-sub" dir="auto">مقالات وشروحات ونصائح في اختبار الاختراق وأمن الويب — مرتبة بالتاريخ ومجمّعة بالشهر.</p>
+    <p class="sec-sub">مقالات وشروحات ونصائح في اختبار الاختراق وأمن الويب — مرتبة بالتاريخ ومجمّعة بالشهر.</p>
     <div class="toolbar" id="articles-toolbar" hidden>
       <div class="filter-bar" id="articles-filter"></div>
       <label class="sort-wrap"><span class="sr-only">ترتيب</span>
@@ -541,14 +736,14 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
   </section>
 
   <!-- SECTION 2: WRITEUPS & LABS -->
-  <section id="labs" class="wrap" aria-label="Writeups and labs" hidden>
+  <section id="labs" class="wrap sec-wrap" aria-label="Writeups and labs" hidden>
     <div class="sec-head">
       <span class="sec-idx">(02)</span>
-      <h2>Writeups &amp; Labs</h2>
+      <h2>الريتابات واللابات · Writeups &amp; Labs</h2>
       <span class="sec-rule"></span>
-      <span class="sec-note" id="labs-note">syncing with github…</span>
+      <span class="sec-note" id="labs-note">جاري المزامنة مع GitHub…</span>
     </div>
-    <p class="sec-sub" dir="auto">ريتابات تحديات CTF وحلول لابات المنصات التعليمية (HackTheBox, TryHackMe, PortSwigger) خطوة بخطوة.</p>
+    <p class="sec-sub">ريتابات تحديات CTF وحلول لابات المنصات التعليمية (HackTheBox, TryHackMe, PortSwigger) خطوة بخطوة.</p>
     <div class="toolbar" id="labs-toolbar" hidden>
       <div class="filter-bar" id="labs-filter"></div>
       <label class="sort-wrap"><span class="sr-only">ترتيب</span>
@@ -569,75 +764,146 @@ kbd{font:600 10.5px 'JetBrains Mono';border:1px solid var(--line-2);border-botto
   </section>
 
   <!-- SECTION 3: ROADMAP -->
-  <section id="roadmap" class="wrap page-sec" dir="rtl" aria-label="Learning Roadmap" hidden>
+  <section id="roadmap" class="wrap sec-wrap" aria-label="Learning Roadmap" hidden>
     <div class="sec-head">
       <span class="sec-idx">(03)</span>
-      <h2>خريطة التعلم — Penetration Testing</h2>
+      <h2>خريطة التعلم · Roadmap</h2>
       <span class="sec-rule"></span>
-      <span class="sec-note">ROADMAP</span>
+      <span class="sec-note">مسار التعلم المنهجي</span>
     </div>
-    <p class="sec-sub">مسار تعليمي منظم وممنهج للانتقال من الصفر إلى احتراف اختبار الاختراق وصيد الثغرات.</p>
-    <div class="page-card" id="roadmap-content">
-      <h3>المرحلة 1 — الأساسيات وبناء البنية التحتية</h3>
-      <ul>
-        <li><strong>الشبكات (Networking):</strong> فهم عميق لبروتوكولات TCP/IP، نموذج OSI، تحليل الحزم بـ Wireshark، وفهم Subnetting.</li>
-        <li><strong>أنظمة التشغيل وسطر الأوامر:</strong> إتقان نظام Linux (خصوصاً توزيعات Kali و Debian)، إدارة الصلاحيات، وBash Scripting.</li>
-        <li><strong>البرمجة والأتمتة (Automation):</strong> تعلم لغة Python لكتابة سكربتات مخصصة لأتمتة الفحص وبناء أدوات استطلاع سريعة.</li>
-      </ul>
+    <p class="sec-sub">خطة تعليمية متكاملة للانتقال من الصفر إلى احتراف اختبار الاختراق وصيد الثغرات.</p>
+    <div id="roadmap-content">
+      <div class="stage-card">
+        <h3>المرحلة 1 — الأساسيات وبناء البنية التحتية</h3>
+        <ul>
+          <li><strong>الشبكات (Networking):</strong> فهم عميق لبروتوكولات TCP/IP، نموذج OSI، وتحليل حزم البيانات بـ Wireshark.</li>
+          <li><strong>أنظمة التشغيل:</strong> إتقان نظام Linux (خصوصاً Kali و Debian)، إدارة الصلاحيات وسطر الأوامر، وBash Scripting.</li>
+          <li><strong>البرمجة والأتمتة:</strong> تعلم لغة Python لكتابة سكربتات مخصصة وأتمتة مهام الفحص والاستطلاع.</li>
+        </ul>
+      </div>
 
-      <h3>المرحلة 2 — أمن وتطبيقات الويب (Web Security)</h3>
-      <ul>
-        <li><strong>أساسيات الويب:</strong> كيفية عمل متصفحات الإنترنت، طلبات HTTP/HTTPS، ملفات الكوكيز، الجلسات، وآليات CORS و SOP.</li>
-        <li><strong>ثغرات OWASP Top 10:</strong> دراسة عميقة لثغرات SQL Injection, XSS, CSRF, IDOR, SSRF, Broken Access Control.</li>
-        <li><strong>الأدوات الأساسية:</strong> اعتراض وتحليل الترافيك بـ Burp Suite، تخمين المسارات بـ ffuf، واستكشاف السيرفرات بـ nmap.</li>
-      </ul>
+      <div class="stage-card">
+        <h3>المرحلة 2 — أمن وتطبيقات الويب (Web Security &amp; OWASP)</h3>
+        <ul>
+          <li><strong>أساسيات بروتوكول HTTP:</strong> فهم Headers، Cookies، Sessions، وآليات الحماية مثل CORS و SOP و CSP.</li>
+          <li><strong>ثغرات OWASP Top 10:</strong> دراسة وتطبيق عملي لثغرات SQLi, XSS, CSRF, IDOR, SSRF, Broken Access Control.</li>
+          <li><strong>أدوات الفحص والتحليل:</strong> اعتراض الطلبات بـ Burp Suite، تخمين المسارات بـ ffuf، واستكشاف المنافذ بـ nmap.</li>
+        </ul>
+      </div>
 
-      <h3>المرحلة 3 — الممارسة الاحترافية والمكافآت (Bug Bounty & Labs)</h3>
-      <ul>
-        <li><strong>المعامل والمنصات التدريبية:</strong> حل تحديات PortSwigger Web Security Academy، وتطبيق عملي على لابات HackTheBox و TryHackMe.</li>
-        <li><strong>منهجية صيد الثغرات (Methodology):</strong> أتمتة جمع النطاقات الفرعية (Reconnaissance)، تحليل الأهداف الكبيرة، والتوثيق الدقيق.</li>
-        <li><strong>المنصات العالمية:</strong> الانطلاق في منصات صيد الثغرات الحقيقية مثل HackerOne و Bugcrowd والبرامج المفتوحة.</li>
-      </ul>
+      <div class="stage-card">
+        <h3>المرحلة 3 — الممارسة العملية والمكافآت (Bug Bounty &amp; Labs)</h3>
+        <ul>
+          <li><strong>اللابات والمنصات التدريبية:</strong> إتمام لابات PortSwigger Web Security Academy، وتحديات HackTheBox و TryHackMe.</li>
+          <li><strong>منهجية صيد الثغرات:</strong> أتمتة جمع النطاقات الفرعية (Reconnaissance)، استكشاف الأصول الحية، وتوثيق الثغرات باحترافية.</li>
+          <li><strong>المنصات العالمية:</strong> الانطلاق في منصات صيد الثغرات التنافسية مثل HackerOne و Bugcrowd.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <!-- SECTION 4: TOOLKIT -->
-  <section id="tools" class="wrap page-sec" dir="rtl" aria-label="Toolkit" hidden>
+  <section id="tools" class="wrap sec-wrap" aria-label="Toolkit" hidden>
     <div class="sec-head">
       <span class="sec-idx">(04)</span>
-      <h2>أدواتي — My Security Toolkit</h2>
+      <h2>أدواتي · Security Toolkit</h2>
       <span class="sec-rule"></span>
-      <span class="sec-note">TOOLKIT</span>
+      <span class="sec-note">ترسانة الفحص والاستطلاع</span>
     </div>
-    <p class="sec-sub">الترسانة التقنية والأدوات التي أعتمد عليها في مهام الفحص، الاستطلاع، واختبار الاختراق.</p>
+    <p class="sec-sub">الأدوات والسكربتات التقنية التي أعتمد عليها في اختبار الاختراق، فحص الويب، وجمع المعلومات الاستطلاعية.</p>
     <div class="tool-grid" id="tools-content">
-      <div class="tool-box">
-        <h4>Recon & Discovery <span class="chip">Recon</span></h4>
-        <p>subfinder · httpx · assetfinder · naabu · dnsx · amass</p>
+      <div class="tool-card">
+        <div class="tool-card-head">
+          <h3 class="tool-card-title">الاستطلاع وجمع النطاقات (Recon)</h3>
+          <span class="tool-card-badge">RECON</span>
+        </div>
+        <p class="tool-card-desc">أدوات اكتشاف النطاقات الفرعية، مسح الـ DNS، واستكشاف الأصول والخدمات الحية.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">subfinder</span>
+          <span class="tool-tag">httpx</span>
+          <span class="tool-tag">amass</span>
+          <span class="tool-tag">naabu</span>
+          <span class="tool-tag">dnsx</span>
+          <span class="tool-tag">assetfinder</span>
+          <span class="tool-tag">shuffledns</span>
+        </div>
       </div>
-      <div class="tool-box">
-        <h4>Web Pentesting <span class="chip">Web</span></h4>
-        <p>Burp Suite Professional · ffuf · sqlmap · katana · nuclei</p>
+
+      <div class="tool-card">
+        <div class="tool-card-head">
+          <h3 class="tool-card-title">فحص واختراق تطبيقات الويب (Web Pentesting)</h3>
+          <span class="tool-card-badge">WEB</span>
+        </div>
+        <p class="tool-card-desc">اعتراض الطلبات، تحليل البرمجيات الخبيثة للويب، واختبار ثغرات الحقن وصلاحيات الوصول.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Burp Suite Pro</span>
+          <span class="tool-tag">Caido</span>
+          <span class="tool-tag">katana</span>
+          <span class="tool-tag">nuclei</span>
+          <span class="tool-tag">sqlmap</span>
+          <span class="tool-tag">commix</span>
+          <span class="tool-tag">dalfox</span>
+        </div>
       </div>
-      <div class="tool-box">
-        <h4>OSINT & Intelligence <span class="chip">OSINT</span></h4>
-        <p>theHarvester · Shodan · Censys · Waybackurls · GAU</p>
+
+      <div class="tool-card">
+        <div class="tool-card-head">
+          <h3 class="tool-card-title">تخمين المسارات والبارامترات (Fuzzing)</h3>
+          <span class="tool-card-badge">FUZZING</span>
+        </div>
+        <p class="tool-card-desc">اكتشاف المسارات المخفية في الخوادم واستخراج بارامترات الـ HTTP المستترة للفحص المعمق.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">ffuf</span>
+          <span class="tool-tag">feroxbuster</span>
+          <span class="tool-tag">gobuster</span>
+          <span class="tool-tag">dirsearch</span>
+          <span class="tool-tag">arjun</span>
+          <span class="tool-tag">paramspider</span>
+        </div>
       </div>
-      <div class="tool-box">
-        <h4>Network & Port Scanning <span class="chip">Network</span></h4>
-        <p>nmap · masscan · wireshark · rustscan · netcat</p>
+
+      <div class="tool-card">
+        <div class="tool-card-head">
+          <h3 class="tool-card-title">استخبارات المصادر المفتوحة (OSINT)</h3>
+          <span class="tool-card-badge">OSINT</span>
+        </div>
+        <p class="tool-card-desc">جمع المعلومات الاستخباراتية العامة، البحث في أرشيفات الإنترنت، وكشف المفاتيح المسربة.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Shodan</span>
+          <span class="tool-tag">Censys</span>
+          <span class="tool-tag">theHarvester</span>
+          <span class="tool-tag">waybackurls</span>
+          <span class="tool-tag">gau</span>
+          <span class="tool-tag">trufflehog</span>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-head">
+          <h3 class="tool-card-title">فحص الشبكات والخدمات (Network Scanning)</h3>
+          <span class="tool-card-badge">NETWORK</span>
+        </div>
+        <p class="tool-card-desc">مسح المنافذ السريع، استكشاف إصدارات الخدمات، وتحليل حركة الحزم الشبكية.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">nmap</span>
+          <span class="tool-tag">masscan</span>
+          <span class="tool-tag">rustscan</span>
+          <span class="tool-tag">wireshark</span>
+          <span class="tool-tag">netcat</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SECTION 5: ABOUT -->
-  <section id="about" class="wrap page-sec" dir="rtl" aria-label="About Me" hidden>
+  <section id="about" class="wrap sec-wrap" aria-label="About Me" hidden>
     <div class="sec-head">
       <span class="sec-idx">(05)</span>
-      <h2>من أنا — About Me</h2>
+      <h2>من أنا · About Me</h2>
       <span class="sec-rule"></span>
-      <span class="sec-note">PROFILE</span>
+      <span class="sec-note">الملف الشخصي والتواصل</span>
     </div>
+    <p class="sec-sub">نبذة مهنية عن الخبرات ومجالات التخصص في أمن تطبيقات الويب واختبار الاختراق.</p>
     <div class="page-card" id="about-content">
       <div class="about-card">
         <img class="about-avatar" src="https://github.com/HassanAbuAlgood.png" alt="Hassan Ashraf">
@@ -1058,7 +1324,7 @@ function levelInfo(raw){
 }
 
 /* ---------- cache & posts ---------- */
-const CACHE_KEY = 'm7x-posts-v4';
+const CACHE_KEY = 'm7x-posts-v5';
 let cache = {};
 try{ cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'); }catch(e){ cache = {}; }
 cache.files = cache.files || {};
@@ -1096,19 +1362,30 @@ function postFromRaw(path, raw){
   const rawTags = String(meta.tags || meta.tag || '').toLowerCase();
   const h1Match = body.match(/^\s*#\s+(.+)$/m);
   const title = meta.title || (h1Match ? h1Match[1].trim() : slug);
+  const cleanTitle = (title || '').toLowerCase();
 
-  // Check folder path (English and Arabic: writeups, labs, ctf, رايتبس, لابات, تحديات...)
-  const isLabPath = /\/(writeup|lab|ctf|walkthrough|htb|thm|رايتب|لاب|تحدي)[^\/]*\//i.test(decPath);
-  // Check filename prefix
-  const isLabFile = /^(htb|thm|ctf|writeup|lab|رايتب)[-_]/i.test(name.toLowerCase());
-  // Check frontmatter type/category
-  const isLabType = /^(writeups?|labs?|ctf|walkthroughs?|htb|thm|رايتب|رايتبس|لاب|لابات|تحدي|تحديات)$/i.test(typ);
-  // Check tags
-  const isLabTag = /\b(writeups?|labs?|ctf|walkthroughs?|htb|thm|hackthebox|tryhackme)\b/i.test(rawTags) || /(رايتب|رايتبس|لاب|لابات|تحدي|تحديات)/i.test(rawTags);
-  // Check title
-  const isLabTitle = /^(htb|thm|ctf)\s*[-—:]/i.test(title) || /(writeup|رايتب|حل ماشين|حل تحدي|حل لاب)/i.test(title);
+  // Explicit override if specified as article/post
+  const isExplicitArticle = /^(article|post|مقال|مقالات)$/i.test(typ);
 
-  const kind = (isLabPath || isLabFile || isLabType || isLabTag || isLabTitle) ? 'labs' : 'articles';
+  // Broad keyword matching (English & Arabic: writeup, lab, ctf, htb, thm, رايت, ريت, لاب, تحدي...)
+  const kw = '(writeup|write-up|write_up|lab|ctf|walkthrough|htb|thm|hackthebox|tryhackme|رايت|ريت|لاب|تحدي|حلول)';
+  const kwRe = new RegExp(kw, 'i');
+
+  // 1. Inside a subfolder under posts (e.g. posts/رايتبس/..., posts/writeups/...)
+  const isSubfolder = (decPath.split('/').length > 2) && kwRe.test(decPath);
+  // 2. Path contains keyword anywhere
+  const isLabPath = new RegExp('/' + kw, 'i').test(decPath);
+  // 3. Filename starts with or contains keyword
+  const isLabFile = new RegExp('^' + kw, 'i').test(name.toLowerCase()) || kwRe.test(name.toLowerCase());
+  // 4. Frontmatter type/category
+  const isLabType = kwRe.test(typ);
+  // 5. Tags
+  const isLabTag = kwRe.test(rawTags);
+  // 6. Title
+  const isLabTitle = /^(htb|thm|ctf)\b/i.test(cleanTitle) || new RegExp('(writeup|رايتب|ريتاب|حل ماشين|حل تحدي|حل لاب)', 'i').test(cleanTitle);
+
+  const isLab = !isExplicitArticle && (isSubfolder || isLabPath || isLabFile || isLabType || isLabTag || isLabTitle);
+  const kind = isLab ? 'labs' : 'articles';
 
   const dateMatch = /^(\d{4}-\d{2}-\d{2})/.exec(slug);
   const words = body.split(/\s+/).filter(Boolean).length;
@@ -1192,6 +1469,46 @@ async function syncPosts(){
   syncStaticSections();
 }
 
+function renderToolkitMd(raw){
+  const clean = raw.replace(/^\s*#\s+.*\n+/, '').trim();
+  const sections = clean.split(/(?=^##\s+)/m).filter(Boolean);
+  if (!sections.length) return '';
+  const badgeMap = { 'recon': 'RECON', 'web': 'WEB', 'fuzz': 'FUZZING', 'osint': 'OSINT', 'network': 'NETWORK' };
+
+  return sections.map(sec => {
+    const lines = sec.trim().split(/\r?\n/);
+    const h2 = lines[0].replace(/^##\s*/, '').trim();
+    const toolItems = [];
+    let descText = '';
+
+    for (let i = 1; i < lines.length; i++){
+      const L = lines[i].trim();
+      if (!L) continue;
+      if (L.startsWith('-') || L.startsWith('*') || L.startsWith('+')){
+        const items = L.replace(/^[-*+]\s*/, '').split(/[·•,]/);
+        items.forEach(t => { const c = t.trim().replace(/`/g, ''); if (c) toolItems.push(c); });
+      } else if (!descText){
+        descText = L;
+      }
+    }
+
+    let badge = 'TOOL';
+    for (const [k, v] of Object.entries(badgeMap)){
+      if (h2.toLowerCase().includes(k)){ badge = v; break; }
+    }
+
+    const tagsHtml = toolItems.map(t => `<span class="tool-tag">${esc(t)}</span>`).join('');
+    return `<div class="tool-card">
+      <div class="tool-card-head">
+        <h3 class="tool-card-title">${esc(h2)}</h3>
+        <span class="tool-card-badge">${badge}</span>
+      </div>
+      ${descText ? `<p class="tool-card-desc">${esc(descText)}</p>` : ''}
+      <div class="tool-tags">${tagsHtml}</div>
+    </div>`;
+  }).join('');
+}
+
 function syncStaticSections(){
   if (cache.roadmap && cache.roadmap.raw){
     const { body } = parseFront(cache.roadmap.raw);
@@ -1200,8 +1517,8 @@ function syncStaticSections(){
   }
   if (cache.tools && cache.tools.raw){
     const { body } = parseFront(cache.tools.raw);
-    const clean = body.replace(/^\s*#\s+.*\n+/, '');
-    $('#tools-content').innerHTML = mdToHtml(clean);
+    const rendered = renderToolkitMd(body);
+    if (rendered) $('#tools-content').innerHTML = rendered;
   }
   if (cache.about && cache.about.raw){
     const { body } = parseFront(cache.about.raw);
@@ -1339,8 +1656,8 @@ function renderSection(key){
   $(`#${key}-toolbar`).hidden = total < 1;
   const noun = total === 1 ? cfg.nouns[0] : cfg.nouns[1];
   $(`#${key}-note`).textContent = total
-    ? `${total} ${noun} · ${cacheStatus.live ? 'synced from github' : 'from cache'}`
-    : (fetchFailed ? 'sync failed' : 'waiting for your first post');
+    ? `${total} ${noun} · ${cacheStatus.live ? 'متزامن مع GitHub' : 'من الكاش المحلي'}`
+    : (fetchFailed ? 'تعذر الاتصال بـ GitHub' : (key === 'labs' ? 'في انتظار أول ريتاب' : 'في انتظار أول مقال'));
 
   if (!total){
     listEl.innerHTML = fetchFailed ? errCard(failType) : emptyCard(key);
