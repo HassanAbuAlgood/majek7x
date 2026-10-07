@@ -1,5 +1,3 @@
-
- 
 ## Recon
 - nmap · subfinder · httpx
  
@@ -7,4 +5,4 @@
 - Burp Suite · ffuf · sqlmap
  
 ## OSINT
-- theHarvester · Shodan 
+- theHarvester · Shodan
