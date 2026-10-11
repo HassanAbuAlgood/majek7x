@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#4ADE80" opacity="0.12"/>
+    </pattern>
+    <radialGradient id="fade" cx="50%" cy="0%" r="85%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="dotmask"><rect width="1200" height="630" fill="url(#fade)"/></mask>
+  </defs>
+  <rect width="1200" height="630" fill="#0B0F14"/>
+  <rect width="1200" height="630" fill="url(#dots)" mask="url(#dotmask)"/>
+  <rect x="80" y="188" width="7" height="266" rx="3" fill="#4ADE80"/>
+  <text x="118" y="222" font-family="Consolas, Menlo, monospace" font-size="20" fill="#4ADE80">// web pentester · bug bounty hunter</text>
+  <text x="118" y="300" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="62" fill="#E7EEF5">Hassan Ashraf</text>
+  <text x="118" y="372" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="62" fill="#4ADE80">Abu-Algood</text>
+  <text x="118" y="424" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#93A1B1">Active on HackerOne · eJPT · Security+</text>
+  <text x="118" y="456" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#93A1B1">HCIA Security &amp; Cloud · 200+ students trained</text>
+  <rect x="700" y="176" width="420" height="290" rx="12" fill="#10151C" stroke="#1E2833" stroke-width="1.5"/>
+  <circle cx="726" cy="202" r="5" fill="#FF5F56"/>
+  <circle cx="744" cy="202" r="5" fill="#FFBD2E"/>
+  <circle cx="762" cy="202" r="5" fill="#27C93F"/>
+  <text font-family="Consolas, Menlo, monospace" font-size="14" fill="#E7EEF5">
+    &lt;tspan x="722" y="240"&gt;hassan@sec:~$ cat methodology.txt&lt;/tspan&gt;
+    &lt;tspan x="722" y="266" fill="#93A1B1"&gt;[1/4] SCOPE   → define targets&lt;/tspan&gt;
+    &lt;tspan x="722" y="292" fill="#93A1B1"&gt;[2/4] RECON   → map surface&lt;/tspan&gt;
+    &lt;tspan x="722" y="318" fill="#93A1B1"&gt;[3/4] TEST    → OWASP Top 10&lt;/tspan&gt;
+    &lt;tspan x="722" y="344" fill="#93A1B1"&gt;[4/4] REPORT  → impact &amp; fix&lt;/tspan&gt;
+    &lt;tspan x="722" y="378"&gt;hassan@sec:~
+    <tspan x="722" y="240">hassan@sec:~$ cat methodology.txt</tspan>
+    <tspan x="722" y="266" fill="#93A1B1">[1/4] SCOPE   → define targets</tspan>
+    <tspan x="722" y="292" fill="#93A1B1">[2/4] RECON   → map surface</tspan>
+    <tspan x="722" y="318" fill="#93A1B1">[3/4] TEST    → OWASP Top 10</tspan>
+    <tspan x="722" y="344" fill="#93A1B1">[4/4] REPORT  → impact &amp; fix</tspan>
+    <tspan x="722" y="378">hassan@sec:~$</tspan>
+  lt;/tspan&gt;
+  </text>
+  <text x="118" y="560" font-family="Consolas, Menlo, monospace" font-size="16" fill="#93A1B1">hassan@sec:~$ whoami → web-pentester --active</text>
+  <text x="118" y="588" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#4b5a6b">Cairo, Egypt</text>
+</svg>
